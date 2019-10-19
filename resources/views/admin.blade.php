@@ -1,6 +1,12 @@
 @extends('layouts.app')
+<link href="{{ asset('css/signin.css')}}" rel="stylesheet">
+
+<!-- FROM GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 
 @section('content')
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

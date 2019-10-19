@@ -27,25 +27,26 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 
-<span class="open-slide">
-  <a href="#">
-    <svg width="30" height="30">
-        <path d="M0,5 30,5" stroke="#fff" stroke-width="5"/>
-        <path d="M0,14 30,14" stroke="#fff" stroke-width="5"/>
-        <path d="M0,23 30,23" stroke="#fff" stroke-width="5"/>
-    </svg>
-  </a>
-</span>
+  <span class="open-slide">
+      <a href="#" onclick="openSlideMenu()">
+        <svg width="30" height="30">
+            <path d="M0,5 30,5" stroke="#fff" stroke-width="5"/>
+            <path d="M0,14 30,14" stroke="#fff" stroke-width="5"/>
+            <path d="M0,23 30,23" stroke="#fff" stroke-width="5"/>
+        </svg>
+      </a>
+    </span>
 
-<ul class="navbar-nav">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Services</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
+    <div id="side-menu" class="side-nav">
+    <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+ 
+    <a href="#">ORDER</a>
+    <a href="#">STOCK IN SYSTEM</a>
+    <a href="#">EMPLOYEE RESOURCE MANAGEMENT</a>
+ 
+  </div>
 
     <div class="container navtab">
-        <img class="Mainlogo" src="/img/SHOP-NOW.png" alt="">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -62,9 +63,11 @@
     </div>
   </nav>
 
-    <div class="container">
+    <div class="container" id="main">
 
-        <div class="header-text"><h1>CATEGORIES</h1>  
+ 
+        <div class="header-text"><h1>CATEGORIES</h1> 
+        <img class="Mainlogo" src="/img/SHOP-NOW.png" alt=""> 
       </div>
         <hr class="headhr">
           <div class="cate-box">
@@ -125,7 +128,17 @@
  CONTACT US<br>CPEG2DB@GMAIL.COM | TEL XXX-XXXXXXX
 </footer> 
  
+<script>
+    function openSlideMenu(){
+      document.getElementById('side-menu').style.width = '300px';
+      document.getElementById('main').style.marginLeft = '300px';
+    }
 
+    function closeSlideMenu(){
+      document.getElementById('side-menu').style.width = '0';
+      document.getElementById('main').style.marginLeft = 'auto';
+    }
+  </script>
 </body>
 
 

@@ -14,13 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('/master', function(){
     return view('create.master');
 });
 
-
-Auth::routes();
-
-
+Route::get('/categories', function(){
+    return view('create.categories');
+});
 
 Route::get('/home', 'HomeController@index')->name('home');

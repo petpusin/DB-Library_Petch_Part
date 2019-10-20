@@ -16,7 +16,10 @@
                 <div class="panel-body">
                     You are login, Admin
                 </div>
-                    
+                @foreach ($data as $d)
+                <h1>{{ $d->employeeNumber }}</h1>
+                <h1>{{ $d->lastName}}</h1>
+                @endforeach
                 </div>
             </div>
         </div>

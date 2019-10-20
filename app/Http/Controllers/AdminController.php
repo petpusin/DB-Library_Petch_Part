@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\employees;
+use DB;
 class AdminController extends Controller
 {
     /**
@@ -23,6 +24,12 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin');
+        $user_id = auth()->user()->em_id;
+        
+        $data = DB::table('employees')->join('admins','employees.employeeNumber','=','admins.em_id')->where('employees.employeeNumber','=',$user_id)->get();
+        return view('admin',compact('data'));
+        
     }
+
+    
 }

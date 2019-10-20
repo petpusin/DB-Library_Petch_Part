@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class RenameForeignKeys extends Migration
+class AddUserIdToEmployees extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class RenameForeignKeys extends Migration
      */
     public function up()
     {
-        // Schema::table('employees', function (Blueprint $table) {
-            
-        //     $table->renameIndex('employees_reportsto_foreign', 'reportsTo');
-        //     $table->renameIndex('employees_officecode_foreign	', 'officeCode');
-        // });
+        Schema::table('employees', function (Blueprint $table) {
+            $table->integer('user_id');
+        });
     }
 
     /**
@@ -27,6 +25,8 @@ class RenameForeignKeys extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employees');
+        Schema::table('employees', function (Blueprint $table) {
+            $table->dropColumn('user_id');
+        });
     }
 }

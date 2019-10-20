@@ -49,18 +49,10 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'customerName' => ['required', 'string', 'max:50'],
-            'email' => ['required', 'string', 'email', 'max:50', ],
+            'name' => ['required', 'string', 'max:50'],
+            'email' => ['required', 'string', 'email', 'max:50','unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'contactLastName' => ['required', 'string', 'max:50'],
-            'contactFirstName' => ['required', 'string', 'max:50'],
-            'phone' => ['required', 'string','min:6'],
-            'addressLine1' => ['required', 'string','max:50'],
-            'addressLine2' => ['required', 'string', 'max:50'],
-            'city' => ['required', 'string', 'min:1',],
-            'state' => ['required', 'string', 'max:50'],
-            'postalCode' => ['required', 'string', 'min:4','max:15'],
-            'country' => ['required', 'string', 'max:50']
+            
         ]);
     }
 
@@ -73,19 +65,10 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'customerName' => $data['customerName'],
+            'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'contactLastName' => $data['contactLastName'],
-            'contactFirstName' => $data['contactFirstName'],
-            'phone' => $data['phone'],
-            'addressLine1' => $data['addressLine1'],
-            'addressLine2' => $data['addressLine2'],
-            'city' => $data['city'],
-            'state' => $data['state'],
-            'postalCode' => $data['postalCode'],
-            'country' => $data['country']
-
+            
         ]);
     }
 }

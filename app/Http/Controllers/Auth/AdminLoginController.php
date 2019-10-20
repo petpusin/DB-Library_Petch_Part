@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
@@ -9,7 +9,7 @@ class AdminLoginController extends Controller
 {
     public function __contruct()
     {
-        $this->middleware('guest:admin');
+        $this->middleware('guest:admin', ['except'=> ['logout']]);
     }
 
     public function showLoginForm()
@@ -22,17 +22,26 @@ class AdminLoginController extends Controller
         
         // validate the form date
         $this->validate($request, [
-            'email' => 'required|email',
-            'password' => 'required|min:6'
+            'em_id' => 'required',
+            'password' => 'required|min:3'
         ]);
 
         // Attempt to log the user in
-        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)){
+        if (Auth::guard('admin')->attempt(['em_id' => $request->em_id, 'password' => $request->password], $request->remember)){
             return redirect()->intended(route('admin.dashboard'));
         }
 
-        return redirect()->back()->withInput($request->only('email', 'remember'));
+        return redirect()->back()->withInput($request->only('em_id', 'remember'));
     }
     
+    public function em_id()
+    {
+        return 'em_id';
+    }
+    public function logout()
+    {
+        Auth::guard('admin')->logout();
+        return redirect('/');
+    }
 
 }

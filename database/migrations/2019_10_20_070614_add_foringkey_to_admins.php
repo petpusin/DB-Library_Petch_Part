@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdminsTable extends Migration
+class AddForingkeyToAdmins extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,9 @@ class CreateAdminsTable extends Migration
      */
     public function up()
     {
-        Schema::create('admins', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('password');
-            $table->integer('em_id')->uniqued();
-            
-           
+        Schema::table('admins', function (Blueprint $table) {
+            $table->foreign('em_id')->references('employeeNumber')->on('employees')->onDelete('cascade');
         });
-
     }
 
     /**
@@ -30,6 +25,8 @@ class CreateAdminsTable extends Migration
      */
     public function down()
     {
-        // Schema::dropIfExists('employees');
+        Schema::table('admins', function (Blueprint $table) {
+            $table->dropForeign(['em_id']);
+        });
     }
 }

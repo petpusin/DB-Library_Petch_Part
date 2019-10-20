@@ -1,11 +1,18 @@
 @extends('layouts.app')
 
+@section('head')
+<link href="{{ asset('css/email.css')}}" rel="stylesheet">
+
+<!-- FROM GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+                <div class="card-header">{{ __('RESET PASSWORD') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -18,7 +25,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-MAIL ADDRESS') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>

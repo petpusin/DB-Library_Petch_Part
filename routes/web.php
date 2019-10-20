@@ -12,16 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('create.categories');
 });
 
 Route::get('/master', function(){
     return view('create.master');
 });
 
-Route::get('/categories', function(){
-    return view('create.categories');
-});
+// Route::get('/categories', function(){
+//     return view('create.categories');
+// });
 
 
 

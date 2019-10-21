@@ -67,7 +67,8 @@
 
  
         <div class="header-text"><h1>CATEGORIES</h1> 
-        <img class="Mainlogo" src="/img/SHOP-NOW.png" alt=""> 
+        <img class="Mainlogo" src="/img/SHOP-NOW.png" alt="">
+         
       </div>
         <hr class="headhr">
           <div class="cate-box">

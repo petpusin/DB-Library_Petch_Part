@@ -44,7 +44,7 @@
                         <th>{{ $d->jobTitle}}</th></tr>
                 
                 </div>
-                
+                <br>
                 </table>
                 @endforeach
                 </div>

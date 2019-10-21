@@ -24,6 +24,12 @@ Route::get('/categories', function(){
 });
 
 
+Route::get('/signmode', function(){
+    return view('create.signmode');
+});
+
+
+
 
 Auth::routes();
 

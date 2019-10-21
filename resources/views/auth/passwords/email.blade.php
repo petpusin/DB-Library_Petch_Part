@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+<title>Reset</title>
+@endsection
 @section('head')
 <link href="{{ asset('css/email.css')}}" rel="stylesheet">
 

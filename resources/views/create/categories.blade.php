@@ -42,7 +42,7 @@
  
     <a href="#">ORDER</a>
     <a href="#">STOCK IN SYSTEM</a>
-    <a href="#">EMPLOYEE RESOURCE MANAGEMENT</a>
+    <a href="{{ route('admin.login') }}">EMPLOYEE RESOURCE MANAGEMENT</a>
  
   </div>
 

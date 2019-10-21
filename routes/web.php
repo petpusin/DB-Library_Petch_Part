@@ -24,6 +24,12 @@ Route::get('/master', function(){
 // });
 
 
+Route::get('/signmode', function(){
+    return view('create.signmode');
+});
+
+
+
 
 Auth::routes();
 

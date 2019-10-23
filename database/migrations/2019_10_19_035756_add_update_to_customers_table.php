@@ -13,13 +13,13 @@ class AddUpdateToCustomersTable extends Migration
      */
     public function up()
     {
-        Schema::table('customers', function (Blueprint $table) {
-            $table->string('email');
-            $table->string('password');
-            $table->timestamp('email_verified_at')->nullable();
-            $table->rememberToken();
-            $table->timestamps();
-        });
+        // Schema::table('customers', function (Blueprint $table) {
+        //     $table->string('email');
+        //     $table->string('password');
+        //     $table->timestamp('email_verified_at')->nullable();
+        //     $table->rememberToken();
+        //     $table->timestamps();
+        // });
     }
 
     /**
@@ -29,15 +29,15 @@ class AddUpdateToCustomersTable extends Migration
      */
     public function down()
     {
-        Schema::table('customers', function (Blueprint $table) {
-            $table->dropColumn('email');
-            $table->dropColumn('password');
-            $table->dropColumn('email_verified_at');
-            $table->dropColumn('remember_token');
-            $table->dropColumn('created_at');
-            $table->dropColumn('updated_at');
+        // Schema::table('customers', function (Blueprint $table) {
+        //     $table->dropColumn('email');
+        //     $table->dropColumn('password');
+        //     $table->dropColumn('email_verified_at');
+        //     $table->dropColumn('remember_token');
+        //     $table->dropColumn('created_at');
+        //     $table->dropColumn('updated_at');
             
 
-        });
+        // });
     }
 }

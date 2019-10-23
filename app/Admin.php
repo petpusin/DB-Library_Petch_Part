@@ -18,7 +18,7 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','Lastname','Firstname','extension','postalCode','reportsTo', 'jobTilte', 
+        'em_id','password',
     ];
 
     /**
@@ -39,9 +39,9 @@ class Admin extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected $table = 'employees';
+    protected $table = 'admins';
 
-    protected $primaryKey = 'employeeNumber';
+    
 
     
 }

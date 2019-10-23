@@ -1,4 +1,8 @@
 @extends('layouts.app')
+<link href="{{ asset('css/signin.css')}}" rel="stylesheet">
+
+<!-- FROM GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 
 @section('content')
 <div class="container">
@@ -16,8 +20,12 @@
 
                     You are logged in!
                 </div>
+        
             </div>
         </div>
     </div>
 </div>
+<div style="text-align: center;">
+<button type="button" style="position: absolute;margin:auto;
+    top: 50%;" class="btn btn-success"><a href="{{ url('/') }}">Home</button></div>
 @endsection

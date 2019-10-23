@@ -13,11 +13,10 @@ class AddUpdateToAdminsTable extends Migration
      */
     public function up()
     {
-        Schema::table('employees', function (Blueprint $table) {
-            $table->string('password');
-            $table->timestamp('email_verified_at')->nullable();
+        Schema::table('admins', function (Blueprint $table) {
             $table->rememberToken();
             $table->timestamps();
+            
            
            
             
@@ -32,8 +31,6 @@ class AddUpdateToAdminsTable extends Migration
     public function down()
     {
         Schema::table('employees', function (Blueprint $table) {
-            $table->dropColumn('password');
-            $table->dropColumn('email_verified_at');
             $table->dropRememberToken();
             $table->dropTimestamps();
         });

@@ -26,6 +26,7 @@ body {
 }
 
 .navbar {
+    background-color: rgba(0, 0, 0, 0.384) !important;
     height: 60px;
 }
 
@@ -86,6 +87,14 @@ body {
     font-size: 16px;
 }
 
+.nav-link{
+    color: red !important;
+}
+
+.nav-link:hover{
+    color: rgb(255, 145, 0) !important;
+}
+
 .header-text {
     width: 100%;
     font-weight: bolder;
@@ -95,7 +104,7 @@ body {
     margin-top: 5%;
 }
 
-.header-text h1{
+.header-text h1 {
     margin-top: 10px;
 }
 

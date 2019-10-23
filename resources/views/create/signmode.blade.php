@@ -29,19 +29,33 @@
 
 <div class="cate-box d-flex align-items-center justify-content-center">
 <div class="catepreview">
+
   <a href="{{ route('admin.login') }}">
     <img src="/img/CUSTO-ICON.png"  alt="">
     <hr>
     <div class ="namepd"><a href="{{ route('admin.login') }}">FOR CUSTOMER</div>
+
+  <a href="#">
+    <img src="/img/CUSTO-ICON.png" alt="">
+    <hr>
+    <div class ="namepd">FOR CUSTOMER</div>
+
   </a>
   </div>
 
   
 <div class="catepreview">
+
   <a href="{{ route('register') }}">
     <img src="/img/EMPLO-ICON.png" alt="">
     <hr>
     <div class ="namepd"><a href="{{ route('register') }}">FOR EMPLOYEE</div>
+
+  <a href="#">
+    <img src="/img/EMPLO-ICON.png" alt="">
+    <hr>
+    <div class ="namepd">FOR EMPLOYEE</div>
+
   </a>
   </div>
   </div>

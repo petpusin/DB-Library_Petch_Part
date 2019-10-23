@@ -52,7 +52,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive" >
         <ul class="navbar-nav ml-auto">
 
-          <li class="nav-item active"><a class="navbar-brand" href="#"> <img class="cartlg" src="/img/CART_ICON.png"></a></li>
+          <li class="nav-item active"><a class="navbar-brand" href="#"> <img class="cartlg" src="/img/shopping-cart.svg"></a></li>
           <li class="nav-item nav-signin"><a class="nav-link" href="<?php echo e(route('register')); ?>">SIGN IN</a></li>
 
         </ul>
@@ -122,7 +122,7 @@
     </div>
     
     <footer>
-      CONTACT US<br>CPEG2DB@GMAIL.COM | TEL XXX-XXXXXXX
+      <img src="/img/phone-book.svg" alt="" width="18px"; height="18px"> CONTACT US<br>cpeg2DB@GMAIL.COM | TEL XXX-XXXXXXX
     </footer> 
  
 <script>

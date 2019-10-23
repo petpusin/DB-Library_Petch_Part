@@ -51,8 +51,10 @@
 
       <div class="collapse navbar-collapse" id="navbarResponsive" >
         <ul class="navbar-nav ml-auto">
+
           <li class="nav-item active"><a class="navbar-brand" href="#"> <img class="cartlg" src="/img/CART_ICON.png"></a></li>
           <li class="nav-item nav-signin"><a class="nav-link" href="<?php echo e(route('register')); ?>">SIGN IN</a></li>
+
         </ul>
        </div>
 

@@ -1,29 +1,9 @@
-/* body {
-    margin: 0;
-    background-size: auto;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center center;
-    font-family: 'Open Sans', sans-serif;
-}
-
-.container {
-    margin: auto;
-    overflow: auto;
-    box-sizing: border-box;
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-} */
-
 .card-header {
     width: 100%;
     text-align: center;
     position: relative;
     background-color: #464646;
-    color: chartreuse;
+    color: #7fff00;
     font-weight: bold;
     font-size: 26px;
 }
@@ -46,30 +26,25 @@ body {
 
 .EMUSER {
     padding-top: 10px;
-    background-color: #D6D6D6;
     margin: 10px 60px;
 }
 
 input[type=email] {
     border: none;
-    background-color: #D6D6D6;
     border-bottom: 1px solid black;
 }
 
 input[type=email]:hover {
     border: none;
-    background-color: #D6D6D6;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #7fff00;
 }
 
 input[type=password] {
     border: none;
-    background-color: #D6D6D6;
     border-bottom: 1px solid black;
 }
 
 input[type=password]:hover {
     border: none;
-    background-color: #D6D6D6;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #7fff00;
 }

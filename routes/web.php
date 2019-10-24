@@ -19,23 +19,11 @@ Route::get('/master', function(){
     return view('create.master');
 });
 
-// Route::get('/categories', function(){
-//     return view('create.categories');
-// });
-
-
-Route::get('/signmode', function(){
-    return view('create.signmode');
-});
-
-
-
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-// Route::post('/login', 'Auth\LoginController@login')->name('login');
-// Route::get('/admin', 'AdminController@index');
+
 Route::get('/users/logout', 'Auth\LoginController@logout')->name('users.logout');
 
 Route::prefix('admin')->group(function() {
@@ -44,9 +32,3 @@ Route::prefix('admin')->group(function() {
     Route::get('/', 'AdminController@index')->name('admin.dashboard');
     Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
 });
-
-// Route::get('/show', 'Controller@showData');
-
-// Route::get('/edit/{id}', 'Controller@editData')->name('edit');
-// Route::post('/update', 'Controller@UbdateData')->name('update');
-

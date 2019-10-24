@@ -12,12 +12,12 @@ class AdminLoginController extends Controller
         $this->middleware('guest:admin', ['except'=> ['logout']]);
     }
 
-    public function showLoginForm()
+    public function showSigninForm()
     {
-        return view('auth.admin-login');
+        return view('auth.admin-signin');
     }
 
-    public function login(Request $request)
+    public function signin(Request $request)
     {
         
         // validate the form date

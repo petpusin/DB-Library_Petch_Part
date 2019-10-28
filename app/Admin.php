@@ -41,7 +41,10 @@ class Admin extends Authenticatable
 
     protected $table = 'admins';
 
-    
+    public function employee(){
+
+        return $this->belongTo('App\employees','em_id','employeeNumber');
+    }
 
     
 }

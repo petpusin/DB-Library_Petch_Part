@@ -36,7 +36,25 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                        <span class="open-slide">
+                            <a href="#" onclick="openSlideMenu()">
+                                <svg width="30" height="30">
+                                    <path d="M0,5 30,5" stroke="#fff" stroke-width="5"/>
+                                    <path d="M0,14 30,14" stroke="#fff" stroke-width="5"/>
+                                    <path d="M0,23 30,23" stroke="#fff" stroke-width="5"/>
+                                </svg>
+                            </a>
+                            </span>
 
+                        <div id="side-menu" class="side-nav">
+                            <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+                        
+                            <a href="#">ORDER</a>
+                            <a href="#">STOCK IN SYSTEM</a>
+                            <a href="{{ route('admin.home') }}">EMPLOYEE RESOURCE MANAGEMENT</a>
+                            <a href="{{ route('admin.dashboard') }}">DashBoard</a>
+                        
+                        </div> 
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -59,6 +77,9 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                    <a class="dropdown-item" href="{{ url('/') }}">
+                                        Home
+                                    </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
@@ -76,4 +97,19 @@
         </main>
     </div>
 </body>
+
+<script>
+// SCRIPT 01 | SLIDE MENU
+    function openSlideMenu(){
+      document.getElementById('side-menu').style.width = '300px';
+      document.getElementById('main').style.marginLeft = '300px';
+    }
+
+    function closeSlideMenu(){
+      document.getElementById('side-menu').style.width = '0';
+      document.getElementById('main').style.marginLeft = 'auto';
+    }
+// ENDSCRIPT 01   
+  </script>
+  @yield('script');
 </html>

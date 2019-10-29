@@ -26,7 +26,7 @@
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-
+  @if(Auth::guard('admin')->check())
    <span class="open-slide">
       <a href="#" onclick="openSlideMenu()">
         <svg width="30" height="30">
@@ -45,7 +45,7 @@
     <a href="{{ route('admin.home') }}">EMPLOYEE RESOURCE MANAGEMENT</a>
  
   </div> 
-
+  @endif
     <div class="container navtab">
       <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button> -->
 

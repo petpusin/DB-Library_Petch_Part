@@ -49,7 +49,7 @@
                         <div id="side-menu" class="side-nav">
                             <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
                         
-                            <a href="#">ORDER</a>
+                            <a href="{{route('admin.orders')}}">ORDER</a>
                             <a href="#">STOCK IN SYSTEM</a>
                             <a href="{{ route('admin.home') }}">EMPLOYEE RESOURCE MANAGEMENT</a>
                             <a href="{{ route('admin.dashboard') }}">DashBoard</a>

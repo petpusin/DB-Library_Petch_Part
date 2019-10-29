@@ -42,7 +42,7 @@
  
     <a href="#">ORDER</a>
     <a href="#">STOCK IN SYSTEM</a>
-    <a href="<?php echo e(route('admin.dashboard')); ?>">EMPLOYEE RESOURCE MANAGEMENT</a>
+    <a href="<?php echo e(route('admin.login')); ?>">EMPLOYEE RESOURCE MANAGEMENT</a>
  
   </div> 
 
@@ -53,7 +53,7 @@
         <ul class="navbar-nav ml-auto">
 
           <li class="nav-item active"><a class="navbar-brand" href="#"> <img class="cartlg" src="/img/shopping-cart.svg"></a></li>
-          <li class="nav-item nav-signin"><a class="nav-link" href="<?php echo e(route('admin.signin')); ?>">SIGN IN</a></li>
+          <li class="nav-item nav-signin"><a class="nav-link" href="<?php echo e(route('register')); ?>">SIGN IN</a></li>
 
         </ul>
        </div>

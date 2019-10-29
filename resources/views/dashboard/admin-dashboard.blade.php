@@ -100,7 +100,12 @@
                         <td>    
                             <center>{{ $d->jobTitle}}</center>
                         </td>
-                        
+                        <td>
+                            <a href="/admin/employee/edit/{{$d->employeeNumber}}" class="btn btn-success">EDIT</a>
+                        </td>
+                        <td>
+                            <a href="/admin/employee/detele/{{$d->employeeNumber}}" class="btn btn-danger">DELETE</a>
+                        </td>
                     
                 
                     </tr>

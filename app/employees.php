@@ -7,10 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class employees extends Model
 {
     protected $table = 'employees';
-    protected $primarykey = 'employeeNumber';
+    protected $primaryKey = 'employeeNumber';
     protected $increments = 'false';
+    public $timestamps = false;
     public function admin(){
 
         return $this->hasOne('App\Admin','em_id','employeeNumber');
     }
+
+    protected $fillable = [
+        'lastName','jobTitle',
+    ];
 }

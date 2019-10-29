@@ -42,7 +42,7 @@
  
     <a href="#">ORDER</a>
     <a href="#">STOCK IN SYSTEM</a>
-    <a href="{{ route('admin.dashboard') }}">EMPLOYEE RESOURCE MANAGEMENT</a>
+    <a href="{{ route('admin.home') }}">EMPLOYEE RESOURCE MANAGEMENT</a>
  
   </div> 
 
@@ -53,8 +53,11 @@
         <ul class="navbar-nav ml-auto">
 
           <li class="nav-item active"><a class="navbar-brand" href="#"> <img class="cartlg" src="/img/shopping-cart.svg"></a></li>
+          @if(Auth::guard('admin')->check())
+          <li class="nav-item nav-signin"><a class="nav-link" href="{{ route('admin.logout') }}">SIGN OUT</a></li>
+          @else 
           <li class="nav-item nav-signin"><a class="nav-link" href="{{ route('admin.signin') }}">SIGN IN</a></li>
-
+          @endif
         </ul>
        </div>
 

@@ -29,6 +29,14 @@ Route::get('/users/logout', 'Auth\LoginController@logout')->name('users.logout')
 Route::prefix('admin')->group(function() {
     Route::get('/login', 'Auth\AdminLoginController@showSigninForm')->name('admin.signin');
     Route::post('/login', 'Auth\AdminLoginController@signin')->name('admin.signin.submit');
-    Route::get('/', 'AdminController@index')->name('admin.dashboard');
+    Route::get('/', 'AdminController@index')->name('admin.home');
     Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
+    Route::get('/dashboard','AdminController@dashboard')->name('admin.dashboard');
+
+    //order
+
+    Route::get('/orders', 'ControllerSystem@index');
+    Route::get('/order/edit/{no}', 'ControllerSystem@edit_index');
+    Route::put('/order/edit/update/{no}', 'ControllerSystem@update');
+
 });

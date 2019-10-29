@@ -36,4 +36,20 @@ class AdminController extends Controller
         return view('dashboard.admin-dashboard',compact('employees'));
     }
     
+    public function employeeedit(Request $request ,$employeeNumber){
+
+        $employee = employees::findOrFail($employeeNumber);
+        return view('dashboard.admin-edit')->with('employee',$employee); 
+
+    }
+
+    public function employeeupdate(Request $request ,$employeeNumber)
+    {
+        employees::find($employeeNumber)->update([
+            'lastname' => $request->input('lastName'),
+            'jobTitle' => $request->input('jobTitle')
+        ]);
+        
+        return redirect('/admin/dashboard')->with('status','You Date is Updateed');
+    }
 }

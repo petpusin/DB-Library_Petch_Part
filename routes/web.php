@@ -32,4 +32,11 @@ Route::prefix('admin')->group(function() {
     Route::get('/', 'AdminController@index')->name('admin.home');
     Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
     Route::get('/dashboard','AdminController@dashboard')->name('admin.dashboard');
+
+    //order
+
+    Route::get('/orders', 'ControllerSystem@index');
+    Route::get('/order/edit/{no}', 'ControllerSystem@edit_index');
+    Route::put('/order/edit/update/{no}', 'ControllerSystem@update');
+
 });

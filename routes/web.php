@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('create.categories');
-});
+})->name('homecate');
 
 Route::get('/master', function(){
     return view('create.master');

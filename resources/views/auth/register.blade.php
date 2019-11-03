@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('title')
-<title>Register</title>
+<title>Shopping | Register</title>
 @endsection
+
 @section('head')
 <link href="{{ asset('css/register.css')}}" rel="stylesheet">
-
 <!-- FROM GOOGLE FONT -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 @endsection

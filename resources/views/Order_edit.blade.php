@@ -1,52 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
+@section('head')
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-
-
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <link href="css/blog-master.css" rel="stylesheet">
+<link href="{{ asset('css/signin.css')}}" rel="stylesheet">
   <style>
-    table,
-    th,
-    td {
-      border: 1px solid black;
+    table,th,td {
+      border: 1px solid black;    
     }
+  </style>
 
-    body {
-      margin-top: 30px;
-    }
-  </style>`
-  <title>BLACK_UNICORN</title>
-</head>
+@endsection
 
-<body>
+@section('title')
 
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <font color="white" class="navbar-brand">BLACK_UNICORN</font>
-    </div>
-  </nav>
-  <h1 class="display-4 text-center mb-4">EDIT</h1>
-  <a href="/admin/orders">
-    <center>
-      <-back</center> </a> <div class="container">
+  <title>Shopping | Order/Edit</title>
+  
+@endsection
+
+@section('content')
+<h1 class="display-4 text-center mb-4 text-light">ORDER</h1>
+ 
+
+      <div class="container">
         <div class="col-md-12">
 
           <!-- Search Widget -->
           <div class="card my-4">
-            <h5 class="card-header">TEST</h5>
+            <h5 class="card-header bg-dark">Edit Order</h5>
             <div class="card-body">
               <center>
                 <table>
@@ -190,19 +170,24 @@
                   @endforeach
                 </table>
               </center>
+              <a href="/admin/orders"><img src="/img/left-arrow.svg" width="18px" class="my-3"><font color="black">BACK<font></a> 
             </div>
 
           </div>
 
+@endsection
 
+@section('script')
           <!-- Bootstrap core JavaScript -->
           <script src="vendor/jquery/jquery.min.js"></script>
           <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+          <script src="{{ asset('js/app.js') }}" defer></script>
           <script>
             function success(){
               alert("Success !!!");
             }
           </script>
-</body>
+          <script src="{{ asset('js/app.js') }}" defer></script>
+@endsection
 
 </html>

@@ -9,7 +9,8 @@
 }
 
 body {
-    background-image: url("/img/DESKSIGNINBG.jpg");
+    /* background-image: url("/img/DESKSIGNINBG.jpg"); */
+      background-image: url("/img/office.jpg");
     margin: 0;
     background-size: auto;
     background-repeat: no-repeat;

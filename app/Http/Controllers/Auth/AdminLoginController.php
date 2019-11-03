@@ -28,7 +28,7 @@ class AdminLoginController extends Controller
 
         // Attempt to log the user in
         if (Auth::guard('admin')->attempt(['em_id' => $request->em_id, 'password' => $request->password], $request->remember)){
-            return redirect()->intended(route('admin.home'));
+            return redirect()->intended(route('homecate'));
         }
 
         return redirect()->back()->withInput($request->only('em_id', 'remember'));

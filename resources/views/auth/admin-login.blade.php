@@ -1,8 +1,11 @@
 @extends('layouts.app')
 
+@section('title')
+<title>Shopping | Admin SIgn-in</title>
+@endsection
+
 @section('head')
 <link href="{{ asset('css/signin.css')}}" rel="stylesheet">
-
 <!-- FROM GOOGLE FONT -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 @endsection
@@ -37,7 +40,7 @@
 
                             <div class="col-md-6">
 
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                <input id="password" type="password" placeholder="PASSWORD" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

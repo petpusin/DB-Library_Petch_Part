@@ -3,6 +3,7 @@
 @section('head')
 
   <link href="{{ asset('css/signin.css')}}" rel="stylesheet">
+  
   <style>
     table,th,td {
       border: 1px solid black;    
@@ -24,21 +25,21 @@
     <h1 class="display-4 text-center mb-4 text-light">ORDER</h1>
     <h3 class="display-9 text-light">Search Results : <a id="total"></a></h3> <!-- SEARCH COUNT ROW MATCH -->
     <div class="row">
-      <div class="col-md-12"> <!-- BECAUSE 4*3=12 -->
+      <div class="col-md-12" > <!-- BECAUSE 4*3=12 -->
         
-        <div class="card my-4 bg-dark"> <!-- Search Widget -->
-          <h5 class="card-header"><img src="/img/magnifier.svg" width="30px" alt=""> : &nbsp;<div class="btn btn-success" id="show_">OrderNumber</div></h5>
+        <div class="card my-4" style="background-color:black;opacity:0.9"> <!-- Search Widget -->
+          <h5 class="card-header"><img src="/img/magnifier.svg" width="30px" alt=""> : &nbsp;<div class="btn" style="background-color:#00313C;color:white;" id="show_">OrderNumber</div></h5>
           
           <div id="search">
           <div class="select text-center my-2">
-            <a onclick="choose('OrderNumber')" class="btn btn-primary btn-sm" id="s0" href="#">OrderNumber</a>&nbsp;
-            <a onclick="choose('OrderDate')" class="btn btn-primary btn-sm" id="s1" href="#">OrderDate</a>&nbsp;
-            <a onclick="choose('RequiredDate')" class="btn btn-primary btn-sm" id="s2" href="#">RequiredDate</a>&nbsp;
-            <a onclick="choose('ShippedDate')" class="btn btn-primary btn-sm" id="s0" href="#">ShippedDate</a>&nbsp;
-            <a onclick="choose('Status')" class="btn btn-primary btn-sm" id="s1" href="#">Status</a>&nbsp;
-            <a onclick="choose('Comments')" class="btn btn-primary btn-sm" id="s2" href="#">Comments</a>&nbsp;
-            <a onclick="choose('FirstName')" class="btn btn-primary btn-sm" id="s0" href="#">FirstName</a>&nbsp;
-            <a onclick="choose('LastName')" class="btn btn-primary btn-sm" id="s1" href="#">LastName</a>&nbsp;
+            <a onclick="choose('OrderNumber')" class="btn btn-dark btn-sm" id="s0" href="#">OrderNumber</a>&nbsp;
+            <a onclick="choose('OrderDate')" class="btn btn-dark btn-sm" id="s1" href="#">OrderDate</a>&nbsp;
+            <a onclick="choose('RequiredDate')" class="btn btn-dark btn-sm" id="s2" href="#">RequiredDate</a>&nbsp;
+            <a onclick="choose('ShippedDate')" class="btn btn-dark btn-sm" id="s0" href="#">ShippedDate</a>&nbsp;
+            <a onclick="choose('Status')" class="btn btn-dark btn-sm" id="s1" href="#">Status</a>&nbsp;
+            <a onclick="choose('Comments')" class="btn btn-dark btn-sm" id="s2" href="#">Comments</a>&nbsp;
+            <a onclick="choose('FirstName')" class="btn btn-dark btn-sm" id="s0" href="#">FirstName</a>&nbsp;
+            <a onclick="choose('LastName')" class="btn btn-dark btn-sm" id="s1" href="#">LastName</a>&nbsp;
           </div>
           
           <div class="card-body">

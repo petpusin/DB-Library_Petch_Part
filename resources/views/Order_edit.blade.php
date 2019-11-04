@@ -3,6 +3,7 @@
 @section('head')
 
 <link href="{{ asset('css/signin.css')}}" rel="stylesheet">
+
   <style>
     table,th,td {
       border: 1px solid black;    
@@ -25,22 +26,22 @@
         <div class="col-md-12">
 
           <!-- Search Widget -->
-          <div class="card my-4">
-            <h5 class="card-header bg-dark">Edit Order</h5>
-            <div class="card-body">
+          <div class="card my-4" style="opacity:0.95">
+            <h5 class="card-header" style="background-color:black;">EDIT ORDER</h5>
+            <div class="card-body" ">
               <center>
                 <table>
                   @foreach($or as $aaa)
                   <tr>
-                    <td style="background-color: black;color: white;" width="12% width=" 12%" height="50">
+                    <td style="background-color: black ; color: white ; width:10% ; height:50px">
                       <center>OrderNumber</center>
                     </td>
-                    <td width="40% height=" 50">
+                    <td style="width:40% ;height:50px">
                       <center>{{$aaa->orderNumber}}</center>
                     </td>
                   </tr>
                   <tr>
-                    <td style="background-color: black;color: white;" height="50">
+                    <td style="background-color: black ; color: white ; width:10% ; height:50px">
                       <center>OrderDate</center>
                     </td>
                     <td height="50">
@@ -48,7 +49,7 @@
                     </td>
                   </tr>
                   <tr>
-                    <td style="background-color: black;color: white;" height="50">
+                    <td style="background-color: black ; color: white ; width:10% ; height:50px">
                       <center>RequiredDate</center>
                     </td>
                     <td height="50">
@@ -58,7 +59,7 @@
                   @foreach($cus as $bbb)
                   @if($aaa->customerNumber == $bbb->customerNumber)
                   <tr>
-                    <td style="background-color: black;color: white;" height="50">
+                    <td style="background-color: black ; color: white ; width:10% ; height:50px">
                       <center>FirstName</center>
                     </td>
                     <td height="50">
@@ -66,7 +67,7 @@
                     </td>
                   </tr>
                   <tr>
-                    <td style="background-color: black;color: white;" height="50">
+                  <td style="background-color: black ; color: white ; width:10% ; height:50px">
                       <center>LastName</center>
                     </td>
                     <td height="50">
@@ -79,7 +80,7 @@
                   {{ method_field('put') }}
                   {{ csrf_field() }}
                     <tr>
-                      <td style="background-color: black;color: white;" height="50">
+                    <td style="background-color: black ; color: white ; width:10% ; height:50px">
                         <center>ShippedDate</center>
                       </td>
                       <td>
@@ -87,7 +88,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td style="background-color: black;color: white;" height="50">
+                    <td style="background-color: black ; color: white ; width:10% ; height:50px">
                         <center>Status</center>
                       </td>
                       <td>
@@ -151,24 +152,21 @@
                       </td>
                     </tr>
                     <tr>
-                      <td style="background-color: black;color: white;" height="50">
+                    <td style="background-color: black ; color: white ; width:10% ; height:50px">
                         <center>Comment</center>
                       </td>
                       <td>
                         <center><textarea rows="3" cols="60" name="comments">{{$aaa->comments}}</textarea></center>
                       </td>
                     </tr>
-                    <tr>
-                      <td style="background-color: black;color: white;" height="50">
-                        <center>Confirm</center>
-                      </td>
-                      <td>
-                        <center><input type="submit" onclick="success()" value="Confirm"></center>
-                      </td>
-                    </tr>
+                    
                   </form>
                   @endforeach
                 </table>
+                <div style="margin-top:30px">
+                  <center><input type="submit" class="btn" onclick="success()" value="Confirm" style="background-color:black;color:chartreuse;margin:10px"></center>
+                </div>
+
               </center>
               <a href="/admin/orders"><img src="/img/left-arrow.svg" width="18px" class="my-3"><font color="black">BACK<font></a> 
             </div>

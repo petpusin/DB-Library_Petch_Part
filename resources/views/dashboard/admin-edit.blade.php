@@ -14,15 +14,20 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
+                        
                         <div class="col-md-6">
+                            <tr>
+                                <td>
+                                    <label >Lastname:  </label>
+                                </td>
+                                <td>                                        
+                                    {{$employee->lastName}}        
+                                </td>
+                            </tr>
                             <form action="/admin/employee/edit-update/{{$employee->employeeNumber}}" method="POST">
                                 {{ method_field('put') }}
                                 {{ csrf_field() }}
-                                <div class="form-group">
-                                    <label >Lastname</label>
-                                    <input type="text" class="form-control" name="lastName" value="{{$employee->lastName}}" >
-                                    
-                                </div>
+                                
                                 <div class="form-group">
                                     <label >Give Role</label>
                                         <select name="jobTitle" id="jobTitle">

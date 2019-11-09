@@ -26,6 +26,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/users/logout', 'Auth\LoginController@logout')->name('users.logout');
 
+Route::get('/stock',function(){
+    return view('stock');
+});
+
 Route::prefix('admin')->group(function() {
     //login & logout
     Route::get('/login', 'Auth\AdminLoginController@showSigninForm')->name('admin.signin');

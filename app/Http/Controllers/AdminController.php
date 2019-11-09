@@ -46,7 +46,7 @@ class AdminController extends Controller
     public function employeeupdate(Request $request ,$employeeNumber)
     {
         employees::find($employeeNumber)->update([
-            'lastname' => $request->input('lastName'),
+            
             'jobTitle' => $request->input('jobTitle')
         ]);
         

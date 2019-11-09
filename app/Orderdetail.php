@@ -4,16 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model
+class Orderdetail extends Model
 {
     //
-    protected $table = "orders";
+
+    protected $table = "orderdetails";
     protected $primaryKey = 'orderNumber';
     public $incrementing = false;
     public $timestamps = false;
 
-    public function orderdetail(){
+    public function order(){
 
-        return $this->hasOne('App\Orderdetail','orderNumber','orderNumber');
+        return $this->belongTo('App\order','orderNumber','orderNumber');
     }
 }

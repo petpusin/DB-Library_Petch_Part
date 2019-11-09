@@ -16,6 +16,6 @@ class employees extends Model
     }
 
     protected $fillable = [
-        'lastName','jobTitle',
+        'jobTitle',
     ];
 }

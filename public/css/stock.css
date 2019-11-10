@@ -1,6 +1,6 @@
 /* Animation-SearchBar */
 
-.searchBox:hover>.searchInput {
+/* .searchBox:hover>.searchInput {
     width: 280px;
     padding: 0 6px;
 }
@@ -33,102 +33,43 @@
     transition: 1.25s;
     line-height: 27px;
     width: 0px;
-}
+} */
 
-@media screen and (max-width: 600px) {
+/* @media screen and (max-width: 600px) {
     .searchBox:hover>.searchInput {
         width: 50px;
         padding: 0 6px;
     }
-}
+} */
 
-
-
-/* CSS-table */
-
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    width: 10%;
-    height:auto;
-    margin-right:100px;
-    border: 1px solid #ddd;
-}
-
-th, td {
-    text-align: center;
-    padding: 30px;
-}
-
-tr.Headtable{
-    text-align:center;
-}
-
-tr:nth-child(even) {
-    background-color: #f2f2f2
-}
-
-/* set-image-center */
-
-.center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* เซตกรอบให้มนต์ */
-
-img {
-    border-radius: 15%;
-}
-
-.general-search{
-    border-radius: 10%;
-    border:2px solid black;
-}
-
-/* edit-icon */
-
+ 
 .box>img {
     width: 100%;
     height: auto;
-    transition: .5s;
 }
 
-.box:hover>img {
-    width: 110%;
-    height: auto;
-}
-
-
+ 
 
 /* delete-icon */
 
 .box2>img {
     width: 70%;
     height: auto;
-    transition: .5s;
 }
 
-.box2:hover>img {
-    width: 80%;
-    height: auto;
-}
+ 
 
 /* add-icon */
 
 .box3>img {
     width: 50%;
-    height: calc(30% - 10vh);
-    transition: .5s;
+ 
 }
 
-.box3:hover>img {
-    width: 65%;
-    height: 15%;
+ 
+input {
+    background: white ;
+    text-decoration: none ;
 }
-
-.topnav{
-    background-color:#ddd;
-}
-
+ 
+ 

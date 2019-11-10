@@ -12,17 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('create.categories');
+    return view('create.home');
 })->name('homecate');
 
-Route::get('/master', function(){
-    return view('create.master');
-});
+Route::resource('catalog', 'CatalogController');
+
+
 
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
 
 Route::get('/users/logout', 'Auth\LoginController@logout')->name('users.logout');
 

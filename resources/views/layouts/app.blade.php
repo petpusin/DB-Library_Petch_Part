@@ -26,29 +26,25 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse"data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
- 
-                        <span class="open-slide">
-                            <a href="#" onclick="openSlideMenu()">
-                                <svg width="30px" height="30px">
-                                    <path d="M0,5 30,5" stroke="white" stroke-width="5"/>
-                                    <path d="M0,14 30,14" stroke="white" stroke-width="5"/>
-                                    <path d="M0,23 30,23" stroke="white" stroke-width="5"/>
-                                </svg>
-                            </a>
-                            </span>
-            
-
-                <div id="side-menu" class="side-nav" >
-                            <a href="#" class="btn-close" onclick="closeSlideMenu()" style="text-decoration: none" >&times;</a>
-                        
-                            <a href="{{route('admin.orders')}}"style="text-decoration: none" >ORDER</a>
-                            <a href="#" style="text-decoration: none">STOCK IN SYSTEM</a>
-                            <a href="{{ route('admin.dashboard') }}" style="text-decoration: none">EMPLOYEE RESOURCE MANAGEMENT</a>
-                        
-                </div> 
-                                 
- 
+                @if(Auth::guard('admin')->check())
+                    <span class="open-slide">
+                        <a href="#" onclick="openSlideMenu()">
+                        <svg width="30" height="30">
+                            <path d="M0,5 30,5" stroke="#fff" stroke-width="5"/>
+                            <path d="M0,14 30,14" stroke="#fff" stroke-width="5"/>
+                            <path d="M0,23 30,23" stroke="#fff" stroke-width="5"/>
+                        </svg>
+                        </a>
+                    </span>
+                    <!-- EACH MENU -->
+                    <div id="side-menu" class="side-nav">
+                        <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>  <!-- CLOSE BUTTON -->
+                        <a href="{{ route('admin.orders') }}">ORDER</a>
+                        <a href="#">STOCK IN SYSTEM</a>
+                        <a href="{{ route('admin.dashboard') }}">EMPLOYEE RESOURCE MANAGEMENT</a>
+                    
+                    </div> 
+                    @endif
                     <!-- Right Side Of Navbar -->
                     <div class="container">
                         <div class="navbar-collapse">
@@ -56,9 +52,9 @@
                             <!-- Authentication Links -->
                             @guest
                             
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a class="nav-link " style="color:#CE0037;" href="{{ route('admin.signin') }}">{{ __('SIGN IN') }}</a>
-                                </li>
+                                </li> -->
                                 
                                 
                             @else

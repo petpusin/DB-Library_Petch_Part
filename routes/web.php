@@ -26,9 +26,9 @@ Auth::routes();
 
 Route::get('/users/logout', 'Auth\LoginController@logout')->name('users.logout');
 
-Route::get('/stock',function(){
-    return view('stock');
-});
+// Route::get('/stock',function(){
+//     return view('stock');
+// });
 
 Route::prefix('admin')->group(function() {
     //login & logout
@@ -45,5 +45,9 @@ Route::prefix('admin')->group(function() {
     Route::get('/orders', 'ControllerSystem@index')->name('admin.orders');
     Route::get('/order/edit/{no}', 'ControllerSystem@edit_index');
     Route::put('/order/edit/update/{no}', 'ControllerSystem@update');
+    //stock
+    Route::get('/stock',function(){
+        return view('stock');
+    })->name('admin.stock');
 
 });

@@ -18,6 +18,17 @@
   <!-- FROM GOOGLE FONT -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 
+  <style>
+    .container form {
+      display: inline-block;
+    }
+
+    .container button {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+  </style>
 </head>
 
 <body>
@@ -40,92 +51,143 @@
         <a href="{{ route('admin.orders') }}">ORDER</a>
         <a href="{{route('admin.stock')}}">STOCK IN SYSTEM</a>
         <a href="{{ route('admin.dashboard') }}">EMPLOYEE RESOURCE MANAGEMENT</a>
-    
-      </div> 
+
+      </div>
     @endif
 
     <div class="container navtab">
-        
+
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active"><a class="navbar-brand" href="#"> <img class="cartlg" src="/img/shopping-cart.svg"></a></li>
             @if(Auth::guard('admin')->check())
             <li class="nav-item nav-signin"><a class="nav-link" href="{{ route('admin.logout') }}">SIGN OUT</a></li> <!-- IF ALREADY SIGN IN -->
-            @else 
+            @else
             <li class="nav-item nav-signin"><a class="nav-link" href="{{ route('admin.signin') }}">SIGN IN</a></li> <!-- IF NOT SIGN IN YET -->
             @endif
           </ul>
         </div>
 
     </div>
-  </nav> 
-  
+  </nav>
+
     <div class="container" id="main">   <!-- START CONTAINER MAIN -->
- 
+
         <div class="header-text"><h1>CATEGORIES</h1>
           <img class="Mainlogo" src="/img/SHOP-NOW.png" alt="">
         </div>
         <hr class="headhr">                       <!-- LONG LINE -->
         <div class="cate-box">
 
-          <div class="catepreview">  <!-- CATEGORY 1 -->
-            <a href="#">
-              <img src="/img/CLASSICCAR.jpg" alt="">
-              <div class ="namepd">CLASSIC CARS</div>
-            </a>
-          </div>
 
-          <div class="catepreview"> <!-- CATEGORY 2 -->
-            <a href="#">
-              <img src="/img/MOTOR.jpg" alt="">
-              <div class ="namepd">MOTORCYCLES</div>
-            </a>
-          </div>
 
-          <div class="catepreview"> <!-- CATEGORY 3 -->
-            <a href="#">
-              <img src="/img/PLANE.jpg" alt="">
-                <div class ="namepd">PLANES</div>
-            </a>
-          </div>
+          <form action="{{url('catalog/t1')}}" method="post">
+            {{csrf_field()}}
 
-          <div class="catepreview"> <!-- CATEGORY 4 -->
-            <a href="#">
-              <img src="/img/SHIP.jpg" alt="">
-              <div class ="namepd">SHIPS</div>
-            </a>
-          </div>
+            <div class="catepreview">  <!-- CATEGORY 1 -->
+              <button type="submit" name="">
+              <a href="#">
+                <img src="/img/CLASSICCAR.jpg" alt="">
+                <div class ="namepd">CLASSIC CARS</div>
+              </a>
+              </button>
+            </div>
 
-          <div class="catepreview"> <!-- CATEGORY 5 -->
-            <a href="#">
-              <img src="/img/TRAIN.jpg" alt="">
-              <div class ="namepd">TRAINS</div>
-            </a>
-          </div>
+          </form>
 
-          <div class="catepreview"> <!-- CATEGORY 6 -->
-            <a href="#">
-              <img src="/img/TRUCK.jpg" alt="">
-              <div class ="namepd">TRUCK AND BUSES</div>
-            </a>
-          </div>
+          <form action="{{url('catalog/t2')}}" method="post">
+            {{csrf_field()}}
 
-          <div class="catepreview"> <!-- CATEGORY 7 -->
-            <a href="#">
-              <img src="/img/VINTAGEC.jpg" alt="">
-                <div class ="namepd">VINTAGE CARS</div>
-            </a>
-          </div>
+            <div class="catepreview">  <!-- CATEGORY 2 -->
+              <button type="submit" name="">
+                <a href="#">
+                  <img src="/img/MOTOR.jpg" alt="">
+                  <div class ="namepd">MOTORCYCLES</div>
+                </a>
+              </button>
+            </div>
+
+          </form>
+
+          <form action="{{url('catalog/t3')}}" method="post">
+            {{csrf_field()}}
+
+            <div class="catepreview">  <!-- CATEGORY 3 -->
+              <button type="submit" name="">
+                <a href="#">
+                  <img src="/img/PLANE.jpg" alt="">
+                    <div class ="namepd">PLANES</div>
+                </a>
+              </button>
+            </div>
+
+          </form>
+
+          <form action="{{url('catalog/t4')}}" method="post">
+            {{csrf_field()}}
+
+            <div class="catepreview">  <!-- CATEGORY 4 -->
+              <button type="submit" name="">
+                <a href="#">
+                  <img src="/img/SHIP.jpg" alt="">
+                  <div class ="namepd">SHIPS</div>
+                </a>
+              </button>
+            </div>
+
+          </form>
+
+          <form action="{{url('catalog/t5')}}" method="post">
+            {{csrf_field()}}
+
+            <div class="catepreview">  <!-- CATEGORY 5 -->
+              <button type="submit" name="">
+                <a href="#">
+                  <img src="/img/TRAIN.jpg" alt="">
+                  <div class ="namepd">TRAINS</div>
+                </a>
+              </button>
+            </div>
+
+          </form>
+
+          <form action="{{url('catalog/t6')}}" method="post">
+            {{csrf_field()}}
+
+            <div class="catepreview">  <!-- CATEGORY 6 -->
+              <button type="submit" name="">
+                <a href="#">
+                  <img src="/img/TRUCK.jpg" alt="">
+                  <div class ="namepd">TRUCK AND BUSES</div>
+                </a>
+              </button>
+            </div>
+
+          </form>
+
+          <form action="{{url('catalog/t7')}}" method="post">
+            {{csrf_field()}}
+
+            <div class="catepreview">  <!-- CATEGORY 7 -->
+              <button type="submit" name="">
+                <a href="#">
+                  <img src="/img/VINTAGEC.jpg" alt="">
+                  <div class ="namepd">VINTAGE CARS</div>
+                </a>
+              </button>
+            </div>
+
+          </form>
 
         </div>
         <hr class="foothr">                       <!-- LONG LINE -->
 
     </div>   <!-- END CONTAINER MAIN -->
-    
+
     <footer>      <!-- FOR CONTACT -->
       <img src="/img/phone-book.svg" width="18px"; height="18px"> CONTACT US<br>cpeg2DB@GMAIL.COM | TEL XXX-XXXXXXX
-    </footer> 
- 
+    </footer>
+
     <script>
     // 01 | SLIDE MENU SCRIPT
       function openSlideMenu(){
@@ -136,8 +198,8 @@
         document.getElementById('side-menu').style.width = '0';
         document.getElementById('main').style.marginLeft = 'auto';
       }
-    // ENDSCRIPT 01   
+    // ENDSCRIPT 01
     </script>
-  
+
 </body>
 </html>

@@ -50,6 +50,7 @@ Route::prefix('admin')->group(function() {
 
 });
 
+
 Route::resource('catalog', 'CatalogController');
 
 Route::post('catalog/cat10','CatalogController@get10');//->name('catalog.filter');
@@ -75,4 +76,16 @@ Route::post('catalog/v11','CatalogController@v11');
 Route::post('catalog/v12','CatalogController@v12');
 Route::post('catalog/v13','CatalogController@v13');
 
+Route::post('catalog/t1','CatalogController@t1');
+Route::post('catalog/t2','CatalogController@t2');
+Route::post('catalog/t3','CatalogController@t3');
+Route::post('catalog/t4','CatalogController@t4');
+Route::post('catalog/t5','CatalogController@t5');
+Route::post('catalog/t6','CatalogController@t6');
+Route::post('catalog/t7','CatalogController@t7');
+
+
 Route::post('catalog','CatalogController@reset');
+Route::post('/', function () {
+    return view('create.home');
+});

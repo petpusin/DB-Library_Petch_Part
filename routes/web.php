@@ -46,8 +46,6 @@ Route::prefix('admin')->group(function() {
     Route::get('/order/edit/{no}', 'ControllerSystem@edit_index');
     Route::put('/order/edit/update/{no}', 'ControllerSystem@update');
     //stock
-    Route::get('/stock',function(){
-        return view('stock');
-    })->name('admin.stock');
+    Route::get('/stock','StockController@index')->name('admin.stock');
 
 });

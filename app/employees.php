@@ -8,11 +8,11 @@ class employees extends Model
 {
     protected $table = 'employees';
     protected $primaryKey = 'employeeNumber';
-    protected $increments = 'false';
+    public $increments = false;
     public $timestamps = false;
     public function admin(){
 
-        return $this->hasOne('App\Admin','em_id','employeeNumber');
+        return $this->hasne('App\Admin','employeeNumber','em_id');
     }
 
     protected $fillable = [

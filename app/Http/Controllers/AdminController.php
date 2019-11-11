@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\employees;
-use DB;
+
 class AdminController extends Controller
 {
     /**

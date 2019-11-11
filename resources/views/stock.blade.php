@@ -6,6 +6,11 @@
 
 @section('head')
 <link href="{{ asset('css/signin.css')}}" rel="stylesheet">
+
+<link rel="stylesheet" href="{{asset('/css/stock.css')}}">
+<!-- FROM GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+=======
 <link rel="stylesheet" href="/css/stock.css">
 <style>
   table,

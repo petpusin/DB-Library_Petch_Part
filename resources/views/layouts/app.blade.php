@@ -39,10 +39,10 @@
                     </span>
                     <!-- EACH MENU -->
                     <div id="side-menu" class="side-nav">
-                        <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>  <!-- CLOSE BUTTON -->
-                        <a href="{{ route('admin.orders') }}">ORDER</a>
-                        <a href="{{route('admin.stock')}}">STOCK IN SYSTEM</a>
-                        <a href="{{ route('admin.dashboard') }}">EMPLOYEE RESOURCE MANAGEMENT</a>
+                        <a href="#" class="btn-close" onclick="closeSlideMenu()" style="text-decoration: none">&times;</a>  <!-- CLOSE BUTTON -->
+                        <a href="{{ route('admin.orders') }}" style="text-decoration: none">ORDER</a>
+                        <a href="{{route('admin.stock')}}" style="text-decoration: none">STOCK IN SYSTEM</a>
+                        <a href="{{ route('admin.dashboard') }}" style="text-decoration: none">EMPLOYEE RESOURCE MANAGEMENT</a>
                     
                     </div> 
                     @endif

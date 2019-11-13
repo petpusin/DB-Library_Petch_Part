@@ -63,6 +63,8 @@ class CatalogController extends Controller
 
     }
 
+    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -100,7 +102,9 @@ class CatalogController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Products::where('productCode', $id)->firstOrFail();
+
+        return view('create.product')->with('product',$product);
     }
 
     /**

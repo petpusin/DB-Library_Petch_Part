@@ -15,7 +15,6 @@ Route::get('/', function () {
     return view('create.home');
 })->name('homecate');
 
-Route::resource('catalog', 'CatalogController');
 
 
 
@@ -89,3 +88,5 @@ Route::post('catalog','CatalogController@reset');
 Route::post('/', function () {
     return view('create.home');
 });
+
+Route::get('catalog/{product}','CatalogController@show')->name('catalog.show');

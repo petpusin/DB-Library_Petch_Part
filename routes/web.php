@@ -89,3 +89,7 @@ Route::post('catalog','CatalogController@reset');
 Route::post('/', function () {
     return view('create.home');
 });
+
+Route::get('/product', function () {
+    return view('create.product');
+});

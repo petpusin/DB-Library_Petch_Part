@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="{{asset('/css/stock.css')}}">
 <!-- FROM GOOGLE FONT -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
-=======
 <link rel="stylesheet" href="/css/stock.css">
 <style>
   table,
@@ -33,7 +32,6 @@
 
 </div> -->  
 <h1 class="display-4 text-center mb-4 text-light">STOCK</h1>
-
 
 <!-- make table resposive -->
 <div class="table-responsive">   

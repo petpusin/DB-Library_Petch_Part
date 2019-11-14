@@ -81,7 +81,7 @@
 
 
 
-      <form action="{{url('catalog/t1')}}" method="post">
+      <form action="{{url('/catalog/t1')}}" method="post">
         {{csrf_field()}}
 
         <div class="catepreview">

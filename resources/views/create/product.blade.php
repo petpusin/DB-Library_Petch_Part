@@ -22,9 +22,9 @@
          <div class="text-center rounded-pill py-1" style="color:#FFD400 ; background-color:black">{{ $product['productName'] }}</div>
          <hr style="border:solid 1px black">
          <font>Description</font>
-         <p class=" text-break ml-5">{{ $product->productDescription }}
+         <p class=" text-break ml-5">{{ $product->productDescription }}</p>
          <font>Scale</font>
-         <p class=" text-break ml-5">{{ $product->productScale }}
+         <p class=" text-break ml-5">{{ $product->productScale }}</p>
 
          </p>
          </p>
@@ -34,11 +34,9 @@
          </p>
          <hr style="border:solid 1px black">
          <div class="row mx-auto justify-content-center">
-             <div class="col-3"><button type="button" class="mt-4 p-2" style="background-color:black ; border:none ; color:#FFD400 ; font-size:14px">ADD TO CART</button></div>
+             <div  class="col-3" > <a href="{{route('cart.add',['id'=> $product->productCode])}}" class="mt-4 p-2" role="button" style="background-color:black ; border:none ; color:#FFD400 ; font-size:14px">Add to Cart</a></div>
          </div>
-         <div>
-           <a href="{{route('cart.add',['id'=> $product->productCode])}}" class="btn btn-success pull-right" role="button">Add to Cart</a>
-       </div>
+         
 
      </div>
  </section>
@@ -53,3 +51,4 @@
 
  
 
+ 

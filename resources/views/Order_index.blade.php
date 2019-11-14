@@ -162,7 +162,7 @@
   <hr>
   <br>
       <img src="/img/phone-book.svg" width="18px"; height="18px"> CONTACT US<br>cpeg2DB@GMAIL.COM | TEL XXX-XXXXXXX
-    </footer>
+  </footer>
     
 @endsection
 

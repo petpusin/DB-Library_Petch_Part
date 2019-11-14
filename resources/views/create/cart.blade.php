@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('title', 'Shopping Cart')
+@section('head')
 
+  <link href="{{ asset('css/signin.css')}}" rel="stylesheet">
+
+@endsection
 
 
 @section('content')
@@ -35,44 +39,94 @@
             <div class="cart">
                 <div class="col-sm-12">
                     <h2>Shopping Basket</h2>
-                    <div class="row">
-                        <div class="col-sm-8">
-                            @if($data!="0")
-                            @foreach ($data as $item)
-                            <div class="cart-row">
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-6 col-md-6 text-center">
-                                        <span class="pull-left top20"><strong>{{ $item->name }}</strong> </span>
-                                    </div>
 
-                                    <div class="col-xs-12 col-sm-3 col-md-3">
-                                        <div class="cart-qty"> <span>Qty :</span>
-                                            <input type="text" class="qty-fill" value="{{$item->qty}}">
-                                        </div>
-                                        <div class="cart-remove">Update</div>
-                                        <a href="{{url('cart/remove')}}/{{$item->rowId}}" class="cart-remove">Remove</a>
-                                    </div>
-                                    <div class="col-sx-12 col-sm-3 col-md-3">
-                                        <h6>Uint Price</h6>
-                                        <p>${{$item->price}}</p>
-                                        <hr>
-                                        <h6 class="redtext">Total :INR
-                                            {{$item->price * $item->qty}}
-                                        </h6>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table id="myTR">
+                                <tr style="background-color: black;color: white;">
+                                    <th height="60">
+                                        <center>
+                                            <font size="3px">ProductCode</font>
+                                        </center>
+                                    </th>
+                                    <th width="20%">
+                                        <center>
+                                            <font width="10%" size="3px">ProductName</font>
+                                        </center>
+                                    </th>
+                                    <th width="20%">
+                                        <center>
+                                            <font width="10%" size="3px">Scale</font>
+                                        </center>
+                                    </th>
+                                    <th width="10%">
+                                        <center>
+                                            <font width="10%" size="3px">QTY</font>
+                                        </center>
+                                    </th>
+                                    <th width="20%">
+                                        <center>
+                                            <font width="10%" size="3px">Uint Price</font>
+                                        </center>
+                                    </th>
+                                    <th width="20%">
+                                        <center>
+                                            <font size="3px">Total :INR</font>
+                                        </center>
+                                    </th>
+                                    <th width="10%">
+                                        <center>
+                                            <font size="3px">Update</font>
+                                        </center>
+                                    </th>
+                                    <th width="10%">
+                                        <center>
+                                            <font size="3px">Delete</font>
+                                        </center>
+                                    </th>
+                                    
+                                </tr>
+                        
+                            @if($data!="0")
+
+                            @foreach ($data as $item)
+                            <tr>
+                                <td><center>{{ $item->id }}</center></td>
+                                <td><center>{{ $item->name }}</center></td>
+                                <td><center>{{$item->options->stock}}</center></td>
+                                <td><center>{{$item->options->size}}</center></td>
+                                <td><center>
+                                        
+                                        <input type="hidden"  value="{{$item->rowId}}"  id="rowID{{$item->id}}">
+                                        
+                                        <input type="number" min="1" max="10" value="{{$item->qty}}" class="qty-fill" id="upCart{{$item->id}}">
+                                </center></td>
+                                <td><center>${{$item->price}}</center></td>
+                                <td><center>{{$item->price * $item->qty}}</center></td>
+                                <td><center>
+                                    <a href=""><img src="/img/pencil.svg" alt="" width="30px" height="30px"></a></center>
+                                </td>
+                                <td><center>
+                                    <a href="{{url('admin/cart/remove')}}/{{$item->rowId}}"><img src="/img/delete.svg" alt="" width="30px" height="30px"></a></center>
+                                </td>
+                            </tr>
                             @endforeach
+                            </table>
+                            </div>
+                            
+                            
                             @endif
                             <div class="col-xs-12 col-sm-12 col-md-6">
 
                             </div>
-                        </div>
+                        
                         <div class="col-sm-4" id="cartTotal">
                             <div class="cart-total">
-                                <h4>Total Amount</h4>
+                                
                                 <table>
-                                    <tbody>
+                                        <tr>
+                                        <h4>Total Amount</h4>
+                                        </tr>
                                         <tr>
                                             <td>Sub Total</td>
                                             <td>$ {{Cart::subtotal()}}</td>
@@ -87,7 +141,7 @@
                                             <td>Grand Total</td>
                                             <td>$ {{Cart::total()}}</td>
                                         </tr>
-                                    </tbody>
+                                    
                                 </table>
 
                                 <a href="{{url('checkout')}}" class="btn check_out btn-block">checkout</a>
@@ -143,33 +197,31 @@
 @section('script')
 <script src="{{ asset('js/app.js') }}"></script>
 <script>
-    (function() {
-        const classname = document.querySelectorAll('.quantity')
+    $(document).ready(function(){
+        $("#CartMsg").hide();
+        @foreach($data as $items)
+        $("#upCart{{$items->id}}").on('change keyup', function(){
+            var newQty = $("#upCart{{$items->id}}").val();
+            var rowID = $("#rowID{{$items->id}}").val();
+            
+            if(newQty <=0){alert('enter only number value')}
+            else{$.ajax({
+                url:'{{url('admin/cart/update')}}',
+                data:'rowID=' + rowID + '&newQty=' + newQty,
+                type:'get',
+                success:function(response){
+                    $("#CartMsg").show();
+                    console.log(response);
+                    $("#CartMsg").html(response);
+                }
+            })}
+        });
+        @endforeach
+    });
 
-        Array.from(classname).forEach(function(element) {
-            element.addEventListener('change', function() {
-                const id = element.getAttribute('data-id')
-                const productQuantity = element.getAttribute('data-productQuantity')
-
-                axios.patch(`/cart/${id}`, {
-                        quantity: this.value,
-                        productQuantity: productQuantity
-                    })
-                    .then(function(response) {
-                        // console.log(response);
-                        window.location.href = '{{ route('cart.index') }}'
-                    })
-                    .catch(function(error) {
-                        // console.log(error);
-                        window.location.href = '{{ route('cart.index') }}'
-                    });
-            })
-        })
-    })();
+    
 </script>
 
-<!-- Include AlgoliaSearch JS Client and autocomplete.js library -->
-<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
-<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
-<script src="{{ asset('js/algolia.js') }}"></script>
+
+
 @endsection

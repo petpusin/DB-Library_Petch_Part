@@ -5,18 +5,29 @@
 <link href="{{ asset('css/signin.css')}}" rel="stylesheet">
 
 <style>
-  table,
-  th,
-  td {
-    border: 1px solid black;
-  }
-</style>
+    tr:nth-child(odd) {
+    background-color: #f2f2f2;
+    }
+    footer {
+    font-size: 10px;
+    font-weight: lighter;
+    color: white;
+    text-align: center;
+    position: relative;
+    margin-top: 40px;
+    }
+
+    hr{
+      background-color:white;
+      height:0.5px;
+    }
+  </style>
 
 @endsection
 
 @section('title')
 
-<title>Shopping | Order/Edit</title>
+Shopping | Order/Edit
 
 @endsection
 
@@ -28,52 +39,53 @@
   <div class="col-md-12">
 
     <!-- Search Widget -->
-    <div class="card my-4" style="opacity:0.95">
-      <h5 class="card-header" style="background-color:black;">EDIT ORDER</h5>
-      <div class="card-body" ">
+    <div class="my-4 bg-light" style="opacity:0.95">
+       
+      <div class="card-body">
+      <font class="card text-center mb-4"style="color:white;background-color:#3b444b;font-weight:lighter;font-size:20px">EDIT ORDER</font>
               <center>
                 <table>
                   @foreach($or as $aaa)
-                  <tr>
-                    <td style=" background-color: black ; color: white ; width:10% ; height:50px">
-        <center>OrderNumber</center>
+        <tr>
+        <td style="background-color:black;color: white ; width:10% ; height:50px">
+        <center>Order No.</center>
         </td>
         <td style="width:40% ;height:50px">
-          <center>{{$aaa->orderNumber}}</center>
+          <center class="font-weight-light">{{$aaa->orderNumber}}</center>
         </td>
         </tr>
         <tr>
           <td style="background-color: black ; color: white ; width:10% ; height:50px">
-            <center>OrderDate</center>
+            <center>Order Date</center>
           </td>
           <td height="50">
-            <center>{{$aaa->orderDate}}</center>
+            <center class="font-weight-light">{{$aaa->orderDate}}</center>
           </td>
         </tr>
         <tr>
           <td style="background-color: black ; color: white ; width:10% ; height:50px">
-            <center>RequiredDate</center>
+            <center>Required Date</center>
           </td>
           <td height="50">
-            <center>{{$aaa->requiredDate}}</center>
+            <center class="font-weight-light">{{$aaa->requiredDate}}</center>
           </td>
         </tr>
         @foreach($cus as $bbb)
         @if($aaa->customerNumber == $bbb->customerNumber)
         <tr>
           <td style="background-color: black ; color: white ; width:10% ; height:50px">
-            <center>FirstName</center>
+            <center>First Name</center>
           </td>
           <td height="50">
-            <center>{{$bbb->contactFirstName}}</center>
+            <center class="font-weight-light">{{$bbb->contactFirstName}}</center>
           </td>
         </tr>
         <tr>
           <td style="background-color: black ; color: white ; width:10% ; height:50px">
-            <center>LastName</center>
+            <center>Last Name</center>
           </td>
           <td height="50">
-            <center>{{$bbb->contactLastName}}</center>
+            <center class="font-weight-light">{{$bbb->contactLastName}}</center>
           </td>
         </tr>
         @endif
@@ -83,7 +95,7 @@
           {{ csrf_field() }}
           <tr>
             <td style="background-color: black ; color: white ; width:10% ; height:50px">
-              <center>ShippedDate</center>
+              <center>Shipped Date</center>
             </td>
             <td>
               <center><input type="date" name="shippedDate" value={{$aaa->shippedDate}}></center>
@@ -164,7 +176,7 @@
           </tr>
           <table>
             <div style="margin-top:30px">
-              <center><input type="submit" class="btn" onclick="success()" value="Confirm" style="background-color:black;color:chartreuse;margin:10px"></center>
+              <center><input type="submit" class="btn" onclick="success()" value="Save" style="background-color:black;color:chartreuse;margin:10px"></center>
             </div>
 
           </table>
@@ -174,12 +186,17 @@
 
         </center>
         <a href="/admin/orders"><img src="/img/left-arrow.svg" width="18px" class="my-3">
-          <font color="black">BACK<font>
+          <font color="black" class="font-weight-light">Back<font>
         </a>
       </div>
 
     </div>
 
+    <footer>      <!-- FOR CONTACT -->
+  <hr>
+  <br>
+      <img src="/img/phone-book.svg" width="18px"; height="18px"> CONTACT US<br>cpeg2DB@GMAIL.COM | TEL XXX-XXXXXXX
+    </footer>
     @endsection
 
     @section('script')
@@ -189,7 +206,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script>
       function success() {
-        alert("Success !!!");
+        alert("Saved Success !!!");
       }
     </script>
     <script src="{{ asset('js/app.js') }}" defer></script>

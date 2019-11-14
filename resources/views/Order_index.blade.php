@@ -8,7 +8,7 @@
 
 @section('title')
 
-  <title>Shopping | Order</title>
+  Shopping | Order
   
 @endsection
 

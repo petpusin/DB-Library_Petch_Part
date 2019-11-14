@@ -6,7 +6,7 @@
 
 
 @section('title')
-<title>ERM</title>
+Shopping | ERM
 @endsection
 
 @section('content')

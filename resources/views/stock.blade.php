@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-  <title>Shopping | Stock</title>  
+  Shopping | Stock
 @endsection
 
 @section('head')
@@ -12,11 +12,24 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/stock.css">
 <style>
-  table,
-  th,
-  td {
-    border: 1px solid black;
-  }
+
+  tr:nth-child(odd) {
+    background-color: #f2f2f2;
+    }
+
+    footer {
+    font-size: 10px;
+    font-weight: lighter;
+    color: white;
+    text-align: center;
+    position: relative;
+    margin-top: 40px;
+    }
+
+    hr{
+      background-color:white;
+      height:0.5px;
+    }
 </style>
 @endsection
 
@@ -35,21 +48,20 @@
 
 <!-- make table resposive -->
 <div class="table-responsive">   
-    <div class="container">
-        <div class="row row-centered pos">
-            <div class="col-centered" style="margin-left:50px">
-                <table class="table" style="background-color:white;" >
+    <div class="container text-center">
+ 
+                <table class="col-md-12" style="margin-bottom:50px;">
 
-                    <tr style="background-color: black;color: white;text-align:center;">
-                        <td>OrderDate</td>
-                        <td>Amount</td>
-                        <td>ProductCode</td>
-                        <td>Name</td>
-                        <td style="color:red" colspan="2">ADD</td>
+                    <tr class="text-weight-light text-center" style="background-color: black;color: white;">
+                        <th class="font-weight-light">Order Date</th>
+                        <th class="font-weight-light">Amount</th>
+                        <th class="font-weight-light">Product Code</th>
+                        <th class="font-weight-light">Name</th>
+                        <th class="font-weight-light" style="color:red">ADD</th>
                     </tr>
                     
-                    <tr style="background-color:black;opacity:0.95;">
-                        <div>
+                    <tr style="background-color:black;opacity:0.95;height:50px">
+
                             <td>
                                 <input type="text" placeholder="">
                             </td>
@@ -63,327 +75,43 @@
                                 <input type="text" placeholder="">
                             </td>
                             <td colspan="2">
-                            <center><a type="" href="#"><img src="/img/addst.svg" width="35" height="35" alt="edit"></a><center>
+                            <a type="" href="#"><img src="/img/addst.svg" width="25px" height="25px" alt="edit"></a>
                             </td>
-                        </div>
- 
  
 
                     </tr>
                     </table>
-                    <table class="table" style="background-color:white">
-                    <tr style="background-color:black; color:white;text-align:center">
-                        <th>OrderDate</th>
-                        <th>Amount</th>
-                        <th>ProductCode</th>
-                        <th>Name</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
+
+                    <table class="col-md-12 text-center" style="background-color:white;">
+                    <tr style="background-color:#3b444b; color:white;text-align:center">
+                        <th class="font-weight-light">Order Date</th>
+                        <th class="font-weight-light">Amount</th>
+                        <th class="font-weight-light">Product Code</th>
+                        <th class="font-weight-light">First Name</th>
+                        <th class="font-weight-light">Last Name</th>
+                        <th class="font-weight-light">Tools</th>
                     </tr>
                     <tr>
-                        <td>27/10/2019</td>
-                        <td>123</td>
-                        <td>ABC</td>
-                        <td>Nice</td>
-
+                        <td class="font-weight-light">xx/xx/xxxx</td>
+                        <td class="font-weight-light">xx</td>
+                        <td class="font-weight-light">xxxxx</td>
+                        <td class="font-weight-light">xxxxxxxxx</td>
+                        <td class="font-weight-light">xxxxxxxx</td>
                         <td>
-                            <div class="box">
-                            <center><a type="" href="#"><img src="/img/pencil.svg" width="35" height="35" alt="edit"></a><center>
+                            <div class="">
+                            <a type="" href="#"><img src="/img/pencil.svg" width="35" height="35" alt="edit"></a>
+                            <a type="" href="#"><img src="/img/delete.png" width="30" height="30" alt="edit"></a>
                             </div>
                         </td>
-
-                        <td>
-                            <div class="box2">
-                            <center><a type="" href="#"><img src="/img/delete.png" width="35" height="35" alt="edit"></a><center>
-                            </div>
-                        </td>
-                    <tr>
-                        <td>27/10/2019</td>
-                        <td>123</td>
-                        <td>ABC</td>
-                        <td>Nice</td>
-
-                        <td>
-                            <div class="box">
-                            <center><a type="" href="#"><img src="/img/pencil.svg" width="35" height="35" alt="edit"></a><center>
-                            </div>
-
-                        </td>
-
-
-                        <td>
-                            <div class="box2">
-                            <center><a type="" href="#"><img src="/img/delete.png" width="35" height="35" alt="edit"></a><center>
-                            </div>
-
-                        </td>
-                    <tr>
-                        <td>27/10/2019</td>
-                        <td>123</td>
-                        <td>ABC</td>
-                        <td>Nice</td>
-
-                        <td>
-                            <div class="box">
-                            <center><a type="" href="#"><img src="/img/pencil.svg" width="35" height="35" alt="edit"></a><center>
-                            </div>
-
-                        </td>
-
-
-                        <td>
-                            <div class="box2">
-                            <center><a type="" href="#"><img src="/img/delete.png" width="35" height="35" alt="edit"></a><center>
-                            </div>
-
-                        </td>
-                    <tr>
-                        <td>27/10/2019</td>
-                        <td>123</td>
-                        <td>ABC</td>
-                        <td>Nice</td>
-
-                        <td>
-                            <div class="box">
-                            <center><a type="" href="#"><img src="/img/pencil.svg" width="35" height="35" alt="edit"></a><center>
-                            </div>
-
-                        </td>
-
-
-                        <td>
-                            <div class="box2">
-                            <center><a type="" href="#"><img src="/img/delete.png" width="35" height="35" alt="edit"></a><center>
-                            </div>
-
-                        </td>
-                    <tr>
-                        <td>27/10/2019</td>
-                        <td>123</td>
-                        <td>ABC</td>
-                        <td>Nice</td>
-
-                        <td>
-                            <div class="box">
-                            <center><a type="" href="#"><img src="/img/pencil.svg" width="35" height="35" alt="edit"></a><center>
-                            </div>
-
-                        </td>
-
-
-                        <td>
-                            <div class="box2">
-                            <center><a type="" href="#"><img src="/img/delete.png" width="35" height="35" alt="edit"></a><center>
-                            </div>
-
-                        </td>
-                    <tr>
-                        <td>27/10/2019</td>
-                        <td>123</td>
-                        <td>ABC</td>
-                        <td>Nice</td>
-
-                        <td>
-                            <div class="box">
-                            <center><a type="" href="#"><img src="/img/pencil.svg" width="35" height="35" alt="edit"></a><center>
-                            </div>
-
-                        </td>
-
-
-                        <td>
-                            <div class="box2">
-                            <center><a type="" href="#"><img src="/img/delete.png" width="35" height="35" alt="edit"></a><center>
-                            </div>
-
-                        </td>
-                    <tr>
-                        <td>27/10/2019</td>
-                        <td>123</td>
-                        <td>ABC</td>
-                        <td>Nice</td>
-
-                        <td>
-                            <div>
-                            <center><a type="" href="#"><img src="/img/pencil.svg" width="35" height="35" alt="edit"></a><center>
-                            </div>
-
-                        </td>
-
-
-                        <td>
-                            <div class="box2">
-                            <center><a type="" href="#"><img src="/img/delete.png" width="35" height="35" alt="edit"></a><center>
-                            </div>
-
-                        </td>
-                    <tr>
-                        <td>27/10/2019</td>
-                        <td>123</td>
-                        <td>ABC</td>
-                        <td>Nice</td>
-
-                        <td>
-                            <div class="box">
-                            <center><a type="" href="#"><img src="/img/pencil.svg" width="35" height="35" alt="edit"></a><center>
-                            </div>
-
-                        </td>
-
-
-                        <td>
-                            <div class="box2">
-                            <center><a type="" href="#"><img src="/img/delete.png" width="35" height="35" alt="edit"></a><center>
-                            </div>
-
-                        </td>
-                    <tr>
-                        <td>27/10/2019</td>
-                        <td>123</td>
-                        <td>ABC</td>
-                        <td>Nice</td>
-
-                        <td>
-                            <div class="box">
-                            <center><a type="" href="#"><img src="/img/pencil.svg" width="35" height="35" alt="edit"></a><center>
-                            </div>
-
-                        </td>
-
-
-                        <td>
-                            <div class="box2">
-                            <center><a type="" href="#"><img src="/img/delete.png" width="35" height="35" alt="edit"></a><center>
-                            </div>
-
-                        </td>
-                    <tr>
-                        <td>27/10/2019</td>
-                        <td>123</td>
-                        <td>ABC</td>
-                        <td>Nice</td>
-
-                        <td>
-                            <div class="box">
-                            <center><a type="" href="#"><img src="/img/pencil.svg" width="35" height="35" alt="edit"></a><center>
-                            </div>
-
-                        </td>
-
-
-                        <td>
-                            <div class="box2">
-                            <center><a type="" href="#"><img src="/img/delete.png" width="35" height="35" alt="edit"></a><center>
-                            </div>
-
-                        </td>
-                    <tr>
-                        <td>27/10/2019</td>
-                        <td>123</td>
-                        <td>ABC</td>
-                        <td>Nice</td>
-
-                        <td>
-                            <div class="box">
-                            <center><a type="" href="#"><img src="/img/pencil.svg" width="35" height="35" alt="edit"></a><center>
-                            </div>
-
-                        </td>
-
-
-                        <td>
-                            <div class="box2">
-                            <center><a type="" href="#"><img src="/img/delete.png" width="35" height="35" alt="edit"></a><center>
-                            </div>
-
-                        </td>
-                    <tr>
-                        <td>27/10/2019</td>
-                        <td>123</td>
-                        <td>ABC</td>
-                        <td>Nice</td>
-
-                        <td>
-                            <div class="box">
-                            <center><a type="" href="#"><img src="/img/pencil.svg" width="35" height="35" alt="edit"></a><center>
-                            </div>
-
-                        </td>
-
-
-                        <td>
-                            <div class="box2">
-                            <center><a type="" href="#"><img src="/img/delete.png" width="35" height="35" alt="edit"></a><center>
-                            </div>
-
-                        </td>
-                    <tr>
-                        <td>27/10/2019</td>
-                        <td>123</td>
-                        <td>ABC</td>
-                        <td>Nice</td>
-
-                        <td>
-                            <div class="box">
-                            <center><a type="" href="#"><img src="/img/pencil.svg" width="35" height="35" alt="edit"></a><center>
-                            </div>
-
-                        </td>
-
-
-                        <td>
-                            <div class="box2">
-                            <center><a type="" href="#"><img src="/img/delete.png" width="35" height="35" alt="edit"></a><center>
-                            </div>
-
-                        </td>
-                    <tr>
-                        <td>27/10/2019</td>
-                        <td>123</td>
-                        <td>ABC</td>
-                        <td>Nice</td>
-
-                        <td>
-                            <div class="box">
-                            <center><a type="" href="#"><img src="/img/pencil.svg" width="35" height="35" alt="edit"></a><center>
-                            </div>
-
-                        </td>
-
-
-                        <td>
-                            <div class="box2">
-                            <center><a type="" href="#"><img src="/img/delete.png" width="35" height="35" alt="edit"></a><center>
-                            </div>
-
-                        </td>
-                    <tr>
-                        <td>27/10/2019</td>
-                        <td>123</td>
-                        <td>ABC</td>
-                        <td>Nice</td>
-
-                        <td>
-                            <div class="box">
-                            <center><a type="" href="#"><img src="/img/pencil.svg" width="35" height="35" alt="edit"></a><center>
-                            </div>
-
-                        </td>
-
-
-                        <td>
-                            <div class="box2">
-                            <center><a type="" href="#"><img src="/img/delete.png" width="35" height="35" alt="edit"></a><center>
-                            </div>
-
-                        </td>
+              
                         </table>
                  
-            </div>
-
-
-        </div>
     </div>
+    <footer>      <!-- FOR CONTACT -->
+  <hr>
+  <br>
+      <img src="/img/phone-book.svg" width="18px"; height="18px"> CONTACT US<br>cpeg2DB@GMAIL.COM | TEL XXX-XXXXXXX
+  </footer>
 </div>
 
 

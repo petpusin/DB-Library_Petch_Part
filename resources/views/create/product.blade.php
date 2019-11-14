@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('title', $product->productName)
@@ -51,3 +52,4 @@
  @endsection 
 
  
+

@@ -294,26 +294,34 @@
 
         </div>
 
-        <div class="button-container">
 
-          <form action="{{url('catalog')}}" method="post">
-            {{csrf_field()}}
-            <div class="form-group" align="center">
-              <input type="submit" name="reset" id="reset" class="btn btn-default" value="Reset">
-            </div>
-          </form>
 
-          <form action="{{url('/')}}" method="post">
-            {{csrf_field()}}
-            <div class="form-group" align="center">
-              <input type="submit" name="back" id="back" class="btn btn-default" value="back">
-            </div>
-          </form>
+      <div class="button-container">
+
+
+      <form action="{{url('catalog')}}" method="post">
+        {{csrf_field()}}
+      <div class="form-group" align="center">
+        <input type="submit" name="reset" id="reset" class="btn btn-default" value="Reset">
+      </div>
+      </form>
+
+
+      <form action="{{url('/')}}" method="post">
+        {{csrf_field()}}
+      <div class="form-group" align="center">
+        <input type="submit" name="back" id="back" class="btn btn-default" value="back">
+      </div>
+      </form>
+
 
         </div>
 
-      </div>
-    </section>
+
+
+    </div>
+  </section>
+
 
     <!-- <div class="table-responsive">
     <table id="customer_data" class="table table-bordered table-striped">
@@ -326,6 +334,7 @@
                     </thead>
                 </table>
    </div> -->
+
 
     <div class="album py-5 bg-light">
       <div class="container">
@@ -347,6 +356,8 @@
                     <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                   </div>
                   <small class="text-muted">9 mins</small>
+
+   
                 </div>
               </div>
             </div>

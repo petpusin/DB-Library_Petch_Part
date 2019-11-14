@@ -511,6 +511,7 @@ class CatalogController extends Controller
       return view('user.catalog', compact('productScale','productVendor','products') );
     }
 
+
     public function t1(Request $request)
     {
       $productScale = DB::table('products')

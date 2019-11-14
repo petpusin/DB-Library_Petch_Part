@@ -91,6 +91,16 @@ Route::post('/', function () {
 });
 
 
+Route::get('catalog/{product}','CatalogController@show')->name('catalog.show');
+
+Route::get('/cart','CartController@index')->name('cart.index');
+Route::get('/cart/add/{id}','CartController@additem')->name('cart.add');
+Route::get('catalog/{id}','CatalogController@show')->name('catalog.show');
+
+
+Route::get('cart/remove/{id}','CartController@removeId');
+
+
 Route::resource('catalog', 'CatalogController');
 
 Route::post('catalog/cat10','CatalogController@get10');//->name('catalog.filter');
@@ -118,7 +128,6 @@ Route::post('catalog/v13','CatalogController@v13');
 
 Route::post('catalog','CatalogController@reset');
 
-Route::get('/product', function () {
-    return view('create.product');
-});
+
+
 

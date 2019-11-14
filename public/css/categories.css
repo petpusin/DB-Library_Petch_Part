@@ -15,6 +15,7 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+
 .container {
     margin: auto;
     overflow: auto;
@@ -124,17 +125,20 @@ body {
 .catepreview {
     background-color: rgba(255, 255, 255, 0.884);
     position: relative;
-    border: 0.5px solid #ccc;
     display: inline-block;
     margin: 10px;
     border: none;
 }
 
+.catepreview button {
+    border:none;
+}
+
 .catepreview img {
     opacity: 0.9;
     position: relative;
-    width: 250px;
-    height: 250px;
+    height:250px;
+    width:250px;
     border: none;
     transition: opacity 2s ease-in-out;
     -moz-transition: opacity 1s ease-in-out;

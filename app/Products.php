@@ -13,8 +13,5 @@ class Products extends Model
     protected $keyType = 'string';
     public $timestamps = false;
 
-    public function presentPrice(){
-
-        return money_format('$%i',$this->buyPrice);
-      }
+  
 }

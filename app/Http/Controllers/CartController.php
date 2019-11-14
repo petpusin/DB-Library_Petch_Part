@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Products;
+use Cart;
+
 class CartController extends Controller
 {
     /**
@@ -13,7 +16,22 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+        $cart = Cart::content();
+        return view('create.cart',['data' => $cart]);
+    }
+    public function additem($id)
+    {
+        $product = Products::find($id);
+        $cart = Cart::add(['id' => $product->productCode, 'name' => $product->productName, 'qty' => 1, 'price' => $product->buyPrice ,'option' =>[
+            'size' => $product->productScale,
+        ]]);
+        return back();
+    }
+
+    public function removeId($id)
+    {
+        Cart::remove($id);
+        return back();
     }
 
     /**
@@ -34,7 +52,8 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Cart::add($request->productCode,$request->productName,1,$request->buyPrice)->associa('App\Products');
+        return redirect()->route('cart.index')->with('success_massage','Item wass added to your cart');
     }
 
     /**
@@ -81,4 +100,6 @@ class CartController extends Controller
     {
         //
     }
+
+    
 }

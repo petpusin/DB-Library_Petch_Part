@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('create.home');
 })->name('homecate');
 
+Route::resource('catalog', 'CatalogController');
 
 
 
@@ -90,3 +91,10 @@ Route::post('/', function () {
 });
 
 Route::get('catalog/{product}','CatalogController@show')->name('catalog.show');
+
+Route::get('/cart','CartController@index')->name('cart.index');
+Route::get('/cart/add/{id}','CartController@additem')->name('cart.add');
+Route::get('catalog/{id}','CatalogController@show')->name('catalog.show');
+
+
+Route::get('cart/remove/{id}','CartController@removeId');

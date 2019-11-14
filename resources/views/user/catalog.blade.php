@@ -339,10 +339,11 @@
                 <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
               </svg>
               <div class="card-body">
-                <p class="card-text">{{ $row['productName'] }}<br>Scale : {{ $row['productScale'] }}<br>Vendor : {{ $row['productVendor'] }}<br>ProductLine : {{ $row['productLine'] }}<br>Price : {{$row->presentPrice()}}</p>
+                <p class="card-text">{{ $row['productName'] }}<br>Scale : {{ $row['productScale'] }}<br>Vendor : {{ $row['productVendor'] }}<br>ProductLine : {{ $row['productLine'] }}<br>Price : ${{$row['buyPrice'
+                ]}}</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button  type="button" class="btn btn-sm btn-outline-secondary"><a href="/catalog/{{$row['productCode']}}">View</a></button>
                     <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                   </div>
                   <small class="text-muted">9 mins</small>

@@ -8,84 +8,46 @@
 
 
 
-<div class="container">
-    @if (session()->has('success_message'))
-    <div class="alert alert-success">
-        {{ session()->get('success_message') }}
-    </div>
-    @endif
+<section class="row">
+     <div class="col-5 ">
+         <div class="d-flex justify-content-center"><img src="img/ship.jpg" class="img-fluid" style="width:300px ; height:300px"></div>
+         <div class="d-flex justify-content-center">
+             <img src="img/ship.jpg" class="img-fluid" style="width:150px ; height:150px ; margin:5px">
+             <img src="img/ship.jpg" class="img-fluid" style="width:150px ; height:150px ; margin:5px">        
+         </div>
+     </div>
 
-    @if(count($errors) > 0)
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
-</div>
+     <div class="col-7">
+         <div class="text-center rounded-pill py-1" style="color:#FFD400 ; background-color:black">{{ $product['productName'] }}</div>
+         <hr style="border:solid 1px black">
+         <font>Description</font>
+         <p class=" text-break ml-5">{{ $product->productDescription }}
+         <font>Scale</font>
+         <p class=" text-break ml-5">{{ $product->productScale }}
 
-<div class="product-section container">
-    <div>
-        <div class="product-section-image">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-            </svg>
-        </div>
-    </div>
-    <div class="product-section-information">
-        <h1 class="product-section-title">{{ $product->productName }}</h1>
-        <div class="product-section-subtitle">{{ $product->productDescription }}</div>
-        <div>{{$product->quantityInStock}}</div>
-        <div class="product-section-price">{{ $product->presentPrice() }}</div>
+         </p>
+         </p>
+         <font>Price</font>
+         <p class=" text-break ml-5">{{ $product->buyPrice }}
 
-        <p>
-            {!! $product->productDescription !!}
-        </p>
+         </p>
+         <hr style="border:solid 1px black">
+         <div class="row mx-auto justify-content-center">
+             <div class="col-3"><button type="button" class="mt-4 p-2" style="background-color:black ; border:none ; color:#FFD400 ; font-size:14px">ADD TO CART</button></div>
+         </div>
+         <div>
+           <a href="{{route('cart.add',['id'=> $product->productCode])}}" class="btn btn-success pull-right" role="button">Add to Cart</a>
+       </div>
 
-        <p>&nbsp;</p>
+     </div>
+ </section>
+ @endsection
 
-        @if ($product->quantityInStock > 0)
-        <form action="" method="POST">
-            {{ csrf_field() }}
-            <button type="submit" class="button button-plain">Add to Cart</button>
-        </form>
-        @endif
-    </div>
-</div> <!-- end product-section -->
+ @section('script')
+   <!-- Bootstrap core JavaScript -->
+   <script src="{{asset ('vendor/bootstrap/js/jquery.min.js')}}"></script>
+   <script src="{{asset ('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+   <script src="{{ asset('js/app.js') }}" defer></script>
+ @endsection 
 
-
-
-@endsection
-
-@section('script')
-<script>
-    (function() {
-        const currentImage = document.querySelector('#currentImage');
-        const images = document.querySelectorAll('.product-section-thumbnail');
-
-        images.forEach((element) => element.addEventListener('click', thumbnailClick));
-
-        function thumbnailClick(e) {
-            currentImage.classList.remove('active');
-
-            currentImage.addEventListener('transitionend', () => {
-                currentImage.src = this.querySelector('img').src;
-                currentImage.classList.add('active');
-            })
-
-            images.forEach((element) => element.classList.remove('selected'));
-            this.classList.add('selected');
-        }
-
-    })();
-</script>
-
-<!-- Include AlgoliaSearch JS Client and autocomplete.js library -->
-<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
-<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
-<!-- <script src="{{ asset('js/algolia.js') }}"></script> -->
-
-@endsection
+ 

@@ -6,201 +6,170 @@
 
 @section('content')
 
-    
 
-    <div class="cart-section container">
-        <div>
-            @if (session()->has('success_message'))
-                <div class="alert alert-success">
-                    {{ session()->get('success_message') }}
-                </div>
-            @endif
 
-            @if(count($errors) > 0)
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+<div class="cart-section container">
+    <div>
+        @if (session()->has('success_message'))
+        <div class="alert alert-success">
+            {{ session()->get('success_message') }}
+        </div>
+        @endif
 
-            @if (Cart::count() > 0)
-
-            <h2>{{ Cart::count() }} item(s) in Shopping Cart</h2>
-
-            <div class="cart-table">
-                @foreach (Cart::content() as $item)
-                <div class="cart-table-row">
-                    <div class="cart-table-row-left">
-                        <a href="{{ route('shop.show', $item->model->slug) }}"><img src="{{ productImage($item->model->image) }}" alt="item" class="cart-table-img"></a>
-                        <div class="cart-item-details">
-                            <div class="cart-table-item"><a href="{{ route('shop.show', $item->model->slug) }}">{{ $item->model->name }}</a></div>
-                            <div class="cart-table-description">{{ $item->model->details }}</div>
-                        </div>
-                    </div>
-                    <div class="cart-table-row-right">
-                        <div class="cart-table-actions">
-                            <form action="{{ route('cart.destroy', $item->rowId) }}" method="POST">
-                                {{ csrf_field() }}
-                                {{ method_field('DELETE') }}
-
-                                <button type="submit" class="cart-options">Remove</button>
-                            </form>
-
-                            <form action="{{ route('cart.switchToSaveForLater', $item->rowId) }}" method="POST">
-                                {{ csrf_field() }}
-
-                                <button type="submit" class="cart-options">Save for Later</button>
-                            </form>
-                        </div>
-                        <div>
-                            <select class="quantity" data-id="{{ $item->rowId }}" data-productQuantity="{{ $item->model->quantity }}">
-                                @for ($i = 1; $i < 5 + 1 ; $i++)
-                                    <option {{ $item->qty == $i ? 'selected' : '' }}>{{ $i }}</option>
-                                @endfor
-                            </select>
-                        </div>
-                        <div>{{ presentPrice($item->subtotal) }}</div>
-                    </div>
-                </div> <!-- end cart-table-row -->
+        @if(count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
                 @endforeach
+            </ul>
+        </div>
+        @endif
 
-            </div> <!-- end cart-table -->
+        @if (Cart::count() > 0)
 
-            
+        <h2>{{ Cart::count() }} item(s) in Shopping Cart</h2>
+        {{$data}}
+        <div class="row">
 
-            <div class="cart-totals">
-                <div class="cart-totals-left">
-                    Shipping is free because we’re awesome like that. Also because that’s additional stuff I don’t feel like figuring out :).
-                </div>
+            <div class="cart">
+                <div class="col-sm-12">
+                    <h2>Shopping Basket</h2>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            @if($data!="0")
+                            @foreach ($data as $item)
+                            <div class="cart-row">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 text-center">
+                                        <span class="pull-left top20"><strong>{{ $item->name }}</strong> </span>
+                                    </div>
 
-                <div class="cart-totals-right">
-                    <div>
-                        Subtotal <br>
-                        @if (session()->has('coupon'))
-                            Code ({{ session()->get('coupon')['name'] }})
-                            <form action="{{ route('coupon.destroy') }}" method="POST" style="display:block">
-                                {{ csrf_field() }}
-                                {{ method_field('delete') }}
-                                <button type="submit" style="font-size:14px;">Remove</button>
-                            </form>
-                            <hr>
-                            New Subtotal <br>
-                        @endif
-                        Tax ({{config('cart.tax')}}%)<br>
-                        <span class="cart-totals-total">Total</span>
+                                    <div class="col-xs-12 col-sm-3 col-md-3">
+                                        <div class="cart-qty"> <span>Qty :</span>
+                                            <input type="text" class="qty-fill" value="{{$item->qty}}">
+                                        </div>
+                                        <div class="cart-remove">Update</div>
+                                        <a href="{{url('cart/remove')}}/{{$item->rowId}}" class="cart-remove">Remove</a>
+                                    </div>
+                                    <div class="col-sx-12 col-sm-3 col-md-3">
+                                        <h6>Uint Price</h6>
+                                        <p>${{$item->price}}</p>
+                                        <hr>
+                                        <h6 class="redtext">Total :INR
+                                            {{$item->price * $item->qty}}
+                                        </h6>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                            @endif
+                            <div class="col-xs-12 col-sm-12 col-md-6">
+
+                            </div>
+                        </div>
+                        <div class="col-sm-4" id="cartTotal">
+                            <div class="cart-total">
+                                <h4>Total Amount</h4>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>Sub Total</td>
+                                            <td>$ {{Cart::subtotal()}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tax (%)</td>
+                                            <td>$ {{Cart::tax()}}</td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td>Grand Total</td>
+                                            <td>$ {{Cart::total()}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <a href="{{url('checkout')}}" class="btn check_out btn-block">checkout</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="cart-totals-subtotal">
-                        {{ presentPrice(Cart::subtotal()) }} <br>
-                        @if (session()->has('coupon'))
-                            -{{ presentPrice($discount) }} <br>&nbsp;<br>
-                            <hr>
-                            {{ presentPrice($newSubtotal) }} <br>
-                        @endif
-                        {{ presentPrice($newTax) }} <br>
-                        <span class="cart-totals-total">{{ presentPrice($newTotal) }}</span>
-                    </div>
                 </div>
-            </div> <!-- end cart-totals -->
+            </div> <!-- end cart-table-row -->
 
-            <div class="cart-buttons">
-                <a href="{{ route('catalog') }}" class="button">Continue Shopping</a>
-                <!-- <a href="{{ route('checkout.index') }}" class="button-primary">Proceed to Checkout</a> -->
+
+        </div> <!-- end cart-table -->
+
+
+
+        <div class="cart-totals">
+            <div class="cart-totals-left">
+                Shipping is free because we’re awesome like that. Also because that’s additional stuff I don’t feel like figuring out :).
             </div>
 
-            @else
+            <div class="cart-totals-right">
+                <div>
+                </div>
+            </div>
+        </div> <!-- end cart-totals -->
 
-                <h3>No items in Cart!</h3>
-                <div class="spacer"></div>
-                <a href="{{ route('catalog') }}" class="button">Continue Shopping</a>
-                <div class="spacer"></div>
-
-            @endif
-
-            @if (Cart::instance('saveForLater')->count() > 0)
-
-            <h2>{{ Cart::instance('saveForLater')->count() }} item(s) Saved For Later</h2>
-
-            <div class="saved-for-later cart-table">
-                @foreach (Cart::instance('saveForLater')->content() as $item)
-                <div class="cart-table-row">
-                    <div class="cart-table-row-left">
-                        <a href="{{ route('shop.show', $item->model->slug) }}"><img src="{{ asset('img/products/'.$item->model->slug.'.jpg') }}" alt="item" class="cart-table-img"></a>
-                        <div class="cart-item-details">
-                            <div class="cart-table-item"><a href="{{ route('shop.show', $item->model->slug) }}">{{ $item->model->name }}</a></div>
-                            <div class="cart-table-description">{{ $item->model->details }}</div>
-                        </div>
-                    </div>
-                    <div class="cart-table-row-right">
-                        <div class="cart-table-actions">
-                            <form action="{{ route('saveForLater.destroy', $item->rowId) }}" method="POST">
-                                {{ csrf_field() }}
-                                {{ method_field('DELETE') }}
-
-                                <button type="submit" class="cart-options">Remove</button>
-                            </form>
-
-                            <form action="{{ route('saveForLater.switchToCart', $item->rowId) }}" method="POST">
-                                {{ csrf_field() }}
-
-                                <button type="submit" class="cart-options">Move to Cart</button>
-                            </form>
-                        </div>
-
-                        <div>{{ $item->model->presentPrice() }}</div>
-                    </div>
-                </div> <!-- end cart-table-row -->
-                @endforeach
-
-            </div> <!-- end saved-for-later -->
-
-            @else
-
-            <h3>You have no items Saved for Later.</h3>
-
-            @endif
-
+        <div class="cart-buttons">
+            <a href="/" class="button">Continue Shopping</a>
+            <!-- <a href="" class="button-primary">Proceed to Checkout</a> -->
         </div>
 
-    </div> <!-- end cart-section -->
+        @else
 
-    @include('partials.might-like')
+        <h3>No items in Cart!</h3>
+        <div class="spacer"></div>
+        <a href="/" class="button">Continue Shopping</a>
+        <div class="spacer"></div>
+
+        @endif
+
+
+
+
+    </div> <!-- end saved-for-later -->
+
+</div>
+
+</div> <!-- end cart-section -->
+
 
 
 @endsection
 
-@section('extra-js')
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script>
-        (function(){
-            const classname = document.querySelectorAll('.quantity')
+@section('script')
+<script src="{{ asset('js/app.js') }}"></script>
+<script>
+    (function() {
+        const classname = document.querySelectorAll('.quantity')
 
-            Array.from(classname).forEach(function(element) {
-                element.addEventListener('change', function() {
-                    const id = element.getAttribute('data-id')
-                    const productQuantity = element.getAttribute('data-productQuantity')
+        Array.from(classname).forEach(function(element) {
+            element.addEventListener('change', function() {
+                const id = element.getAttribute('data-id')
+                const productQuantity = element.getAttribute('data-productQuantity')
 
-                    axios.patch(`/cart/${id}`, {
+                axios.patch(`/cart/${id}`, {
                         quantity: this.value,
                         productQuantity: productQuantity
                     })
-                    .then(function (response) {
+                    .then(function(response) {
                         // console.log(response);
                         window.location.href = '{{ route('cart.index') }}'
                     })
-                    .catch(function (error) {
+                    .catch(function(error) {
                         // console.log(error);
                         window.location.href = '{{ route('cart.index') }}'
                     });
-                })
             })
-        })();
-    </script>
+        })
+    })();
+</script>
 
-    <!-- Include AlgoliaSearch JS Client and autocomplete.js library -->
-    <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
-    <script src="{{ asset('js/algolia.js') }}"></script>
+<!-- Include AlgoliaSearch JS Client and autocomplete.js library -->
+<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+<script src="{{ asset('js/algolia.js') }}"></script>
 @endsection

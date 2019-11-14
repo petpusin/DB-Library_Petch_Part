@@ -57,7 +57,7 @@
 
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active"><a class="navbar-brand" href="#"> <img class="cartlg" src="/img/shopping-cart.svg"></a></li>
+          <li class="nav-item active"><a class="navbar-brand" href="{{route('cart.index')}}"> <img class="cartlg" src="/img/shopping-cart.svg"></a></li>
           @if(Auth::guard('admin')->check())
           <li class="nav-item nav-signin"><a class="nav-link" href="{{ route('admin.logout') }}">SIGN OUT</a></li> <!-- IF ALREADY SIGN IN -->
           @else

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-  <title>Shopping | Stock</title>  
+  Shopping | Stock
 @endsection
 
 @section('head')

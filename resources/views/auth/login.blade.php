@@ -16,7 +16,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header">{{ __('SIGN IN') }}</div>
+                <div class="card-header"><img src="/img/sign-in.svg" alt=""> {{ __('SIGN IN') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Exceptions;
-
+use Illuminate\Auth\AuthenticationException;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
@@ -53,14 +53,43 @@ class Handler extends ExceptionHandler
             $guard = array_get($exception->guards(), 0);
             switch($guard){
                 case 'admin':
-                    return redirect(route('admin.login'));
+                    return redirect(route('admin.signin'));
                     break;
                 default:
-                    return redirect(route('login'));
+                    return redirect(route('admin.signin'));
                     break;
             }
         }
 
         return parent::render($request, $exception);
     }
+
+    /**
+     * Convert an authentication exception into a response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Auth\AuthenticationException  $exception
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        
+        if($request->expectsJson()){
+            return response()->json(['error' => 'Unauthenticated.'], 401);
+
+        }
+
+        $guard = array_get($exception->guards(), 0);
+
+        switch ($guard) {
+            case 'admin':
+                $login = 'admin.signin';
+                break;
+
+            default:
+                $login = 'admin.signin';
+                break;
+        }
+        return redirect()->guest(route($login));
+    }   
 }

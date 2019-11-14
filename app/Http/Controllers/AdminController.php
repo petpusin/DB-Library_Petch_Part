@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\employees;
-use DB;
+
 class AdminController extends Controller
 {
     /**
@@ -26,10 +26,30 @@ class AdminController extends Controller
     {
         $user_id = auth()->user()->em_id;
         
-        $data = DB::table('employees')->join('admins','employees.employeeNumber','=','admins.em_id')->where('employees.employeeNumber','=',$user_id)->get();
-        return view('admin',compact('data'));
+        
+        return view('admin');
         
     }
 
+    public function dashboard(){
+        $employees = employees::all();
+        return view('dashboard.admin-dashboard',compact('employees'));
+    }
     
+    public function employeeedit(Request $request ,$employeeNumber){
+
+        $employee = employees::findOrFail($employeeNumber);
+        return view('dashboard.admin-edit')->with('employee',$employee); 
+
+    }
+
+    public function employeeupdate(Request $request ,$employeeNumber)
+    {
+        employees::find($employeeNumber)->update([
+            
+            'jobTitle' => $request->input('jobTitle')
+        ]);
+        
+        return redirect('/admin/dashboard')->with('status','You Date is Updateed');
+    }
 }

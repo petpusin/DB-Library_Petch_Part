@@ -12,12 +12,12 @@ class AdminLoginController extends Controller
         $this->middleware('guest:admin', ['except'=> ['logout']]);
     }
 
-    public function showLoginForm()
+    public function showSigninForm()
     {
         return view('auth.admin-login');
     }
 
-    public function login(Request $request)
+    public function signin(Request $request)
     {
         
         // validate the form date
@@ -28,7 +28,7 @@ class AdminLoginController extends Controller
 
         // Attempt to log the user in
         if (Auth::guard('admin')->attempt(['em_id' => $request->em_id, 'password' => $request->password], $request->remember)){
-            return redirect()->intended(route('admin.dashboard'));
+            return redirect()->intended(route('homecate'));
         }
 
         return redirect()->back()->withInput($request->only('em_id', 'remember'));

@@ -1,0 +1,75 @@
+/* Animation-SearchBar */
+
+/* .searchBox:hover>.searchInput {
+    width: 280px;
+    padding: 0 6px;
+}
+
+.searchBox:hover>.searchButton {
+    background: white;
+    color: #2f3640;
+}
+
+.searchButton {
+    color: white;
+    float: center;
+    width: 60px;
+    height: 31px;
+    border-radius: 10%;
+    background: #2f3640;
+    justify-content: center;
+    align-items: center;
+    transition: 1.25s;
+}
+
+.searchInput {
+    border: none;
+    outline: none;
+    float: center;
+    border-radius: 10%;
+    padding: 0;
+    color: black;
+    font-size: 16px;
+    transition: 1.25s;
+    line-height: 27px;
+    width: 0px;
+} */
+
+/* @media screen and (max-width: 600px) {
+    .searchBox:hover>.searchInput {
+        width: 50px;
+        padding: 0 6px;
+    }
+} */
+
+ 
+.box>img {
+    width: 100%;
+    height: auto;
+}
+
+ 
+
+/* delete-icon */
+
+.box2>img {
+    width: 70%;
+    height: auto;
+}
+
+ 
+
+/* add-icon */
+
+.box3>img {
+    width: 50%;
+ 
+}
+
+ 
+input {
+    background: white ;
+    text-decoration: none ;
+}
+ 
+ 

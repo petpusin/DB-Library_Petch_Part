@@ -11,7 +11,11 @@ class Admin extends Authenticatable
     use Notifiable;
 
     protected $guard = 'admin';
-
+    protected $table = 'admins';
+    protected $primaryKey = 'em_id';
+    public $increments = false;
+   
+    
     /**
      * The attributes that are mass assignable.
      *
@@ -39,9 +43,12 @@ class Admin extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected $table = 'admins';
-
     
+
+    public function employee(){
+
+        return $this->belongsTo('App\employees','em_id','employeeNumber');
+    }
 
     
 }

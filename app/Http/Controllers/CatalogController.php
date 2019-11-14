@@ -508,5 +508,118 @@ class CatalogController extends Controller
     }
 
 
+    public function t1(Request $request)
+    {
+      $productScale = DB::table('products')
+        ->select('productScale')
+        ->groupBy('productScale')
+        ->orderBy('productScale', 'ASC')
+        ->get();
+      $productVendor = DB::table('products')
+        ->select('productVendor')
+        ->groupBy('productVendor')
+        ->orderBy('productVendor', 'ASC')
+        ->get();
+      $products = Products::where('productLine','Classic Cars')->get();
+      return view('user.catalog', compact('productScale','productVendor','products') );
+    }
+
+    public function t2(Request $request)
+    {
+      $productScale = DB::table('products')
+        ->select('productScale')
+        ->groupBy('productScale')
+        ->orderBy('productScale', 'ASC')
+        ->get();
+      $productVendor = DB::table('products')
+        ->select('productVendor')
+        ->groupBy('productVendor')
+        ->orderBy('productVendor', 'ASC')
+        ->get();
+      $products = Products::where('productLine','Motorcycles')->get();
+      return view('user.catalog', compact('productScale','productVendor','products') );
+    }
+
+    public function t3(Request $request)
+    {
+      $productScale = DB::table('products')
+        ->select('productScale')
+        ->groupBy('productScale')
+        ->orderBy('productScale', 'ASC')
+        ->get();
+      $productVendor = DB::table('products')
+        ->select('productVendor')
+        ->groupBy('productVendor')
+        ->orderBy('productVendor', 'ASC')
+        ->get();
+      $products = Products::where('productLine','Planes')->get();
+      return view('user.catalog', compact('productScale','productVendor','products') );
+    }
+
+    public function t4(Request $request)
+    {
+      $productScale = DB::table('products')
+        ->select('productScale')
+        ->groupBy('productScale')
+        ->orderBy('productScale', 'ASC')
+        ->get();
+      $productVendor = DB::table('products')
+        ->select('productVendor')
+        ->groupBy('productVendor')
+        ->orderBy('productVendor', 'ASC')
+        ->get();
+      $products = Products::where('productLine','Ships')->get();
+      return view('user.catalog', compact('productScale','productVendor','products') );
+    }
+
+    public function t5(Request $request)
+    {
+      $productScale = DB::table('products')
+        ->select('productScale')
+        ->groupBy('productScale')
+        ->orderBy('productScale', 'ASC')
+        ->get();
+      $productVendor = DB::table('products')
+        ->select('productVendor')
+        ->groupBy('productVendor')
+        ->orderBy('productVendor', 'ASC')
+        ->get();
+      $products = Products::where('productLine','Trains')->get();
+      return view('user.catalog', compact('productScale','productVendor','products') );
+    }
+
+    public function t6(Request $request)
+    {
+      $productScale = DB::table('products')
+        ->select('productScale')
+        ->groupBy('productScale')
+        ->orderBy('productScale', 'ASC')
+        ->get();
+      $productVendor = DB::table('products')
+        ->select('productVendor')
+        ->groupBy('productVendor')
+        ->orderBy('productVendor', 'ASC')
+        ->get();
+      $products = Products::where('productLine','Trucks and Buses')->get();
+      return view('user.catalog', compact('productScale','productVendor','products') );
+    }
+
+    public function t7(Request $request)
+    {
+      $productScale = DB::table('products')
+        ->select('productScale')
+        ->groupBy('productScale')
+        ->orderBy('productScale', 'ASC')
+        ->get();
+      $productVendor = DB::table('products')
+        ->select('productVendor')
+        ->groupBy('productVendor')
+        ->orderBy('productVendor', 'ASC')
+        ->get();
+      $products = Products::where('productLine','Vintage Cars')->get();
+      return view('user.catalog', compact('productScale','productVendor','products') );
+    }
+
+
 
 }

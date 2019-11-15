@@ -22,7 +22,7 @@ Route::resource('catalog', 'CatalogController');
 
 
 
-Auth::routes();
+
 
 
 

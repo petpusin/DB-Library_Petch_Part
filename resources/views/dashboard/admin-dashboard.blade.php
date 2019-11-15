@@ -42,97 +42,7 @@ Shopping | ERM
                             {{ session('status') }}
                         </div>
                     @endif
-                
-                <div class="my-4">
-                    <table id="myTR" style="background-color:white">
-                        <tr style="background-color:#3b444b;color: white;">
-                            <th height="60">
-                                <center>
-                                <font size="1px" class="font-weight-light">Employee No.</font>
-                                </center>
-                            </th>
-                            <th>
-                                <center>
-                                <font width="10%" size="2px" class="font-weight-light">FirstName</font>
-                                </center>
-                            </th>
-                            <th width="10%">
-                                <center>
-                                <font width="10%" size="2px" class="font-weight-light">LastName</font>
-                                </center>
-                            </th>
-                            <th>
-                                <center>
-                                <font width="10%" size="2px" class="font-weight-light">Extension</font>
-                                </center>
-                            </th>
-                            <th width="5%">
-                                <center>
-                                <font size="2px" class="font-weight-light">Email Address</font>
-                                </center>
-                            </th>
-                            <th width="10%">
-                                <center>
-                                <font size="2px" class="font-weight-light">Office Code</font>
-                                </center>
-                            </th>
-                            <th width="10%">
-                                <center>
-                                <font size="2px" class="font-weight-light">Reports To</font>
-                                </center>
-                            </th>
-                            <th width="10%">
-                                <center>
-                                <font size="2px" class="font-weight-light">Job Title</font>
-                                </center>
-                            </th>
-                            <th width="5%" colspan="2">
-                                <center>
-                                <font size="3px" class="font-weight-light">Tools</font>
-                                </center>
-                            </th>
-                        </tr>
-                    
-                        @foreach ($employees as $d)
-                        <tr style="height:50px;font-size:14px">
-                        <td>
-                            <center> {{$d->employeeNumber }}</center>
-                        </td>
-                        <td>   
-                            <center>{{ $d->firstName}}</center>
-                        </td>
-                        <td> 
-                            <center>{{ $d->lastName}}</center>
-                        </td>
-                        <td>    
-                            <center class="font-weight-light">{{ $d->extension}}</center>
-                        </td>
-                        <td>
-                            <center class="font-weight-light">{{ $d->email}}</center>
-                        </td>
-                        <td>    
-                            <center class="font-weight-light">{{ $d->officeCode}}</center>
-                        </td>
-                        <td>    
-                            <center class="font-weight-light">{{ $d->reportsTo}}</center>
-                        </td>
-                        <td style="font-size:12px;font-weight:bold; color:green">    
-                            <center >{{ $d->jobTitle}}</center>
-                        </td>
-                        <td>
-                            <a href="/admin/employee/edit/{{$d->employeeNumber}}"><img src="/img/pencil.svg" alt="" width="30px"  height="30px"></a>
-                        </td>
-                        <td>
-                            <a href="/admin/employee/detele/{{$d->employeeNumber}}"><img src="/img/delete.svg" alt="" width="20px" height="20px"></a>
-                        </td>
-                    
-                
-                    </tr>
-                    @endforeach
-                    </table><br>
-                    </div>
-                    @endif
-
+            
                     <div class="card my-4">
                         <table id="myTR">
                             <tr style="background-color: black;color: white;">
@@ -236,11 +146,5 @@ Shopping | ERM
       <img src="/img/phone-book.svg" width="18px"; height="18px"> CONTACT US<br>cpeg2DB@GMAIL.COM | TEL XXX-XXXXXXX
     </footer>
 </div>
-<<<<<<< HEAD
-
-
-@endsection
-=======
    
 @endsection
->>>>>>> 454c5bd7fc090dfd5bad17e962fc4748b9f9b651

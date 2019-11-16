@@ -24,8 +24,6 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $user_id = auth()->user()->em_id;
-        
         
         return view('admin');
         

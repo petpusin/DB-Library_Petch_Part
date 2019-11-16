@@ -107,4 +107,4 @@ Route::get('catalog/{product}', 'CatalogController@show')->name('catalog.show');
 
 
 
-Route::post('catalog', 'CatalogController@reset');
+

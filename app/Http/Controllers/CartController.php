@@ -38,7 +38,9 @@ class CartController extends Controller
             'size' => $product->productScale,
             'stock' => $product->quantityInStock,
         ]]);
-        return back();
+        if($cart){
+            return view('create.cart',['data' => Cart::content()]);
+        }
     }
 
     public function removeId($id)

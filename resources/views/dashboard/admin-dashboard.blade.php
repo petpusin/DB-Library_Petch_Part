@@ -1,14 +1,15 @@
 @extends('layouts.app')
-<link href="{{ asset('css/signin.css')}}" rel="stylesheet">
-
-<!-- FROM GOOGLE FONT -->
-<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
-
 
 @section('title')
 Shopping | ERM
 @endsection
+@section('head')
 
+<link href="{{ asset('css/signin.css')}}" rel="stylesheet">
+
+<!-- FROM GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+@endsection
 @section('content')
 
 <style>

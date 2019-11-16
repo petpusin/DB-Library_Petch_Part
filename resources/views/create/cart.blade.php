@@ -3,15 +3,15 @@
 @section('title', 'Shopping Cart')
 @section('head')
 
-  <link href="{{ asset('css/signin.css')}}" rel="stylesheet">
+<link href="{{ asset('css/signin.css')}}" rel="stylesheet">
+
+<!-- FROM GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 
 @endsection
 
 
 @section('content')
-
-
-
 <div class="cart-section container">
     <div>
         @if (session()->has('success_message'))
@@ -96,9 +96,7 @@
                                 <td><center>{{$item->options->stock}}</center></td>
                                 <td><center>{{$item->options->size}}</center></td>
                                 <td><center>
-                                        
                                         <input type="hidden"  value="{{$item->rowId}}"  id="rowID{{$item->id}}">
-                                        
                                         <input type="number" min="1" max="10" value="{{$item->qty}}" class="qty-fill" id="upCart{{$item->id}}">
                                 </center></td>
                                 <td><center>${{$item->price}}</center></td>

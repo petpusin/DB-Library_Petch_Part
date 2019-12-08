@@ -11,15 +11,12 @@
 |
 */
 
+
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('create.home');
-})->name('homecate');
+Route::get('/','CatalogController@index')->name('homecate');
 
 Route::resource('catalog', 'CatalogController');
-
-
 
 
 
@@ -37,7 +34,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/login', 'Auth\AdminLoginController@showSigninForm')->name('admin.signin');
     Route::post('/login', 'Auth\AdminLoginController@signin')->name('admin.signin.submit');
     Route::get('/', 'AdminController@index')->name('admin.home');
-    Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
+    Route::post('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
+    Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout.home');
     //dashboard edit & delete
     Route::get('/dashboard', 'AdminController@dashboard')->name('admin.dashboard');
     Route::get('/employee/edit/{employeeNumber}', 'AdminController@employeeedit');
@@ -56,7 +54,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/cart/update/','CartController@update');
 
 
-    Route::get('cart/remove/{id}', 'CartController@removeId');
+    Route::get('cart/remove/{id}', 'CartController@destroy');
 });
 
 
@@ -85,25 +83,17 @@ Route::post('catalog/v11', 'CatalogController@v11');
 Route::post('catalog/v12', 'CatalogController@v12');
 Route::post('catalog/v13', 'CatalogController@v13');
 
-Route::post('catalog/t1', 'CatalogController@t1');
-Route::post('catalog/t2', 'CatalogController@t2');
-Route::post('catalog/t3', 'CatalogController@t3');
-Route::post('catalog/t4', 'CatalogController@t4');
-Route::post('catalog/t5', 'CatalogController@t5');
-Route::post('catalog/t6', 'CatalogController@t6');
-Route::post('catalog/t7', 'CatalogController@t7');
-
-
-Route::post('catalog', 'CatalogController@reset');
-Route::post('/', function () {
-    return view('create.home');
-});
-
-
-Route::get('catalog/{product}', 'CatalogController@show')->name('catalog.show');
 
 
 
+Route::get('productsCat','CatalogController@productsCat');
+
+Route::post('catalog/{id}/{product}', 'CatalogController@reset');
+
+Route::get('catalog/{id}', 'CatalogController@show')->name('catalog.show');
+Route::get('catalog/{id}/{product}', 'CatalogController@showproduct')->name('catalog.product');
+
+Route::get('/checkout','CheckoutController@index');
 
 
 

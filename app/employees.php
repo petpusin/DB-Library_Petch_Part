@@ -12,7 +12,7 @@ class employees extends Model
     public $timestamps = false;
     public function admin(){
 
-        return $this->hasne('App\Admin','employeeNumber','em_id');
+        return $this->hasone('App\Admin','employeeNumber','em_id');
     }
 
     protected $fillable = [

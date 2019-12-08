@@ -16,4 +16,9 @@ class Order extends Model
 
         return $this->hasOne('App\Orderdetail','orderNumber','orderNumber');
     }
+
+    public function customers() 
+    {
+        return $this->belongsTo('App\customer','customerNumber');
+    }
 }

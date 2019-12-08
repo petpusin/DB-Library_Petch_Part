@@ -60,7 +60,7 @@ Album example · Bootstrap
 
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active"><a class="navbar-brand" href="{{route('cart.index')}}"> <img class="cartlg" src="/img/shopping-cart.svg"></a></li>
+        <li class="nav-item active"><a class="navbar-brand" href="{{route('admin.cart-index')}}"> <img class="cartlg" src="">cart({{Cart::count()}})</a></li>
           @if(Auth::guard('admin')->check())
           <li class="nav-item nav-signin"><a class="nav-link" href="{{ route('admin.logout') }}">SIGN OUT</a></li> <!-- IF ALREADY SIGN IN -->
           @else
@@ -107,34 +107,7 @@ Album example · Bootstrap
         <button type="button" name="reset" id="reset" class="btn btn-default">Reset</button>
       </div> -->
 
-          <div class="form-group">
-            <select name="filter_vendor" id="filter_vendor" class="form-control" required>
-              <option value="">Select Vendor</option>
-              @foreach($productVendor as $row)
-              <option value="{{ $row->productVendor }}">{{ $row->productVendor }}</option>
-
-              @endforeach
-            </select>
-          </div>
-
-          <div class="form-group">
-            <select name="filter_scale" id="filter_scale" class="form-control" required>
-              <option value="">Select Scale</option>
-              @foreach($productScale as $row)
-              <option value="{{ $row->productScale }}">{{ $row->productScale }}</option>
-
-              @endforeach
-            </select>
-          </div>
-
-          <form action="{{url('catalog')}}" method="post">
-            {{csrf_field()}}
-            <div class="form-group" align="center">
-              <input type="submit" name="filter" id="filter" class="btn btn-info" value="Filter">
-
-              <input type="submit" name="reset" id="reset" class="btn btn-default" value="Reset">
-            </div>
-          </form>
+         
 
           <!-- <form action="{{url('catalog')}}" method="post">
         {{csrf_field()}}
@@ -159,12 +132,12 @@ Album example · Bootstrap
                     </thead>
                 </table>
    </div> -->
-
+      
       <div class="album py-5 bg-light">
         <div class="container">
 
           <div class="row">
-            @foreach($data as $row)
+            @foreach($products as $row)
             <div class="col-md-4">
               <div class="card mb-4 shadow-sm">
                 <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
@@ -172,8 +145,8 @@ Album example · Bootstrap
                   <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
                 </svg>
                 <div class="card-body">
-                  <p class="card-text">{{ $row->productName }}<br>Scale : {{ $row->productScale }}<br>Vendor : {{ $row->productVendor }}</p>
-                  <div class="d-flex justify-content-between align-items-center">
+                  <p class="card-text">{{ $row->productName }}<br>Scale : {{ $row->productScale }}<br>Vendor : {{ $row->productVendor }}<br>Line : {{ $row->productLine }} </p>
+                  <div class="d-flex justify-content-between align-items-center"> 
                     <div class="btn-group">
                       <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                       <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>

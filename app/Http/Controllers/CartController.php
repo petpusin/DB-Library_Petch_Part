@@ -10,17 +10,7 @@ use Cart;
 class CartController extends Controller
 {
 
-    //
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth:admin');
-    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -39,15 +29,11 @@ class CartController extends Controller
             'stock' => $product->quantityInStock,
         ]]);
         if($cart){
-            return view('create.cart',['data' => Cart::content()]);
+            return back();
         }
     }
 
-    public function removeId($id)
-    {
-        Cart::remove($id);
-        return back();
-    }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -59,18 +45,7 @@ class CartController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        Cart::add($request->productCode,$request->productName,1,$request->buyPrice)->associa('App\Products');
-        return redirect()->route('cart.index')->with('success_massage','Item wass added to your cart');
-    }
-
+    
     /**
      * Display the specified resource.
      *
@@ -103,10 +78,20 @@ class CartController extends Controller
     public function update(Request $request)
     {
         $qty = $request->newQty;
-      $rowId = $request->rowID;
-        
+        $rowId = $request->rowID;
+        $id = $request->ID;
+        $product = Products::find($id);
+        $stock = $product->quantityInStock;
+        if($qty<$stock){
             Cart::update($rowId,$qty);
+            $msg = 'Cart is updated';
             echo "Cart updated successfully";
+            return back()->with('status',$msg);
+        }else{
+            echo "Check Quantity In The Stock";
+            $msg = 'Please check your qty is more than product stock';
+                    return back()->with('error',$msg);
+        }
     }
 
     /**
@@ -117,7 +102,8 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Cart::remove($id);
+        return back()->with('success_message', 'Item has been removed!');
     }
 
     

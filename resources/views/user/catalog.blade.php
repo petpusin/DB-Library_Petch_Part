@@ -291,20 +291,17 @@
       <div class="button-container">
 
 
-      <form action="{{url('catalog')}}" method="post">
-        {{csrf_field()}}
+      
       <div class="form-group" align="center">
-        <input type="submit" name="reset" id="reset" class="btn btn-default" value="Reset">
+        <input type="submit" name="reset" id="reset" class="btn btn-default" value="back">
       </div>
-      </form>
 
 
-      <form action="{{url('/')}}" method="post">
-        {{csrf_field()}}
+      
       <div class="form-group" align="center">
-        <input type="submit" name="back" id="back" class="btn btn-default" value="back">
+        <a href="/">back</a>
       </div>
-      </form>
+      
 
 
         </div>
@@ -329,9 +326,25 @@
 
 
     <div class="album py-5 bg-light">
+    <div class="col-xs-6 clo-sm-3 ">
+        <select name="" id="scale">
+          <option value="">Select a Scales</option>
+          @foreach($productScale as $data)
+          <option value="{{$data->productScale}}" class="option">{{$data->productScale}}</option>
+          @endforeach
+        </select>
+        <select name="" id="vender">
+        <option value="">Select a Vender</option>
+          @foreach($productVendor as $data)
+          <option value="{{$data->productVendor}}" class="option">{{$data->productVendor}}</option>
+          @endforeach
+        </select>
+        <button id="findBtn">Find</button>
+      </div>
+      
       <div class="container">
 
-        <div class="row">
+        <div class="row" id="productData">
           @foreach($products as $row)
           <div class="col-md-4">
             <div class="card mb-4 shadow-sm">
@@ -344,7 +357,7 @@
                 ]}}</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button  type="button" class="btn btn-sm btn-outline-secondary"><a href="/catalog/{{$row['productCode']}}">View</a></button>
+                    <button  type="button" class="btn btn-sm btn-outline-secondary"><a href="/catalog/{{$row['productLine']}}/{{$row['productCode']}}">View</a></button>
                     <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                   </div>
                   <small class="text-muted">9 mins</small>
@@ -355,10 +368,14 @@
             </div>
           </div>
           @endforeach
+          {{ $products->appends(request()->input())->links() }}
+                    
+          
         </div>
+    
       </div>
     </div>
-
+      
   </main>
 
   <footer>
@@ -402,6 +419,38 @@
       }
       // ENDSCRIPT 01
     </script>
+    <script>
+    $(document).ready(function(){
+        
+        
+        $("#findBtn").click(function(){
+            var scale = $("#scale").val();
+            var vender = $("#vender").val();
+           
+            $.ajax({
+                url: "{}",
+                data:'scale=' + scale + '&vender' + vender,
+                type:'get',
+                success:function(response){
+                    
+                    console.log(response);
+                    $("#productData").html(response);
+                }
+            })
+        });
+        
+    });
+
+    
+</script>
+<script>
+  jQuery(function($){
+  $('.btn btn-default').click(function(e){
+    history.back();
+  });
+});
+</script>
+
 
 <!-- <script>
 $(document).ready(function(){

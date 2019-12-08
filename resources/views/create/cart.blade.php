@@ -13,20 +13,23 @@
 
 @section('content')
 <div class="cart-section container">
-    <div>
-        @if (session()->has('success_message'))
+    <div class="CartMsg">
+    @if (session()->has('success_message'))
         <div class="alert alert-success">
             {{ session()->get('success_message') }}
         </div>
         @endif
+        @if(session('status'))
+        <div class="alert alert-success">
 
-        @if(count($errors) > 0)
+            {{session('status')}}
+        </div>
+        @endif
+
+        @if(session('error'))
         <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+
+            {{session('error')}}
         </div>
         @endif
 
@@ -52,6 +55,11 @@
                                     <th width="20%">
                                         <center>
                                             <font width="10%" size="3px">ProductName</font>
+                                        </center>
+                                    </th>
+                                    <th width="20%">
+                                        <center>
+                                            <font width="10%" size="3px">Stock</font>
                                         </center>
                                     </th>
                                     <th width="20%">
@@ -84,62 +92,81 @@
                                             <font size="3px">Delete</font>
                                         </center>
                                     </th>
-                                    
+
                                 </tr>
-                        
-                            @if($data!="0")
 
-                            @foreach ($data as $item)
-                            <tr>
-                                <td><center>{{ $item->id }}</center></td>
-                                <td><center>{{ $item->name }}</center></td>
-                                <td><center>{{$item->options->stock}}</center></td>
-                                <td><center>{{$item->options->size}}</center></td>
-                                <td><center>
-                                        <input type="hidden"  value="{{$item->rowId}}"  id="rowID{{$item->id}}">
-                                        <input type="number" min="1" max="10" value="{{$item->qty}}" class="qty-fill" id="upCart{{$item->id}}">
-                                </center></td>
-                                <td><center>${{$item->price}}</center></td>
-                                <td><center>{{$item->price * $item->qty}}</center></td>
-                                <td><center>
-                                    <a href=""><img src="/img/pencil.svg" alt="" width="30px" height="30px"></a></center>
-                                </td>
-                                <td><center>
-                                    <a href="{{url('admin/cart/remove')}}/{{$item->rowId}}"><img src="/img/delete.svg" alt="" width="30px" height="30px"></a></center>
-                                </td>
-                            </tr>
-                            @endforeach
+                                @if($data!="0")
+
+                                @foreach ($data as $item)
+                                <tr>
+                                    <td>
+                                        <center>{{ $item->id }}</center>
+                                    </td>
+                                    <td>
+                                        <center>{{ $item->name }}</center>
+                                    </td>
+                                    <td>
+                                        <center>{{$item->options->stock}}</center>
+                                    </td>
+                                    <td>
+                                        <center>{{$item->options->size}}</center>
+                                    </td>
+                                    <td>
+                                        <center>
+                                            <input type="text" value="{{$item->id}}" id="id{{$item->id}}">
+                                            <input type="hidden" value="{{$item->rowId}}" id="rowID{{$item->id}}">
+                                            <input type="number" min="1" max="10" value="{{$item->qty}}" class="qty-fill" id="upCart{{$item->id}}"  MIN="1" MAX="30">
+                                            
+                                        </center>
+                                    </td>
+                                    <td>
+                                        <center>${{$item->price}}</center>
+                                    </td>
+                                    <td>
+                                        <center>{{$item->price * $item->qty}}</center>
+                                    </td>
+                                    <td>
+                                        <center>
+                                            <a href=""><img src="/img/pencil.svg" alt="" width="30px" height="30px"></a></center>
+                                    </td>
+                                    <td>
+                                        <center>
+                                            <a href="{{url('admin/cart/remove')}}/{{$item->rowId}}"><img src="/img/delete.svg" alt="" width="30px" height="30px" ></a></center>
+                                    </td>
+                                </tr>
+                                @endforeach
                             </table>
-                            </div>
-                            
-                            
-                            @endif
-                            <div class="col-xs-12 col-sm-12 col-md-6">
+                        </div>
 
-                            </div>
+
+                        @endif
+                        <div class="col-xs-12 col-sm-12 col-md-6">
+                            <br>
+                        </div>
                         
                         <div class="col-sm-4" id="cartTotal">
                             <div class="cart-total">
-                                
+                            <br>
                                 <table>
-                                        <tr>
-                                        <h4>Total Amount</h4>
-                                        </tr>
-                                        <tr>
-                                            <td>Sub Total</td>
-                                            <td>$ {{Cart::subtotal()}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tax (%)</td>
-                                            <td>$ {{Cart::tax()}}</td>
-                                        </tr>
+                                    <tr style="background-color: black;color: white;">
+                                        <td>Total Amount</td>
+                                    </tr>
+                                    <tr style="background-color: white;color: black;"> 
+                                        <td>Sub Total</td>
+                                        <td>$ {{Cart::subtotal()}}</td>
+                                    </tr >
+                                    <tr style="background-color: white;color: black;">
+                                        <td>Tax (%)</td>
+                                        <td>$ {{Cart::tax()}}</td>
+                                        <hr>
+                                    </tr>
 
 
-                                        <tr>
-                                            <td>Grand Total</td>
-                                            <td>$ {{Cart::total()}}</td>
-                                        </tr>
-                                    
+                                    <tr style="background-color: white;color: black;">
+                                        <td>Grand Total</td>
+                                        <td>$ {{Cart::total()}}</td>
+                                    </tr>
+
                                 </table>
 
                                 <a href="{{url('checkout')}}" class="btn check_out btn-block">checkout</a>
@@ -195,29 +222,30 @@
 @section('script')
 <script src="{{ asset('js/app.js') }}"></script>
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
         $("#CartMsg").hide();
         @foreach($data as $items)
-        $("#upCart{{$items->id}}").on('change keyup', function(){
+        $("#upCart{{$items->id}}").on('change keyup', function() {
             var newQty = $("#upCart{{$items->id}}").val();
             var rowID = $("#rowID{{$items->id}}").val();
-            
-            if(newQty <=0){alert('enter only number value')}
-            else{$.ajax({
-                url:'{{url('admin/cart/update')}}',
-                data:'rowID=' + rowID + '&newQty=' + newQty,
-                type:'get',
-                success:function(response){
-                    $("#CartMsg").show();
-                    console.log(response);
-                    $("#CartMsg").html(response);
-                }
-            })}
+            var ID = $("#id{{$items->id}}").val();
+            if (newQty <= 0) {
+                alert('enter only number value')
+            } else {
+                $.ajax({
+                    url: '{{url('admin/cart/update')}}',
+                    data: 'rowID=' + rowID + '&ID=' + ID + '&newQty=' + newQty,
+                    type: 'get',
+                    success: function(response) {
+                        $("#CartMsg").show();
+                        console.log(response);
+                        $("#CartMsg").html(response);
+                    }
+                })
+            }
         });
         @endforeach
     });
-
-    
 </script>
 
 

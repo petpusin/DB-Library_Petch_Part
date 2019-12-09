@@ -1,0 +1,232 @@
+/* FILTER */
+
+.filter-grid-container {
+    display: grid;
+    grid-gap: 1.5em;
+    grid-template-columns: 1fr 1fr;
+    margin-left: -20px;
+}
+
+.filter-item1 {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.filter-item2 {
+    display: flex;
+    justify-content: flex-start;
+}
+
+#filter-mag {
+    max-width: 15px;
+    margin-right: 10px;
+}
+
+@media only screen and (max-width:660px) {
+    .filter-grid-container {
+        grid-template-columns: 1fr;
+        margin-top: 2em;
+        margin-left: 0.1em;
+    }
+    .filter-item1 {
+        justify-content: flex-start;
+    }
+    .filter-item2 {
+        justify-content: flex-start;
+        margin-left: 25px;
+        margin-top: -10px;
+    }
+}
+
+/* PRODUCT LIST */
+
+.product-grid {
+    margin-top: 2em;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+    justify-content: center;
+    text-align: center;
+}
+
+.p-item {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.p-item-flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-img {
+    width: 18.75em auto;
+    height: 15.625em;
+}
+
+h3, h5 {
+    text-align: left;
+    margin: 20px 0px 15px 20px;
+    line-height: 0.5em;
+}
+
+h5 {
+    line-height: 1em ;
+    color: rgb(91, 114, 128);
+}
+
+h3 {
+    color: rgb(50, 97, 126);
+}
+
+hr {
+    margin-bottom: 0px;
+}
+
+#name {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+#price {
+    font-size: 1.4em;
+    font-weight: bolder;
+}
+
+#vendor {
+    line-height: 1em;
+    font-size: 1em;
+}
+
+#shop-list-img {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(68, 131, 202);
+}
+
+#shop-list-img:hover {
+    background-color: rgb(0, 90, 192);
+}
+
+.grid-contain-scale-ven {
+    display: grid;
+    grid-template-columns: 1fr;
+    font-size: 0.65em;
+    padding-left: 20px;
+    text-align: left;
+    align-items: center;
+}
+
+.grid-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 10px;
+    background-color: rgb(244, 244, 244);
+}
+
+.grid-details a:hover {
+    text-decoration: none;
+}
+
+#more-info {
+    text-transform: lowercase;
+    font-weight: bold;
+    font-size: 0.8em;
+    border-right: 1px solid rgba(0, 0, 0, 0.055);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+
+#more-info:hover {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+}
+
+#edit-button {
+    width: 1.2em;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+
+#edit-button:hover {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+}
+
+@media only screen and (max-width:770px) {
+    .product-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    #name {
+        font-size: 0.7em;
+        font-weight: bold;
+    }
+    #price {
+        font-size: 1.1em;
+        font-weight: bolder;
+    }
+    #vendor {
+        font-size: 0.7em;
+    }
+    .grid-contain-scale-ven {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media only screen and (max-width:660px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+    #name {
+        font-size: 1em;
+        font-weight: bold;
+    }
+    #price {
+        font-size: 1.4em;
+        font-weight: bolder;
+    }
+    #vendor {
+        font-size: 1em;
+    }
+    .grid-contain-scale-ven {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* PAGES */
+
+.grid-contain-pages {
+    margin-top: 5em;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+}
+
+.grid-contain-pages a {
+    text-decoration: none;
+    color: black;
+}
+
+.grid-contain-pages a:hover {
+    color: rgb(0, 183, 255);
+}
+
+#previous-p {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#next-p {
+    display: flex;
+    justify-content: start;
+}
+
+/* FOOTER */
+
+footer div {
+    margin-top: 1em;
+}

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddForingkeyToAdmins extends Migration
+class CreateCouponsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddForingkeyToAdmins extends Migration
      */
     public function up()
     {
-        Schema::table('admins', function (Blueprint $table) {
-            $table->foreign('em_id')->references('employeeNumber')->on('employees')->onDelete('cascade');
+        Schema::table('coupons', function (Blueprint $table) {
+            $table->boolean('buy_one_get_one');
         });
     }
 
@@ -25,8 +25,8 @@ class AddForingkeyToAdmins extends Migration
      */
     public function down()
     {
-        Schema::table('admins', function (Blueprint $table) {
-            $table->dropForeign(['em_id']);
+        Schema::table('coupons', function (Blueprint $table) {
+            $table->dropColumn('buy_one_get_one');
         });
     }
 }

@@ -83,8 +83,8 @@ Route::post('catalog/v11', 'CatalogController@v11');
 Route::post('catalog/v12', 'CatalogController@v12');
 Route::post('catalog/v13', 'CatalogController@v13');
 
-
-
+Route::post('/coupon','CouponsController@store')->name('coupon.store');
+Route::delete('/coupon','CouponsController@destroy')->name('coupon.destroy');
 
 Route::get('productsCat','CatalogController@productsCat');
 
@@ -93,7 +93,7 @@ Route::post('catalog/{id}/{product}', 'CatalogController@reset');
 Route::get('catalog/{id}', 'CatalogController@show')->name('catalog.show');
 Route::get('catalog/{id}/{product}', 'CatalogController@showproduct')->name('catalog.product');
 
-Route::get('/checkout','CheckoutController@index');
+Route::get('/checkout','CheckoutController@index')->name('checkout.index');
 
 
 

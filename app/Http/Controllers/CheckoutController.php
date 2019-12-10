@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Cart;
 class CheckoutController extends Controller
 {
     /**
@@ -13,7 +13,17 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        return view('create.checkout');
+        $tax = config('cart.tax') /100;
+        $discount = session()->get('coupon')['discount'] ?? 0;
+        $newSubtotal = (Cart::subtotal() - $discount);
+        $newTax = $newSubtotal * $tax;
+        $newTotal = $newSubtotal + $newTax;
+        return view('create.checkout')->with([
+            'discount' => $discount,
+            'newSubtotal' => $newSubtotal,
+            'newTax' => $newTax,
+            'newTotal' => $newTotal,
+        ]);
     }
 
     /**
@@ -32,9 +42,20 @@ class CheckoutController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CheckoutRequest $request)
     {
-        //
+        // $charge = String::charges()->create([
+        //     'amount' => Cart::total()/100,
+        //     'currency' => 'CAD',
+        //     'source' => $request -> stripeToken,
+        //     'description' => 'Order',
+        //     'receipt_email' => $request->email,
+        //     'metadata' => [
+        //         //change to Order ID after we start using DB
+        //         'contents' => $contents,
+        //         'quantity' => Cart::instance('default')->count(),
+        //     ]
+        // ]);
     }
 
     /**
@@ -81,4 +102,6 @@ class CheckoutController extends Controller
     {
         //
     }
+
+    
 }

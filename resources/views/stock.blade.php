@@ -1,48 +1,13 @@
-@extends('layouts.app')
+@extends('create.master')
 
 @section('title')
 Shopping | Stock
 @endsection
 
-@section('head')
-<link href="{{ asset('css/signin.css')}}" rel="stylesheet">
-
-<link rel="stylesheet" href="{{asset('/css/stock.css')}}">
-<!-- FROM GOOGLE FONT -->
-<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/stock.css">
-<style>
-    tr:nth-child(odd) {
-        background-color: #f2f2f2;
-    }
-
-    footer {
-        font-size: 10px;
-        font-weight: lighter;
-        color: white;
-        text-align: center;
-        position: relative;
-        margin-top: 40px;
-    }
-
-    hr {
-        background-color: white;
-        height: 0.5px;
-    }
-</style>
-@endsection
+@
 
 @section('content')
-<!-- <div class="searchBox" align="center">
 
-    <input class="searchInput" type="text" name="" placeholder="Search">
-    <button class="searchButton" href="#">
-        <i class="material-icons">
-            <img src="/img/Search-512.png" alt="search" width="30px" height="30px">
-        </i>
-    </button>
-
-</div> -->
 <h1 class="display-4 text-center mb-4 text-light">STOCK</h1>
 
 <!-- make table resposive -->

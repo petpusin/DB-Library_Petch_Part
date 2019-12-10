@@ -11,7 +11,7 @@ class Order extends Model
     protected $primaryKey = 'orderNumber';
     public $incrementing = false;
     public $timestamps = false;
-
+    protected $fillable = ['orderNumber','orderDate','requiredDate','shippedDate','status','comments','customerNumber'];
     public function orderdetail(){
 
         return $this->hasOne('App\Orderdetail','orderNumber','orderNumber');

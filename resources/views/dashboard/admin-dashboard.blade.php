@@ -25,7 +25,17 @@ Shopping | ERM
     </div>
     <div class="grid-for-ermheader">Employee Resource Manager
     </div>
+    @foreach ($employees as $d)
+                @if($d->employeeNumber == Auth::user()->em_id && $d->jobTitle != "VP Marketing")
+                    <center><button onclick="location.href='{{route('admin.create',['id'=> Auth::user()->em_id])}}' " type="button" class="btn btn-info">Create new employee</button></center>
+                @endif
+                @endforeach
 
+                @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                    @endif
     <div class="grid-contain-head-erm">
         <div>Employee No.</div>
         <div>First Name</div>
@@ -49,9 +59,28 @@ Shopping | ERM
         <div>{{ $d->officeCode}}</div>
         <div>{{ $d->reportsTo}}</div>
         <div>{{ $d->jobTitle}}</div>
+        @if(Auth::user()->em_id == 1002)
         <div id="edit-erm"><a href="/admin/employee/edit/{{$d->employeeNumber}}">Edit</a></div>
-        <div id="delete-erm"><a href="/admin/employee/detele/{{$d->employeeNumber}}">Delete</a></div>
-        
+        @if($d->employeeNumber == Auth::user()->em_id)
+        <td></td>
+        @else
+        <div id="delete-erm"><a href="/admin/employee/delete/{{$d->employeeNumber}}">Delete</a></div>
+        @endif
+
+        @else
+        @if($d->reportsTo != Auth::user()->em_id && $d->employeeNumber != Auth::user()->em_id)
+        <td></td>
+        @elseif($d->employeeNumber == Auth::user()->em_id)
+        <div id="edit-erm"><a href="/admin/employee/edit/{{$d->employeeNumber}}">Edit</a></div>
+        @else
+        <div id="edit-erm"><a href="/admin/employee/edit/{{$d->employeeNumber}}">Edit</a></div>
+        @endif
+        @if($d->employeeNumber == Auth::user()->em_id || $d->reportsTo != Auth::user()->em_id)
+        <td></td>
+        @else
+        <div id="delete-erm"><a href="/admin/employee/delete/{{$d->employeeNumber}}">Delete</a></div>
+        @endif
+        @endif
     </div>
     @endforeach
 

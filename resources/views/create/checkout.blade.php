@@ -1,10 +1,14 @@
-@extends('layouts.app')
+@extends('create.master')
 
 @section('title')
 Shopping | Product
+<style>
+
+</style>
 @endsection
 
 @section('content')
+
 <div class="container">
 
     @if (session()->has('success_message'))
@@ -102,8 +106,8 @@ Shopping | Product
 
 
         <div class="checkout-table-container">
+            <br>
             <h2>Your Order</h2>
-
             <div class="checkout-table">
                 @foreach (Cart::content() as $item)
                 <div class="checkout-table-row">
@@ -117,6 +121,11 @@ Shopping | Product
                     </div> <!-- end checkout-table -->
 
                     <div class="checkout-table-row-right">
+
+                        @if (session()->get('coupon')['free'])
+                        {{Cart::update($item->rowId,1)}} 
+                         
+                        @endif
                         <div class="checkout-table-quantity">{{ $item->qty }}</div>
                     </div>
                 </div> <!-- end checkout-table-row -->
@@ -129,25 +138,51 @@ Shopping | Product
                     Subtotal <br>
                     @if (session()->has('coupon'))
                     Discount ({{ session()->get('coupon')['name'] }}) :
+                    <!-- {{session()->get('coupon')['free']}} -->
+                    @if (session()->get('coupon')['free'])
+                    {{ session()->get('coupon')['type'] }}
+                    @endif
+                    <form action="{{ route('coupon.destroy') }}" method="POST" style="display:inline">
+                        {{ csrf_field() }}
+                        {{ method_field('delete') }}
+                        <button type="submit" style="font-size:10px">Remove</button>
+                    </form>
                     <br>
                     <hr>
                     New Subtotal <br>
                     @endif
                     Tax ({{config('cart.tax')}}%)<br>
-                    <span class="checkout-totals-total">Total</span>
+                    <span class="checkout-totals-total"><b>Total</b></span>
 
                 </div>
 
                 <div class="checkout-totals-right">
-                    {{ Cart::subtotal() }} <br>
+                    ${{ Cart::subtotal() }} <br>
+                    @if(session()->has('coupon'))
+                    -${{ session()->get('coupon')['discount'] }} <br>
+                    <hr>
+                    ${{ $newSubtotal }} <br>
 
-                    {{ Cart::tax() }} <br>
-                    <span class="checkout-totals-total">{{ Cart::total() }}</span>
+                    @endif
+                    ${{ $newTax }} <br>
+                    <span class="checkout-totals-total"><b>${{ $newTotal }}</b></span>
 
                 </div>
 
 
             </div> <!-- end checkout-totals -->
+
+            @if(!session()->has('coupon'))
+
+            <a href="#" class="have-code">Have a Code?</a>
+            <div class="have-code-container">
+                <form action="{{ route('coupon.store') }}" method="POST">
+                    {{ csrf_field() }}
+                    <input type="text" name="coupon_code" id="coupon_code">
+                    <button type="submit" class="button button-plain">Apply</button>
+                </form>
+            </div> <!-- end have-code-container -->
+            @endif
         </div>
 
     </div> <!-- end checkout-section -->

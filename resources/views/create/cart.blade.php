@@ -162,7 +162,7 @@
 
                                 </table>
 
-                                <a href="{{url('checkout')}}" class="btn check_out btn-block">checkout</a>
+                                <a href="{{route('admin.customer.create')}}" class="btn check_out btn-block">checkout</a>
                             </div>
                         </div>
                     </div>

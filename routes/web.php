@@ -38,7 +38,11 @@ Route::prefix('admin')->group(function () {
     Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout.home');
     //dashboard edit & delete
     Route::get('/dashboard', 'AdminController@dashboard')->name('admin.dashboard');
-    Route::get('/employee/edit/{employeeNumber}', 'AdminController@employeeedit');
+    Route::get('/employee/edit/{employeeNumber}', 'AdminController@employeeEdit');
+    Route::get('/employee/create/{employeeNumber}','AdminController@employeeCreate')->name('admin.create');
+    Route::get('/employee/delete/{employeeNumber}','AdminController@employeeDelete');
+    Route::get('/employee/delete/update/{employeeNumber}','AdminController@deleteUpdate');
+    Route::put('/employee/create/update/{employeeNumber}', 'AdminController@CreateUpdate');
     Route::put('/employee/edit-update/{employeeNumber}', 'AdminController@employeeupdate');
     //order
 
@@ -57,22 +61,25 @@ Route::prefix('admin')->group(function () {
 
 
     Route::get('cart/remove/{id}', 'CartController@destroy');
+    Route::get('/customer/register','CustomerController@create')->name('admin.customer.create');
+    Route::post('/customer/success','CustomerController@store')->name('admin.customer.store');
+    Route::get('/checkout','CheckoutController@index')->name('admin.checkout.index');
 });
 
 
 Route::resource('catalog', 'CatalogController');
 
 
-
+Route::post('/coupon','CouponsController@store')->name('coupon.store');
+Route::delete('/coupon','CouponsController@destroy')->name('coupon.destroy');
 
 Route::get('productsCat','CatalogController@productsCat');
 
-Route::post('catalog/{id}/{product}', 'CatalogController@reset');
 
 Route::get('catalog/{id}', 'CatalogController@show')->name('catalog.show');
 Route::get('catalog/{id}/{product}', 'CatalogController@showproduct')->name('catalog.product');
 
-Route::get('/checkout','CheckoutController@index');
+
 
 
 

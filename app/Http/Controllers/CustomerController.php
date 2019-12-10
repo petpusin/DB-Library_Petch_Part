@@ -19,6 +19,16 @@ class CustomerController extends Controller
         $customers = Customer::select('customerNumber')->max('customerNumber');
         return view('create.register')->with('customer',$customers);
     }
+
+    public function create2()
+    {   
+        return view('create.register_old_customer');
+    }
+
+   
+
+
+    
     public function store(Request $request)
     {
         $this->validate($request,[
@@ -51,6 +61,7 @@ class CustomerController extends Controller
         $customer->salesRepEmployeeNumber = Auth::user()->em_id;
         $customer->creditLimit = $request->input('creditLimit');
         $customer->save();
-        return redirect('/admin/checkout')->with('success','register customer compleated');
+        return redirect('/admin/cart')->with('success','register customer compleated')
+        ->with('customer',$customer);
     }
 }

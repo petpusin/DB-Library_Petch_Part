@@ -22,7 +22,7 @@ class CouponsController extends Controller
 
         
         if(!$coupon){
-            return redirect()->route('checkout.index')->withErrors('Invalid coupon code. Please try again.');
+            return redirect()->route('admin.cart-index')->with('error','Invalid coupon code. Please try again.');
         }
 
         session()->put('coupon',[
@@ -32,7 +32,7 @@ class CouponsController extends Controller
             'free' => $coupon->free(),
         ]);
 
-        return redirect()->route('checkout.index')->with('success_message','Coupon has been applied!');
+        return redirect()->route('admin.cart-index')->with('success','Coupon has been applied!');
     }
 
     /**
@@ -45,6 +45,6 @@ class CouponsController extends Controller
     {
         session()->forget('coupon');
 
-        return redirect()->route('checkout.index')->with('success_message','Coupon has been removed.');
+        return redirect()->route('admin.cart-index')->with('success','Coupon has been removed.');
     }
 }

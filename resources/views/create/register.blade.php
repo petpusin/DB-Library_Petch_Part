@@ -101,7 +101,7 @@ Shopping | Product
 
             </form>
 
-            <button type="submit" id="" onclick="location.href='{{route('admin.checkout.index')}}' " class="button-primary full-width">skip</button>
+            
 
 
 

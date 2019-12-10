@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','CatalogController@index')->name('homecate');
 
+
 Route::resource('catalog', 'CatalogController');
 
 
@@ -62,8 +63,9 @@ Route::prefix('admin')->group(function () {
 
     Route::get('cart/remove/{id}', 'CartController@destroy');
     Route::get('/customer/register','CustomerController@create')->name('admin.customer.create');
+    Route::get('/customer/registerold','CustomerController@create2')->name('admin.customer.create2');
     Route::post('/customer/success','CustomerController@store')->name('admin.customer.store');
-    Route::get('/checkout','CheckoutController@index')->name('admin.checkout.index');
+    Route::get('/checkout','CheckoutController@index')->name('checkout.index');
 });
 
 

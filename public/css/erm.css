@@ -1,0 +1,113 @@
+/* HEADER ERM */
+
+.grid-for-ermheader {
+    display: grid;
+    grid-template-columns: 11fr;
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(49, 96, 150);
+    font-weight: bold;
+    text-transform: uppercase;
+    color: rgb(255, 219, 60);
+    padding: 1em;
+}
+
+/* ERM */
+
+.grid-contain-head-erm {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) 2fr repeat(3, 1fr) 2fr;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.7em;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-top: 1px solid rgba(0, 0, 0, 0.144);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.144);
+    background-color: rgb(68, 131, 202);
+    color: #FFF;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin-top: 0.5em;
+}
+
+.grid-contain-dbs-erm {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) 2fr repeat(5, 1fr);
+    justify-content: center;
+    text-align: center;
+    font-size: 0.6em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.144);
+    color: rgb(11, 33, 94);
+}
+
+.grid-contain-dbs-erm a {
+    color: rgb(37, 76, 158);
+}
+
+.grid-contain-dbs-erm a:hover {
+    text-decoration: none;
+    color: rgb(57, 111, 228);
+}
+
+.grid-contain-dbs-erm:hover {
+    background-color: rgba(0, 0, 0, 0.068);
+}
+
+#edit-erm {
+    text-align: right;
+    padding-right: 10px;
+}
+
+#delete-erm {
+    text-align: left;
+    padding-left: 5px;
+}
+
+/* HOME AND BACK */
+
+#back-button {
+    margin-top: 3em;
+}
+
+#home-button {
+    margin-top: 3em;
+}
+
+#home-button, #back-button {
+    margin-right: 1em;
+    width: 20px;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .2s ease-in-out;
+    transition: .2s ease-in-out;
+}
+
+#home-button:hover, #back-button:hover {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+@media only screen and (max-width:660px) {
+    .grid-for-ermheader {
+        font-size: 0.7em;
+    }
+    .grid-contain-head-erm {
+        font-size: 0.3em;
+    }
+    .grid-contain-dbs-erm {
+        font-size: 0.2em;
+    }
+    #home-button, #back-button {
+        width: 15px;
+    }
+    .home-button, .back-button {
+        display: flex;
+        justify-content: center;
+    }
+    #home-button {
+        margin-top: 1em;
+    }
+}

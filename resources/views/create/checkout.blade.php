@@ -33,9 +33,9 @@ Shopping | Product
                 <h2>Billing Details</h2>
 
                 <div class="form-group">
-                <label for="name">Customer Number</label>
+                    <label for="name">Customer Number</label>
                     <input type="number" class="form-control" id="cusnum" name="cusnum" value="{{ old('customerNumber') }}" required>
-                    
+
                 </div>
                 <div class="form-group">
                     <label for="name">Name</label>
@@ -96,7 +96,7 @@ Shopping | Product
 
             </form>
 
-          
+
         </div>
 
 
@@ -139,14 +139,14 @@ Shopping | Product
                 </div>
 
                 <div class="checkout-totals-right">
-                        {{ Cart::subtotal() }} <br>
-                        
-                        {{ Cart::tax() }} <br>
-                        <span class="checkout-totals-total">{{ Cart::total() }}</span>
+                    {{ Cart::subtotal() }} <br>
 
-                    </div>
+                    {{ Cart::tax() }} <br>
+                    <span class="checkout-totals-total">{{ Cart::total() }}</span>
 
-               
+                </div>
+
+
             </div> <!-- end checkout-totals -->
         </div>
 

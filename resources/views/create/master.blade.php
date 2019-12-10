@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/css/indexsty.css">
     <link rel="stylesheet" href="/css/shopping.css">
     <link rel="stylesheet" href="/css/shopdetail.css">
+    <link rel="stylesheet" href="/css/erm.css">
     <link rel="stylesheet" href="/css/signin.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="/icon/browser-icon.ico" />

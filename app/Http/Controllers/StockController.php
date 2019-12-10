@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ProductLine;
 use Illuminate\Http\Request;
 use App\Products;
 class StockController extends Controller
@@ -26,7 +27,8 @@ class StockController extends Controller
     
     public function create()
     {
-        return view('dashboard.createproduct');
+        $productlines = ProductLine::all();
+        return view('dashboard.createproduct')->with('productlines',$productlines );
     }
     // <!-- 'productCode','productName','productScale','productVendor','productLine','productDescription','quantityInStock','buyPrice','MSRP' -->
 

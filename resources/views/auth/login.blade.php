@@ -1,15 +1,9 @@
-@extends('layouts.app')
+@extends('create.master')
 
 @section('title')
-<title>Sign in</title>
+<title>Sign in | Digital Shop</title>
 @endsection
 
-@section('head')
-<link href="{{ asset('css/signin.css')}}" rel="stylesheet">
-
-<!-- FROM GOOGLE FONT -->
-<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
-@endsection
 
 @section('content')
 <div class="container">

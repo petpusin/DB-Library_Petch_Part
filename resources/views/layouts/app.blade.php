@@ -63,7 +63,7 @@
                             
                                 <li class="nav-item dropdown ">
                                     <a id="navbarDropdown" style="color:#BBDDE6;" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                                        {{ Auth::user()->em_id }} <span class="caret"></span>
+                                        {{ Auth::user()->employee->jobTitle }} , {{ Auth::user()->em_id }} <span class="caret"></span>
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

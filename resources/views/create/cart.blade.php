@@ -1,14 +1,7 @@
-@extends('layouts.app')
+@extends('create.master')
 
 @section('title', 'Shopping Cart')
-@section('head')
 
-<link href="{{ asset('css/signin.css')}}" rel="stylesheet">
-
-<!-- FROM GOOGLE FONT -->
-<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
-
-@endsection
 
 
 @section('content')
@@ -113,7 +106,7 @@
                                     </td>
                                     <td>
                                         <center>
-                                            <input type="text" value="{{$item->id}}" id="id{{$item->id}}">
+                                            <input type="hidden" value="{{$item->id}}" id="id{{$item->id}}">
                                             <input type="hidden" value="{{$item->rowId}}" id="rowID{{$item->id}}">
                                             <input type="number" min="1" max="10" value="{{$item->qty}}" class="qty-fill" id="upCart{{$item->id}}"  MIN="1" MAX="30">
                                             

@@ -47,6 +47,8 @@ Route::prefix('admin')->group(function () {
     Route::put('/order/edit/update/{no}', 'ControllerSystem@update');
     //stock
     Route::get('/stock', 'StockController@index')->name('admin.stock');
+    Route::get('/stock/create', 'StockController@create')->name('admin.stock.create');
+    Route::post('/stock', 'StockController@store')->name('admin.stock.store');
     //cart
     Route::get('/cart', 'CartController@index')->name('admin.cart-index');
     Route::get('/cart/add/{id}', 'CartController@additem')->name('admin.cart-add');
@@ -60,6 +62,7 @@ Route::prefix('admin')->group(function () {
 
 Route::resource('catalog', 'CatalogController');
 
+<<<<<<< HEAD
 Route::post('catalog/cat10', 'CatalogController@get10'); //->name('catalog.filter');
 Route::post('catalog/cat12', 'CatalogController@get12');
 Route::post('catalog/cat18', 'CatalogController@get18');
@@ -85,6 +88,10 @@ Route::post('catalog/v13', 'CatalogController@v13');
 
 Route::post('/coupon','CouponsController@store')->name('coupon.store');
 Route::delete('/coupon','CouponsController@destroy')->name('coupon.destroy');
+=======
+
+
+>>>>>>> 33d326577e45e72dac8c38a778c01819f93d752b
 
 Route::get('productsCat','CatalogController@productsCat');
 

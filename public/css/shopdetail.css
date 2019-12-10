@@ -1,0 +1,156 @@
+/* HOME */
+
+#home-button, #back-button {
+    margin-top: 1em;
+    margin-right: 1em;
+    width: 20px;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .2s ease-in-out;
+    transition: .2s ease-in-out;
+}
+
+#home-button:hover, #back-button:hover {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+@media only screen and (max-width:660px) {
+    #home-button, #back-button {
+        width: 25px;
+    }
+    .home-button, .back-button {
+        margin-top: 1em;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+/* DETAILS */
+
+.grid-shop-details-items {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 1em;
+    margin-top: 2em;
+}
+
+#side-a {
+    color: #FFF;
+    max-width: 300px;
+}
+
+#side-b {
+    color: #000;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 50px;
+}
+
+/* SIDE A */
+
+.grid-product-exam {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 300px;
+    padding-top: 2px;
+}
+
+#exam-1 {
+    width: 100%;
+    background-color: rgb(68, 131, 202);
+}
+
+#exam-2 {
+    width: 99%;
+    background-color: rgb(68, 131, 202);
+}
+
+#exam-3 {
+    width: 99%;
+    background-color: rgb(68, 131, 202);
+}
+
+@media only screen and (max-width:660px) {
+    .grid-product-exam {
+        grid-template-columns: 1fr;
+        max-width: 100px;
+        grid-gap: 2px;
+    }
+    #side-a {
+        color: #FFF;
+        max-width: 100px;
+    }
+    #exam3 {
+        margin-top: 2px;
+    }
+}
+
+/* SIDE B */
+
+.stock-name {
+    font-size: 1.5em;
+    line-height: 1.3em;
+}
+
+.stock-price {
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+.stock-vendor {
+    font-size: 1.1em;
+}
+
+.stock-scale {
+    font-size: 1.1em;
+}
+
+.stock-desc {
+    font-size: 0.6em;
+    line-height: 1.5em;
+    margin-top: 2em;
+}
+
+.add-to-card {
+    display: flex;
+    justify-content: center;
+    font-size: 1em;
+}
+
+.add-to-card button {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-transform: uppercase;
+    color: rgb(221, 221, 221);
+    background-color: rgb(199, 162, 0);
+    border: none;
+}
+
+.add-to-card button:hover {
+    text-transform: uppercase;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 208, 0);
+    border: none;
+}
+
+@media only screen and (max-width:660px) {
+    .add-to-card {
+        font-size: 0.5em;
+    }
+    .stock-name {
+        font-size: 1em;
+    }
+    .stock-price {
+        font-size: 0.75em;
+        font-weight: bold;
+    }
+    .stock-vendor {
+        font-size: 0.6em;
+    }
+    .stock-scale {
+        font-size: 0.6em
+    }
+    .stock-desc {
+        font-size: 0.1em;
+        line-height: 1em;
+    }
+}

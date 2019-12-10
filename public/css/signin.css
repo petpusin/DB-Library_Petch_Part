@@ -1,71 +1,59 @@
-.card-header {
-    width: 100%;
+/* CONTAINER */
+
+.sign-in-box {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
-    position: relative;
-    background-color: #464646;
-    color: #7fff00;
+    width: 80%;
+    margin-top: 1em;
+    margin-bottom: 5em;
+}
+
+.title-sign {
+    font-size: 1.2em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    color: #fff;
+    text-transform: uppercase;
     font-weight: bold;
-    font-size: 26px;
+    background-color: rgb(67, 155, 255);
 }
 
-body {
-    /* background-image: url("/img/DESKSIGNINBG.jpg"); */
-      background-image: url("/img/office.jpg");
+.sign-in-box hr {
+    color: #000;
     margin: 0;
-    background-size: auto;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: top top;
-    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 3em;
 }
 
-.emailicon {
-    width: 30px;
-    height: 30px;
-}
-
-.EMUSER {
-    padding-top: 10px;
-    margin: 10px 60px;
-}
-
-input[type=email] {
+.sign-button {
+    margin-bottom: 2em;
+    margin-right: 0.5em;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 0 5px 0 rgba(0, 0, 0, 0.19);
+    text-transform: lowercase;
+    color: #fff;
+    background-color: rgb(212, 173, 0);
     border: none;
-    border-bottom: 1px solid black;
 }
 
-input[type=email]:hover {
-    border: none;
-    border-bottom: 1px solid #7fff00;
+.sign-button:hover {
+    color: #000;
+    background-color: rgb(255, 208, 0);
 }
 
-input[type=password] {
-    border: none;
-    border-bottom: 1px solid black;
+input {
+    font-size: 1em;
+    margin: 10px;
 }
 
-input[type=password]:hover {
-    border: none;
-    border-bottom: 1px solid #7fff00;
+.chk-box {
+    margin-top: 0.5em;
+    margin-bottom: 1.4em;
 }
 
-input[type=pass] {
-    border: none;
-    border-bottom: 1px solid black;
+form {
+    display: flex;
+    justify-content: center;
 }
 
-input[type=pass]:hover {
-    border: none;
-    border-bottom: 1px solid #7fff00;
-}
-
-input[type=text] {
-    border: none;
-    border-bottom: 1px solid black;
-}
-
-input[type=text]:hover {
-    border: none;
-    border-bottom: 1px solid #7fff00;
+.resize-icon-sign {
+    width: 20px;
 }

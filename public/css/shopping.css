@@ -70,7 +70,6 @@ h3, h5 {
 }
 
 h5 {
-    line-height: 1em ;
     color: rgb(91, 114, 128);
 }
 
@@ -93,7 +92,6 @@ hr {
 }
 
 #vendor {
-    line-height: 1em;
     font-size: 1em;
 }
 

@@ -28,14 +28,14 @@ Categories | Digital Shop
         <img id="filter-mag" src="/img/magnifying-glass.svg" alt="">
         <select name="" id="" value-group="scale">
           <option value="">Scales</option>
-          @foreach($productScale as $data)
-          <option value=".{{$data->productScale}}" class="option">{{$data->productScale}}</option>
+          @foreach($productscales as $data)
+          <option value=".{{$data->removespacescale()}}" class="option" >{{$data->productScale}}</option>
           @endforeach
         </select></div>
       <div class="filter-item2">
         <select name="" id="" value-group="vender">
           <option value="">Vendors</option>
-          @foreach($products as $data)
+          @foreach($productvendors as $data)
           <option value=".{{$data->removespace()}}" class="option">{{$data->productVendor}}</option>
           @endforeach
         </select></div>
@@ -46,8 +46,8 @@ Categories | Digital Shop
   <div class="product-grid" id="productData">
     @forelse($products as $row)
     <div class="p-item">
-      <div class="p-item-flex {{ $row->removespace() }} {{ $row->productScale }}" id="">
-        <div class="product-img"><a href="#"><img id="shop-list-img" src="/img/{{ $row['productLine'] }}.svg" alt=""></a>
+      <div class="p-item-flex {{ $row->removespace() }} {{ $row->removespacescale()}}" id="">
+        <div class="product-img"><a href="#"><img id="shop-list-img" src="/img/{{ $row->productLine}}.svg" alt=""></a>
         </div>
 
         <div>
@@ -59,7 +59,7 @@ Categories | Digital Shop
           </div>
           <hr>
           <div class="grid-details">
-            <div id="more-info"><a href="#">More Details</a></div>
+            <div id="more-info"><a href="/catalog/{{$row['productLine']}}/{{$row['productCode']}}">More Details</a></div>
             @if(Auth::guard('admin')->check())
             <div><a href="#"><a href="#"><img id="edit-button" src="/img/edit-gray-blue.svg" alt=""></a></a></div>
             @endif
@@ -75,7 +75,7 @@ Categories | Digital Shop
     @endforelse
   </div>
   <br>
-
+  
   @endsection
   @section('script')
   <script src="/js/indexscpt.js"></script>
@@ -96,13 +96,13 @@ Categories | Digital Shop
       // get group key
       var filterGroup = $select.attr('value-group');
       // set filter for group
+     
       filters[filterGroup] = event.target.value;
       // combine filters
       var filterValue = concatValues(filters);
       // set filter for Isotope
-      $grid.isotope({
-        filter: filterValue
-      });
+      $grid.isotope({filter: filterValue});
+      console.log(filters);
     });
 
     // flatten object by concatting values

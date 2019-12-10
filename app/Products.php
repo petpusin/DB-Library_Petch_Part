@@ -27,6 +27,6 @@ class Products extends Model
     }
     public function removespacescale()
     {
-        return str_replace(' ', '', $this->productScale);
+        return substr($this->productScale,2);
     }
 }

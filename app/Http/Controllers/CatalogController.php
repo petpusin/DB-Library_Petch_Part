@@ -24,6 +24,11 @@ class CatalogController extends Controller
       return view('create.home')->with('productline',$products);
 
     }
+    public function showproduct($id,$product)
+     {
+       $products = Products::where('productLine',$id)->firstOrFail();
+       return view('create.product')->with('product',$products);
+     }
 
     
 
@@ -65,18 +70,18 @@ class CatalogController extends Controller
      */
     public function show($id)
     {
-      $products = Products::where('productLine',$id)->paginate(9);
-      $productScale = Products::where('productLine',$id)
+      $products = Products::where('productLine',$id)->get();
+      $productscales = Products::where('productLine',$id)
         ->select('productScale')
         ->groupBy('productScale')
         ->orderBy('productScale', 'ASC')
         ->get();
-      $productVendor = Products::where('productLine',$id)
+      $productvendors = Products::where('productLine',$id)
         ->select('productVendor')
         ->groupBy('productVendor')
         ->orderBy('productVendor', 'ASC')
         ->get();
-      return view('user.catalog',compact('productScale','productVendor','products'));
+      return view('user.catalog',compact('productscales','productvendors','products'));
     }
 
     

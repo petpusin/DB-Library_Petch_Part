@@ -1,151 +1,98 @@
-@extends('layouts.app')
+@extends('create.master')
 
 @section('title')
 Shopping | ERM
 @endsection
-@section('head')
+@section('header')
 
-<link href="{{ asset('css/signin.css')}}" rel="stylesheet">
 
-<!-- FROM GOOGLE FONT -->
-<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 @endsection
 @section('content')
 
-<style>
-        tr:nth-child(odd) {
-    background-color: #f2f2f2;
-    }
-    footer {
-    font-size: 10px;
-    font-weight: lighter;
-    color: white;
-    text-align: center;
-    position: relative;
-    margin-top: 40px;
-    }
-
-    hr{
-      background-color:white;
-      height:0.5px;
-    }
-  </style>
-
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-16">
-            <div class="">
-                <div class="card-header font-weight-light" style="background-color:rgba(0,0,0, 0.8);border-radius:5px">Employee Resource Management</div>
-
-                <div class="">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-            
-                    <div class="card my-4">
-                        <table id="myTR">
-                            <tr style="background-color: black;color: white;">
-                                <th height="60">
-                                    <center>
-                                        <font size="1px">Employee No.</font>
-                                    </center>
-                                </th>
-                                <th>
-                                    <center>
-                                        <font width="10%" size="2px">FirstName</font>
-                                    </center>
-                                </th>
-                                <th width="10%">
-                                    <center>
-                                        <font width="10%" size="2px">LastName</font>
-                                    </center>
-                                </th>
-                                <th>
-                                    <center>
-                                        <font width="10%" size="2px">Extension</font>
-                                    </center>
-                                </th>
-                                <th width="5%">
-                                    <center>
-                                        <font size="2px">Email Address</font>
-                                    </center>
-                                </th>
-                                <th width="10%">
-                                    <center>
-                                        <font size="2px">Office Code</font>
-                                    </center>
-                                </th>
-                                <th width="10%">
-                                    <center>
-                                        <font size="2px">Reports To</font>
-                                    </center>
-                                </th>
-                                <th width="10%">
-                                    <center>
-                                        <font size="2px">Job Title</font>
-                                    </center>
-                                </th>
-                                <th width="5%">
-                                    <center>
-                                        <font size="3px"></font>
-                                    </center>
-                                </th>
-                                <th width="5%">
-                                    <center>
-                                        <font size="3px"></font>
-                                    </center>
-                                </th>
-                            </tr>
-
-                            @foreach ($employees as $d)
-                            <tr>
-                                <td>
-                                    <center> {{$d->employeeNumber }}</center>
-                                </td>
-                                <td style="font-weight: bold;">
-                                    <center>{{ $d->firstName}}</center>
-                                </td>
-                                <td style="font-weight: bold;">
-                                    <center>{{ $d->lastName}}</center>
-                                </td>
-                                <td>
-                                    <center>{{ $d->extension}}</center>
-                                </td>
-                                <td>
-                                    <center>{{ $d->email}}</center>
-                                </td>
-                                <td>
-                                    <center>{{ $d->officeCode}}</center>
-                                </td>
-                                <td>
-                                    <center>{{ $d->reportsTo}}</center>
-                                </td>
-                                <td style="font-size:12px;font-weight:bold; color:green">
-                                    <center>{{ $d->jobTitle}}</center>
-                                </td>
-                                <td>
-                                    <a href="/admin/employee/edit/{{$d->employeeNumber}}"><img src="/img/pencil.svg" alt="" width="30px" height="30px"></a>
-                                </td>
-                                <td>
-                                    <a href="/admin/employee/detele/{{$d->employeeNumber}}"><img src="/img/delete.svg" alt="" width="30px" height="30px"></a>
-                                </td>
-
-
-                            </tr>
-                            @endforeach
-                        </table><br>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="for-emp-contain">
+        <a href="#" id="responClicked"><img src="https://image.flaticon.com/icons/svg/60/60510.svg" alt=""></a>
     </div>
-    <footer>      <!-- FOR CONTACT -->
-  <hr>
-  <br>
-      <img src="/img/phone-book.svg" width="18px"; height="18px"> CONTACT US<br>cpeg2DB@GMAIL.COM | TEL XXX-XXXXXXX
-    </footer>
+
+    <div class="for-emp-respon">
+        <div class="for-emp-respon-grid" id="respon-menu">
+            <a href="#"><img src="https://image.flaticon.com/icons/svg/1319/1319495.svg" alt="">Employee Resource
+                Management</a>
+            <a href="#"><img src="https://www.flaticon.com/premium-icon/icons/svg/1009/1009874.svg" alt="">Stock</a>
+            <a href="#"><img src="https://image.flaticon.com/icons/svg/1252/1252355.svg" alt="">Order</a>
+        </div>
+
+    </div>
+    <div class="grid-for-ermheader">Employee Resource Manager
+    </div>
+    @foreach ($employees as $d)
+                @if($d->employeeNumber == Auth::user()->em_id && $d->jobTitle != "VP Marketing")
+                    <center><button onclick="location.href='{{route('admin.create',['id'=> Auth::user()->em_id])}}' " type="button" class="btn btn-info">Create new employee</button></center>
+                @endif
+                @endforeach
+
+                @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                    @endif
+    <div class="grid-contain-head-erm">
+        <div>Employee No.</div>
+        <div>First Name</div>
+        <div>Last Name</div>
+        <div>Extension</div>
+        <div>Email</div>
+        <div>Official Code</div>
+        <div>Reports To</div>
+        <div>Job</div>
+        <div>Tools</div>
+    </div>
+
+    @foreach ($employees as $d)
+    <div class="grid-contain-dbs-erm">
+       
+        <div>{{$d->employeeNumber }}</div>
+        <div>{{ $d->firstName}}</div>
+        <div>{{ $d->lastName}}</div>
+        <div>{{ $d->extension}}</div>
+        <div>{{ $d->email}}</div>
+        <div>{{ $d->officeCode}}</div>
+        <div>{{ $d->reportsTo}}</div>
+        <div>{{ $d->jobTitle}}</div>
+        @if(Auth::user()->em_id == 1002)
+        <div id="edit-erm"><a href="/admin/employee/edit/{{$d->employeeNumber}}">Edit</a></div>
+        @if($d->employeeNumber == Auth::user()->em_id)
+        <td></td>
+        @else
+        <div id="delete-erm"><a href="/admin/employee/delete/{{$d->employeeNumber}}">Delete</a></div>
+        @endif
+
+        @else
+        @if($d->reportsTo != Auth::user()->em_id && $d->employeeNumber != Auth::user()->em_id)
+        <td></td>
+        @elseif($d->employeeNumber == Auth::user()->em_id)
+        <div id="edit-erm"><a href="/admin/employee/edit/{{$d->employeeNumber}}">Edit</a></div>
+        @else
+        <div id="edit-erm"><a href="/admin/employee/edit/{{$d->employeeNumber}}">Edit</a></div>
+        @endif
+        @if($d->employeeNumber == Auth::user()->em_id || $d->reportsTo != Auth::user()->em_id)
+        <td></td>
+        @else
+        <div id="delete-erm"><a href="/admin/employee/delete/{{$d->employeeNumber}}">Delete</a></div>
+        @endif
+        @endif
+    </div>
+    @endforeach
+
+    <div class="back-to-basic"><a class="back-button" href="#"><img id="back-button"
+                    src="/img/keyboard-left-arrow-button.svg" alt=""></a>
+            <a class="home-button" href="#"><img id="home-button" src="/img/home.svg" alt=""></a></div>
+    </div>
 </div>
-   
+
+
+@endsection
+
+@section('script')
+<script src="/js/indexscpt.js"></script>
 @endsection

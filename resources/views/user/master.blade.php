@@ -11,6 +11,7 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="/icon/browser-icon.ico" />
+    @yield('header')
 </head>
 
 <body>
@@ -47,6 +48,22 @@
       @endif
     </ul>
   </nav>
+
+  <div class="container">
+
+        <div class="for-emp-contain">
+            <a href="#" id="responClicked"><img src="https://image.flaticon.com/icons/svg/60/60510.svg" alt=""></a>
+        </div>
+
+        <div class="for-emp-respon">
+            <div class="for-emp-respon-grid" id="respon-menu">
+                <a href="{{ route('admin.dashboard') }}"><img src="https://image.flaticon.com/icons/svg/1319/1319495.svg" alt="">Employee Resource
+                    Management</a>
+                <a href="{{route('admin.stock')}}"><img src="https://www.flaticon.com/premium-icon/icons/svg/1009/1009874.svg" alt="">Stock</a>
+                <a href="{{ route('admin.orders') }}"><img src="https://image.flaticon.com/icons/svg/1252/1252355.svg" alt="">Order</a>
+            </div>
+
+        </div>
   @yield('content')
 
   <footer>

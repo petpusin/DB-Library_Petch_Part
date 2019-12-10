@@ -38,7 +38,11 @@ Route::prefix('admin')->group(function () {
     Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout.home');
     //dashboard edit & delete
     Route::get('/dashboard', 'AdminController@dashboard')->name('admin.dashboard');
-    Route::get('/employee/edit/{employeeNumber}', 'AdminController@employeeedit');
+    Route::get('/employee/edit/{employeeNumber}', 'AdminController@employeeEdit');
+    Route::get('/employee/create/{employeeNumber}','AdminController@employeeCreate')->name('admin.create');
+    Route::get('/employee/delete/{employeeNumber}','AdminController@employeeDelete');
+    Route::get('/employee/delete/update/{employeeNumber}','AdminController@deleteUpdate');
+    Route::put('/employee/create/update/{employeeNumber}', 'AdminController@CreateUpdate');
     Route::put('/employee/edit-update/{employeeNumber}', 'AdminController@employeeupdate');
     //order
 
@@ -57,50 +61,25 @@ Route::prefix('admin')->group(function () {
 
 
     Route::get('cart/remove/{id}', 'CartController@destroy');
+    Route::get('/customer/register','CustomerController@create')->name('admin.customer.create');
+    Route::post('/customer/success','CustomerController@store')->name('admin.customer.store');
+    Route::get('/checkout','CheckoutController@index')->name('admin.checkout.index');
 });
 
 
 Route::resource('catalog', 'CatalogController');
 
-<<<<<<< HEAD
-Route::post('catalog/cat10', 'CatalogController@get10'); //->name('catalog.filter');
-Route::post('catalog/cat12', 'CatalogController@get12');
-Route::post('catalog/cat18', 'CatalogController@get18');
-Route::post('catalog/cat24', 'CatalogController@get24');
-Route::post('catalog/cat32', 'CatalogController@get32');
-Route::post('catalog/cat50', 'CatalogController@get50');
-Route::post('catalog/cat72', 'CatalogController@get72');
-Route::post('catalog/cat700', 'CatalogController@get700');
-
-Route::post('catalog/v1', 'CatalogController@v1');
-Route::post('catalog/v2', 'CatalogController@v2');
-Route::post('catalog/v3', 'CatalogController@v3');
-Route::post('catalog/v4', 'CatalogController@v4');
-Route::post('catalog/v5', 'CatalogController@v5');
-Route::post('catalog/v6', 'CatalogController@v6');
-Route::post('catalog/v7', 'CatalogController@v7');
-Route::post('catalog/v8', 'CatalogController@v8');
-Route::post('catalog/v9', 'CatalogController@v9');
-Route::post('catalog/v10', 'CatalogController@v10');
-Route::post('catalog/v11', 'CatalogController@v11');
-Route::post('catalog/v12', 'CatalogController@v12');
-Route::post('catalog/v13', 'CatalogController@v13');
 
 Route::post('/coupon','CouponsController@store')->name('coupon.store');
 Route::delete('/coupon','CouponsController@destroy')->name('coupon.destroy');
-=======
-
-
->>>>>>> 33d326577e45e72dac8c38a778c01819f93d752b
 
 Route::get('productsCat','CatalogController@productsCat');
 
-Route::post('catalog/{id}/{product}', 'CatalogController@reset');
 
 Route::get('catalog/{id}', 'CatalogController@show')->name('catalog.show');
 Route::get('catalog/{id}/{product}', 'CatalogController@showproduct')->name('catalog.product');
 
-Route::get('/checkout','CheckoutController@index')->name('checkout.index');
+
 
 
 

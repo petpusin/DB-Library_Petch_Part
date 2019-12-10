@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('create.master')
 
 @section('title')
 Shopping | Product

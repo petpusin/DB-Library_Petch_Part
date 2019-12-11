@@ -3,7 +3,10 @@
 @section('title')
 Shopping | ERM
 @endsection
-@section('header')
+@section('css')
+<link rel="stylesheet" href="/css/erm.css">
+    
+@endsection
 
 
 @endsection
@@ -23,7 +26,7 @@ Shopping | ERM
         </div>
 
     </div>
-    <div class="grid-for-ermheader">Employee Resource Manager
+    <div class="grid-for-ermheader">Employee Resource Manager 
     </div>
     @foreach ($employees as $d)
                 @if($d->employeeNumber == Auth::user()->em_id && $d->jobTitle != "VP Marketing")

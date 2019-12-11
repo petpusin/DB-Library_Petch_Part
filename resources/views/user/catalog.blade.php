@@ -4,6 +4,9 @@
 Categories | Digital Shop
 @endsection
 
+@section('css')
+<link rel="stylesheet" href="/css/shopping.css">
+@endsection
 @section('content')
 
 <div class="container">

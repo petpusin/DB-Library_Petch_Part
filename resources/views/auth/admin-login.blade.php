@@ -4,7 +4,9 @@
 <title>Shopping | Admin SIgn-in</title>
 @endsection
 
-
+@section('css')
+<link rel="stylesheet" href="/css/signin.css">
+@endsection
 
 @section('content')
 <div class="container">

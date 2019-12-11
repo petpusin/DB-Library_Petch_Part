@@ -43,17 +43,16 @@ class CustomerController extends Controller
         $this->validate($request,[
 
             'customerName' => 'required',
-            'contactLastName' => 'required',
+            'contactLastName' => 'required|min:0',
             'contactFirstName' => 'required',
             'phone' => 'required',
             'addressLine1' => 'required',
-            'addressLine2' => 'required',
             'city' => 'required',
             'state' => 'required',
             'postalcode' => 'required',
             'country' => 'required',
         
-            'creditLimit' => 'required'
+            'creditLimit' => 'required|numeric'
         ]);
         $cusnum = Customer::all();
          
@@ -62,14 +61,15 @@ class CustomerController extends Controller
         $customer->customerName = $request->input('customerName');
         $customer->contactLastName = $request->input('contactLastName');
         $customer->contactFirstName = $request->input('contactFirstName');
-        $customer->phone = $request->input('addressLine1');
-        $customer->addressLine1 = $request->input('addressLine2');
-        $customer->addressLine2 = $request->input('city');
-        $customer->city = $request->input('state');
+        $customer->phone = $request->input('phone');
+        $customer->addressLine1 = $request->input('addressLine1');
+        $customer->addressLine2 = $request->input('addressLine2');
+        $customer->city = $request->input('city');
+        $customer->state = $request->input('state');
         $customer->country = $request->input('country');
         $customer->salesRepEmployeeNumber = Auth::user()->em_id;
         $customer->creditLimit = $request->input('creditLimit');
-        if(Customer::find($customer->customerNumber ) && Customer::where('customerName','=',$customer->customerName)){
+        if(!(Customer::find($customer->customerNumber ) && Customer::where('customerName','=',$customer->customerName))){
             $customer->save();
             return redirect('/admin/cart')->with([
                 'success' => 'register customer compleated',

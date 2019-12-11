@@ -1,72 +1,66 @@
- /* REGISTER */
+ /* EDITHEADER */
 
- .form-zone {
+ .edit-header-bx {
+     padding: 1em;
+     color: #000;
+     font-weight: bold;
+     border-bottom: 1px solid rgba(0, 0, 0, 0.158);
+ }
+
+ .edit-header-bx img{
+     width:25px;
+ }
+ /* EDITZONE */
+
+ .edit-zone {
      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
      margin-top: 1em;
  }
 
- .title {
-     font-size: 1em;
-     text-transform: bold;
-     color: rgb(0, 92, 230);
- }
-
- .title-regis {
-     font-size: 1em;
-     text-transform: uppercase;
-     font-weight: bold;
-     color: #FFF;
-     background-color: rgb(0, 132, 255);
-     padding: 0.4em;
-     text-align: center;
- }
-
- .grid-contain-regis {
+ .grid-contain-edit {
      display: grid;
      grid-template-columns: 1fr 2fr 1fr;
+     padding: 1em;
      border-bottom: 1px solid rgba(0, 0, 0, 0.158);
- }
-
- input {
-     width: 250px;
- }
-
- .a-side-regis {
-     padding: 1em;
- }
-
- .b-side-regis {
-     padding: 1em;
-     color: rgb(78, 115, 172);
- }
-
- .b-side-regis p {
-     font-size: 0.8em;
-     margin-bottom: 0px;
- }
-
- .b-side-regis input {
-     font-size: 0.6em;
      margin-bottom: 1em;
-     ;
  }
 
- /* REGIS BTN */
+ .edit-title {
+     font-size: 1em;
+     font-weight: bold;
+     color: rgb(0, 122, 221);
+ }
 
- .regis-btn {
-     padding: 1em;
+ .edit-dbs {
+     display: grid;
+     justify-content: center;
+     text-align: left;
+ }
+
+ .edit-dbs input {
+     width: 200px;
+     font-size: 0.7em;
+ }
+
+ .edit-dbs select {
+     font-size: 0.7em;
+ }
+
+ /* BTN */
+
+ .btn-zone {
      text-align: center;
      font-size: 0.9em;
+     padding-bottom: 1em;
  }
 
- .regis-btn button {
+ .btn-zone button {
      border: none;
      background-color: rgb(12, 130, 209);
      color: #FFF;
-     margin-right: 1em;
  }
 
- .regis-btn a:hover {
+ .btn-zone a:hover {
      text-decoration: none;
      color: rgb(0, 63, 146);
  }
@@ -96,6 +90,9 @@
  }
 
  @media only screen and (max-width:660px) {
+     .edit-header-bx {
+         font-size: 0.9em;
+     }
      #home-button, #back-button {
          width: 15px;
      }

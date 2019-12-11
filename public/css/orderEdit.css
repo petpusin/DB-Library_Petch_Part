@@ -1,0 +1,114 @@
+/* ORDER EDITT */
+
+.grid-all-edit-order {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 1em;
+}
+
+.grid-edit-order-head {
+    text-align: center;
+    background-color: rgb(12, 130, 209);
+    color: #FFF;
+    padding: 0.7em;
+}
+
+.grid-contain-edit-order {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.158);
+    padding: 1em;
+}
+
+.title-head {
+    font-size: 1em;
+    color: rgb(0, 138, 218);
+}
+
+.ans-from-dbs {
+    font-size: 0.8em;
+    color: rgb(79, 108, 124);
+}
+
+.head-edit {
+    text-transform: uppercase;
+    font-size: 1.7em;
+    color: rgb(0, 89, 141);
+}
+
+.for-button-save {
+    text-align: center;
+    padding: 0.3em;
+}
+
+button {
+    border: none;
+    background-color: rgb(12, 130, 209);
+    color: #FFF;
+}
+
+.grid-contain-edit-order input {
+    margin-bottom: 1em;
+}
+
+.grid-contain-edit-order select {
+    margin-bottom: 1em;
+}
+
+/* BACK AND HOME */
+
+#back-button {
+    margin-top: 3em;
+}
+
+#home-button {
+    margin-top: 3em;
+}
+
+#home-button, #back-button {
+    margin-right: 1em;
+    width: 20px;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .2s ease-in-out;
+    transition: .2s ease-in-out;
+}
+
+#home-button:hover, #back-button:hover {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+@media only screen and (max-width:660px) {
+    .title-head {
+        font-size: 0.8em;
+    }
+    .head-edit {
+        font-size: 1.2em;
+    }
+    .ans-from-dbs {
+        font-size: 0.6em;
+    }
+    .head-addproduct {
+        font-size: 0.8em;
+    }
+    .product-main {
+        margin-top: 0.4em;
+        font-size: 0.7em;
+    }
+    .desc-main {
+        font-size: 0.7em;
+    }
+    .quanti-main {
+        font-size: 0.7em;
+    }
+    #home-button, #back-button {
+        width: 15px;
+    }
+    .home-button, .back-button {
+        display: flex;
+        justify-content: center;
+    }
+    #home-button {
+        margin-top: 1em;
+    }
+}

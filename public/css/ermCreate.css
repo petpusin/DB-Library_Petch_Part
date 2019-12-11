@@ -1,0 +1,116 @@
+/* CREATE HEADER */
+
+.create-header {
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 0.6em;
+    color: #FFF;
+    background-color: rgb(0, 122, 221);
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* CREATE ZONE */
+
+.create-box {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 1em;
+}
+
+.contain-grid-create {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    padding: 1em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.158);
+}
+
+.div-inline {
+    display: inline-block;
+}
+
+.title-cr {
+    text-transform: uppercase;
+    font-size: 1em;
+    font-weight: bold;
+    color: rgb(0, 138, 218);
+}
+
+.ans-cr {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: rgb(79, 158, 204);
+}
+
+.b-side-create p {
+    font-size: 0.9em;
+    margin-bottom: 0.4em;
+    color: rgb(73, 102, 121);
+}
+
+.b-side-create input {
+    font-size: 0.6em;
+    width: 250px;
+    margin-bottom: 1em;
+}
+
+.b-side-create select {
+    font-size: 0.9em;
+    margin-bottom: 1em;
+}
+
+/* CREATE BTN*/
+
+.create-btn {
+    padding: 0.7em;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.create-btn button {
+    border: none;
+    background-color: rgb(12, 130, 209);
+    color: #FFF;
+}
+
+/* HOME AND BACK */
+
+#back-button {
+    margin-top: 3em;
+}
+
+#home-button {
+    margin-top: 3em;
+}
+
+#home-button, #back-button {
+    margin-right: 1em;
+    width: 20px;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .2s ease-in-out;
+    transition: .2s ease-in-out;
+}
+
+#home-button:hover, #back-button:hover {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+@media only screen and (max-width:660px) {
+    .title-cr {
+        font-size: 0.6em;
+    }
+    .ans-cr {
+        font-size: 0.5em;
+    }
+    #home-button, #back-button {
+        width: 15px;
+    }
+    .home-button, .back-button {
+        display: flex;
+        justify-content: center;
+    }
+    #home-button {
+        margin-top: 1em;
+    }
+}

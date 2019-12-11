@@ -4,11 +4,14 @@
 Shopping | Stock
 @endsection
 
-@
+@section('css')
+<link rel="stylesheet" href="/css/stock.css">
+@endsection
+
 
 @section('content')
 
-<h1 class="display-4 text-center mb-4 text-light">STOCK</h1>
+
 
 <!-- make table resposive -->
 <div class="table-responsive">
@@ -30,107 +33,80 @@ Shopping | Stock
         </ul>
     </div>
     @endif
+    <div class="container">
+    <div class="for-emp-contain">
+            <a href="#" id="responClicked"><img src="https://image.flaticon.com/icons/svg/60/60510.svg" alt=""></a>
+        </div>
 
-        <table class="col-md-12" style="margin-bottom:50px;">
+        <div class="for-emp-respon">
+            <div class="for-emp-respon-grid" id="respon-menu">
+                <a href="#"><img src="https://image.flaticon.com/icons/svg/1319/1319495.svg" alt="">Employee Resource
+                    Management</a>
+                <a href="#"><img src="https://www.flaticon.com/premium-icon/icons/svg/1009/1009874.svg" alt="">Stock</a>
+                <a href="#"><img src="https://image.flaticon.com/icons/svg/1252/1252355.svg" alt="">Order</a>
+            </div>
 
-            <tr class="text-weight-light text-center" style="background-color: black;color: white;">
-                <th class="font-weight-light">productCode</th>
-                <th class="font-weight-light">productName</th>
-                <th class="font-weight-light">productScale</th>
-                <th class="font-weight-light">productVendor</th>
-                <th class="font-weight-light">productDescription</th>
-                <th class="font-weight-light">productLine</th>
-                <th class="font-weight-light">quantityInStock</th>
-                <th class="font-weight-light">buyPrice</th>
-                <th class="font-weight-light">MSRP</th>
-                <th class="font-weight-light" style="color:red"  >ADD</th>
-            </tr>
+        </div>
+        <!-- STOCK HEADER -->
+
+        <div class="search-field">
+            <div class="filter-grid-container">
+                <div class="filter-item1">
+                    <img id="filter-mag" src="/img/magnifying-glass.svg" alt="">
+                    <select name="" id="">
+                        <option value="" disabled selected>Title</option>
+                        <option value="">Code</option>
+                        <option value="">Name</option>
+                        <option value="">Line</option>
+                        <option value="">Scale</option>
+                        <option value="">Vendor</option>
+                    </select></div>
+
+                <div class="filter-item2">
+                    <input type="text" placeholder="search key">
+                </div>
+
+            </div>
+        </div>
+
+        <div class="grid-for-stockheader">Stock</div>
+        <div class="grid-for-addstock"><a href="{{route('admin.stock.create')}}">Add Stock[+]</a></div>
         
-            <tr style="background-color:black;opacity:0.95;height:50px">
+        <div class="grid-contain-head-stock">
+            <div>code</div>
+            <div>name</div>
+            <div>line</div>
+            <div>scale</div>
+            <div>vendor</div>
+            <div>Description</div>
+            <div>in stock</div>
+            <div>Price</div>
+            <div>Msrp</div>
+            <div>Tools</div>
+        </div>
 
-                <td>
-                    <input type="text" placeholder="">
-                </td>
-                <td>
-                    <input type="text" placeholder="">
-                </td>
-                <td>
-                    <input type="text" placeholder="">
-                </td>
-                <td>
-                    <input type="text" placeholder="">
-                </td>
-                <td>
-                    <input type="text" placeholder="">
-                </td>
-                <td>
-                    <input type="text" placeholder="">
-                </td>
-                <td>
-                    <input type="text" placeholder="">
-                </td>
-                <td>
-                    <input type="text" placeholder="">
-                </td>
-                <td>
-                    <input type="text" placeholder="">
-                </td>
-                <td colspan="2">
-                    <a type="" href="{{route('admin.stock.create')}}"><img src="/img/addst.svg" width="25px" height="25px" alt="edit"></a>
-                </td>
+        <!-- FROM DATABASE -->
+        @foreach($product as $data)
+        <div class="grid-contain-dbs-stock">
+            <div>{{$data->productCode}}</div>
+            <div>{{$data->productName}}</div>
+            <div>{{$data->productName}}</div>
+            <div>{{$data->productScale}}</div>
+            <div>{{$data->productVendor}}</div>
+            <div>{{$data->productDescription}}</div>
+            <div>{{$data->quantityInStock}}</div>
+            <div>{{$data->buyPrice}}</div>
+            <div>{{$data->MSRP}}</div>
+            <div><a href="#">Edit</a><br><br><a id="delete-button" href="#">Delete</a></div>
+        </div>
+        @endforeach
 
+        <!-- END DATABASE -->
 
-            </tr>
-        </table>
-        <!-- 'productCode','productName','productScale','productVendor','productLine','productDescription','quantityInStock','buyPrice','MSRP' -->
-        <div class="card md-4"></div>
-        <table class="col-md-12 text-center" style="background-color:white;" id="myTR">
-            <tr style="background-color:#3b444b; color:white;text-align:center">
-                <th class="font-weight-light">productCode</th>
-                <th class="font-weight-light">productName</th>
-                <th class="font-weight-light">productLine</th>
-                <th class="font-weight-light">productScale</th>
-                <th class="font-weight-light">productVendor</th>
-                <th class="font-weight-light">productDescription</th>
-                <th class="font-weight-light">quantityInStock</th>
-                <th class="font-weight-light">buyPrice</th>
-                <th class="font-weight-light">MSRP</th>
-                <th class="font-weight-light">edit/delete</th>
-            </tr>
-            @foreach($product as $data)
-            <tr>
-                
-                <td class="font-weight-light">{{$data->productLine}}</td>
-                <td class="font-weight-light">{{$data->productName}}</td>
-                <td class="font-weight-light">{{$data->productLine}}</td>
-                <td class="font-weight-light">{{$data->productScale}}</td>
-                <td class="font-weight-light">{{$data->productVendor}}</td>
-                <td class="font-weight-light">{{$data->productDescription}}</td>
-                <td class="font-weight-light">{{$data->quantityInStock}}</td>
-                <td class="font-weight-light">{{$data->buyPrice}}</td>
-                <td class="font-weight-light">{{$data->MSRP}}</td>
-
-                <td>
-                    <div class="">
-                        <a type="" href="#"><img src="/img/pencil.svg" width="35" height="35" alt="edit"></a>
-                        <a type="" href="#"><img src="/img/delete.png" width="30" height="30" alt="edit"></a>
-                    </div>
-                </td>
-                @endforeach
-            </tr>
-        </table>
-
-        
-
+        <div class="back-to-basic"><a class="back-button" href="/"><img id="back-button"
+                    src="/img/keyboard-left-arrow-button.svg" alt=""></a>
+            <a class="home-button" href="javascript:history.back()"><img id="home-button" src="/img/home.svg" alt=""></a></div>
     </div>
-    <footer>
-        <!-- FOR CONTACT -->
-        <hr>
-        <br>
-        <img src="/img/phone-book.svg" width="18px" ; height="18px"> CONTACT US<br>cpeg2DB@GMAIL.COM | TEL XXX-XXXXXXX
-    </footer>
-</div>
-
-
-<!-- <script src="resources/js/searchengine.js"></script> -->
+       
 @endsection
+

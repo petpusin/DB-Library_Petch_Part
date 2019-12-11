@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Customer;
 use Illuminate\Http\Request;
 use Cart;
+use App\Order;
+use App\Orderdetail;
+
 class CheckoutController extends Controller
 {
     /**
@@ -13,17 +17,41 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        $tax = config('cart.tax') /100;
-        $discount = session()->get('coupon')['discount'] ?? 0;
-        $newSubtotal = (Cart::subtotal() - $discount);
-        $newTax = $newSubtotal * $tax;
-        $newTotal = $newSubtotal + $newTax;
-        return view('create.checkout')->with([
-            'discount' => $discount,
-            'newSubtotal' => $newSubtotal,
-            'newTax' => $newTax,
-            'newTotal' => $newTotal,
-        ]);
+    }
+
+    public  function createcheckout(Request $request)
+    {
+        $customer = Customer::select('*')->where('customerName','=',$request->input('customername'))->firstOrFail();
+        if(Customer::find($customer->customerNumber ) && Customer::where('customerName','=',$customer->customerName)){
+            $customers = Customer::select('*')->where('customerName','=',$request->input('customername'))->firstOrFail();
+            $ordernum = Order::all();
+            $order = new Order;
+            $order->orderNumber = $ordernum->max('orderNumber')+ 1;
+            $order->orderDate = $request->input('orderdate');
+            $order->requiredDate = $request->input('requiredDate');
+            $order->shippedDate = null;
+            $order->status = 'in process';
+            $order->comments = $request->input('comments');
+            $order->customerNumber = $customers->customerNumber;
+            $order->save();
+            $i = 1;
+            foreach(Cart::content() as $cData){
+                $orderdetail = new Orderdetail;
+                $orderdetail->orderNumber = $ordernum->max('orderNumber')+ 1;
+                $orderdetail->productCode = $cData->id;
+                $orderdetail->quantityOrdered = $cData->qty;
+                $orderdetail->priceEach = $cData->price;
+                $orderdetail->orderLineNumber = $orderdetail->orderLineNumber +  $i;
+                $orderdetail->save();
+                $i ++;
+            }
+            Cart::destroy();
+            return redirect('/');
+                
+        }else{
+            return redirect()->back()->with('error','Unfound Customer in Data');
+        }
+        
     }
 
     /**

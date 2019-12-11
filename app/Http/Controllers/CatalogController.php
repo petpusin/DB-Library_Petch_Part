@@ -26,7 +26,7 @@ class CatalogController extends Controller
     }
     public function showproduct($id,$product)
      {
-       $products = Products::where('productLine',$id)->firstOrFail();
+       $products = Products::where('productCode',$product)->firstOrFail();
        return view('create.product')->with('product',$products);
      }
 
@@ -83,7 +83,7 @@ class CatalogController extends Controller
         ->get();
       return view('user.catalog',compact('productscales','productvendors','products'));
     }
-
+    
     
     /**
      * Show the form for editing the specified resource.

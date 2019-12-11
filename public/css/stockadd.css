@@ -1,0 +1,150 @@
+/* ADD PRODUCT BOX */
+
+.grid-contain-addproduct {
+    display: grid;
+    grid-template-columns: 1fr;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.head-addproduct {
+    font-size: 1.2em;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.158);
+    padding: 0.4em;
+    background-color: rgb(12, 130, 209);
+    color: #FFF;
+}
+
+/* GRID1 */
+
+.grid-contain-1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.158);
+    padding-bottom: 1.5em;
+}
+
+.product-main {
+    font-size: 1em;
+    padding-top: 0.4em;
+    padding-left: 0.4em;
+}
+
+.about-product {
+    font-size: 0.8em;
+    padding: 0.4em;
+}
+
+.form-add-product {
+    font-size: 0.8em;
+    line-height: 0.7em;
+}
+
+.form-add-product input {
+    width: 300px;
+}
+
+.form-add-product p:nth-child(1) {
+    margin-top: 1em;
+}
+
+/* GRID2 */
+
+.gird-contain-2 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.158);
+    padding-bottom: 1.5em;
+    padding: 0.4em;
+}
+
+.desc-main {
+    font-size: 1em;
+    padding: 0.4em;
+}
+
+/* GRID3 */
+
+.grid-contain-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.158);
+    padding-bottom: 1.5em;
+}
+
+.quanti-main {
+    font-size: 1em;
+    padding: 0.4em;
+}
+
+.quanti-details {
+    padding: 0.4em;
+    font-size: 0.8em;
+    line-height: 1em;
+}
+
+.quanti-details p {
+    margin-top: 0.8em;
+}
+
+.submmit-btn {
+    padding: 0.8em;
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    border: none;
+    background-color: rgb(12, 130, 209);
+    color: #FFF;
+}
+
+/* BACK AND HOME */
+
+#back-button {
+    margin-top: 3em;
+}
+
+#home-button {
+    margin-top: 3em;
+}
+
+#home-button, #back-button {
+    margin-right: 1em;
+    width: 20px;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .2s ease-in-out;
+    transition: .2s ease-in-out;
+}
+
+#home-button:hover, #back-button:hover {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+@media only screen and (max-width:660px) {
+    .head-addproduct {
+        font-size: 0.8em;
+    }
+    .product-main {
+        margin-top: 0.4em;
+        font-size: 0.7em;
+    }
+    .desc-main {
+        font-size: 0.7em;
+    }
+    .quanti-main {
+        font-size: 0.7em;
+    }
+    #home-button, #back-button {
+        width: 15px;
+    }
+    .home-button, .back-button {
+        display: flex;
+        justify-content: center;
+    }
+    #home-button {
+        margin-top: 1em;
+    }
+}

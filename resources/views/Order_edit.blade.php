@@ -1,27 +1,8 @@
-@extends('layouts.app')
+@extends('create.master')
 
-@section('head')
+@section('css')
 
-<link href="{{ asset('css/signin.css')}}" rel="stylesheet">
-
-<style>
-    tr:nth-child(odd) {
-    background-color: #f2f2f2;
-    }
-    footer {
-    font-size: 10px;
-    font-weight: lighter;
-    color: white;
-    text-align: center;
-    position: relative;
-    margin-top: 40px;
-    }
-
-    hr{
-      background-color:white;
-      height:0.5px;
-    }
-  </style>
+<link href="/css/orderEdit.css" rel="stylesheet">
 
 @endsection
 
@@ -30,186 +11,162 @@
 Shopping | Order/Edit
 
 @endsection
-
 @section('content')
-<h1 class="display-4 text-center mb-4 text-light">ORDER</h1>
-
-
 <div class="container">
-  <div class="col-md-12">
+  <div class="for-emp-contain">
+    <a href="#" id="responClicked"><img src="https://image.flaticon.com/icons/svg/60/60510.svg" alt=""></a>
+  </div>
 
-    <!-- Search Widget -->
-    <div class="my-4 bg-light" style="opacity:0.95">
-       
-      <div class="card-body">
-      <font class="card text-center mb-4"style="color:white;background-color:#3b444b;font-weight:lighter;font-size:20px">EDIT ORDER</font>
-              <center>
-                <table>
-                  @foreach($or as $aaa)
-        <tr>
-        <td style="background-color:black;color: white ; width:10% ; height:50px">
-        <center>Order No.</center>
-        </td>
-        <td style="width:40% ;height:50px">
-          <center class="font-weight-light">{{$aaa->orderNumber}}</center>
-        </td>
-        </tr>
-        <tr>
-          <td style="background-color: black ; color: white ; width:10% ; height:50px">
-            <center>Order Date</center>
-          </td>
-          <td height="50">
-            <center class="font-weight-light">{{$aaa->orderDate}}</center>
-          </td>
-        </tr>
-        <tr>
-          <td style="background-color: black ; color: white ; width:10% ; height:50px">
-            <center>Required Date</center>
-          </td>
-          <td height="50">
-            <center class="font-weight-light">{{$aaa->requiredDate}}</center>
-          </td>
-        </tr>
-        @foreach($cus as $bbb)
-        @if($aaa->customerNumber == $bbb->customerNumber)
-        <tr>
-          <td style="background-color: black ; color: white ; width:10% ; height:50px">
-            <center>First Name</center>
-          </td>
-          <td height="50">
-            <center class="font-weight-light">{{$bbb->contactFirstName}}</center>
-          </td>
-        </tr>
-        <tr>
-          <td style="background-color: black ; color: white ; width:10% ; height:50px">
-            <center>Last Name</center>
-          </td>
-          <td height="50">
-            <center class="font-weight-light">{{$bbb->contactLastName}}</center>
-          </td>
-        </tr>
-        @endif
-        @endforeach
-        <form action="update/{{$aaa->orderNumber}}" method="post">
-          {{ method_field('put') }}
-          {{ csrf_field() }}
-          <tr>
-            <td style="background-color: black ; color: white ; width:10% ; height:50px">
-              <center>Shipped Date</center>
-            </td>
-            <td>
-              <center><input type="date" name="shippedDate" value={{$aaa->shippedDate}}></center>
-            </td>
-          </tr>
-          <tr>
-            <td style="background-color: black ; color: white ; width:10% ; height:50px">
-              <center>Status</center>
-            </td>
-            <td>
-              <center>
-                @if($aaa->status == "Cancelled")
-                <select name="status">
-                  <option value="Cancelled" selected>Cancelled</option>
-                  <option value="Disputed">Disputed</option>
-                  <option value="In Process">In Process</option>
-                  <option value="On Hold">On Hold</option>
-                  <option value="Resolved">Resolved</option>
-                  <option value="Shipped">Shipped</option>
-                </select>
-                @elseif($aaa->status == "Disputed")
-                <select name="status">
-                  <option value="Cancelled">Cancelled</option>
-                  <option value="Disputed" selected>Disputed</option>
-                  <option value="In Process">In Process</option>
-                  <option value="On Hold">On Hold</option>
-                  <option value="Resolved">Resolved</option>
-                  <option value="Shipped">Shipped</option>
-                </select>
-                @elseif($aaa->status == "In Process")
-                <select name="status">
-                  <option value="Cancelled">Cancelled</option>
-                  <option value="Disputed">Disputed</option>
-                  <option value="In Process" selected>In Process</option>
-                  <option value="On Hold">On Hold</option>
-                  <option value="Resolved">Resolved</option>
-                  <option value="Shipped">Shipped</option>
-                </select>
-                @elseif($aaa->status == "On Hold")
-                <select name="status">
-                  <option value="Cancelled">Cancelled</option>
-                  <option value="Disputed">Disputed</option>
-                  <option value="In Process">In Process</option>
-                  <option value="On Hold" selected>On Hold</option>
-                  <option value="Resolved">Resolved</option>
-                  <option value="Shipped">Shipped</option>
-                </select>
-                @elseif($aaa->status == "Resolved")
-                <select name="status">
-                  <option value="Cancelled">Cancelled</option>
-                  <option value="Disputed">Disputed</option>
-                  <option value="In Process">In Process</option>
-                  <option value="On Hold">On Hold</option>
-                  <option value="Resolved" selected>Resolved</option>
-                  <option value="Shipped">Shipped</option>
-                </select>
-                @else
-                <select name="status">
-                  <option value="Cancelled">Cancelled</option>
-                  <option value="Disputed">Disputed</option>
-                  <option value="In Process">In Process</option>
-                  <option value="On Hold">On Hold</option>
-                  <option value="Resolved">Resolved</option>
-                  <option value="Shipped" selected>Shipped</option>
-                </select>
-                @endif
-              </center>
-            </td>
-          </tr>
-          <tr>
-            <td style="background-color: black ; color: white ; width:10% ; height:50px">
-              <center>Comment</center>
-            </td>
-            <td>
-              <center><textarea rows="3" cols="60" name="comments">{{$aaa->comments}}</textarea></center>
-            </td>
-
-          </tr>
-          <table>
-            <div style="margin-top:30px">
-              <center><input type="submit" class="btn" onclick="success()" value="Save" style="background-color:black;color:chartreuse;margin:10px"></center>
-            </div>
-
-          </table>
-        </form>
-        @endforeach
-        </table>
-
-        </center>
-        <a href="/admin/orders"><img src="/img/left-arrow.svg" width="18px" class="my-3">
-          <font color="black" class="font-weight-light">Back<font>
-        </a>
-      </div>
-
+  <div class="for-emp-respon">
+    <div class="for-emp-respon-grid" id="respon-menu">
+      <a href="#"><img src="https://image.flaticon.com/icons/svg/1319/1319495.svg" alt="">Employee Resource
+        Management</a>
+      <a href="#"><img src="https://www.flaticon.com/premium-icon/icons/svg/1009/1009874.svg" alt="">Stock</a>
+      <a href="#"><img src="https://image.flaticon.com/icons/svg/1252/1252355.svg" alt="">Order</a>
     </div>
 
-    <footer>      <!-- FOR CONTACT -->
-  <hr>
-  <br>
-      <img src="/img/phone-book.svg" width="18px"; height="18px"> CONTACT US<br>cpeg2DB@GMAIL.COM | TEL XXX-XXXXXXX
-    </footer>
-    @endsection
+  </div>
 
-    @section('script')
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script>
-      function success() {
-        alert("Saved Success !!!");
-      }
-    </script>
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    @endsection
+  <!-- EDIT ORDER -->
+  <div class="grid-all-edit-order">
+    <div class="grid-edit-order-head">EDIT ORDER</div>
+    @foreach($or as $aaa)
+    <div class="grid-contain-edit-order">
+      <div class="head-edit">Details</div>
+      <div>
+        <div>
+          <p class="title-head">Number</p>
+          <p class="ans-from-dbs">{{$aaa->orderNumber}}</p>
+        </div>
+        <div>
+          <p class="title-head">Date</p>
+          <p class="ans-from-dbs">{{$aaa->orderDate}}</p>
+        </div>
+        <div>
+          <p class="title-head">Require Date</p>
+          <p class="ans-from-dbs">{{$aaa->requiredDate}}</p>
+        </div>
+        @foreach($cus as $bbb)
+        @if($aaa->customerNumber == $bbb->customerNumber)
+        <div>
+          <p class="title-head">First Name</p>
+          <p class="ans-from-dbs">{{$bbb->contactFirstName}}</p>
+        </div>
+        <div>
+          <p class="title-head">Last Name</p>
+          <p class="ans-from-dbs">{{$bbb->contactLastName}}</p>
+        </div>
+      </div>
+      <div></div>
 
-    </html>
+    </div>
+    @endif
+    @endforeach
+    <form action="update/{{$aaa->orderNumber}}" method="post">
+      {{ method_field('put') }}
+      {{ csrf_field() }}
+      <div class="grid-contain-edit-order">
+        <div class="head-edit">Edit</div>
+        <div>
+          <div>
+            <p class="title-head">Shipped Dated</p><input type="date">
+          </div>
+          <div>
+            <p class="title-head">Status</p>@if($aaa->status == "Cancelled")
+            <select name="status">
+              <option value="Cancelled" selected>Cancelled</option>
+              <option value="Disputed">Disputed</option>
+              <option value="In Process">In Process</option>
+              <option value="On Hold">On Hold</option>
+              <option value="Resolved">Resolved</option>
+              <option value="Shipped">Shipped</option>
+            </select>
+            @elseif($aaa->status == "Disputed")
+            <select name="status">
+              <option value="Cancelled">Cancelled</option>
+              <option value="Disputed" selected>Disputed</option>
+              <option value="In Process">In Process</option>
+              <option value="On Hold">On Hold</option>
+              <option value="Resolved">Resolved</option>
+              <option value="Shipped">Shipped</option>
+            </select>
+            @elseif($aaa->status == "In Process")
+            <select name="status">
+              <option value="Cancelled">Cancelled</option>
+              <option value="Disputed">Disputed</option>
+              <option value="In Process" selected>In Process</option>
+              <option value="On Hold">On Hold</option>
+              <option value="Resolved">Resolved</option>
+              <option value="Shipped">Shipped</option>
+            </select>
+            @elseif($aaa->status == "On Hold")
+            <select name="status">
+              <option value="Cancelled">Cancelled</option>
+              <option value="Disputed">Disputed</option>
+              <option value="In Process">In Process</option>
+              <option value="On Hold" selected>On Hold</option>
+              <option value="Resolved">Resolved</option>
+              <option value="Shipped">Shipped</option>
+            </select>
+            @elseif($aaa->status == "Resolved")
+            <select name="status">
+              <option value="Cancelled">Cancelled</option>
+              <option value="Disputed">Disputed</option>
+              <option value="In Process">In Process</option>
+              <option value="On Hold">On Hold</option>
+              <option value="Resolved" selected>Resolved</option>
+              <option value="Shipped">Shipped</option>
+            </select>
+            @else
+            <select name="status">
+              <option value="Cancelled">Cancelled</option>
+              <option value="Disputed">Disputed</option>
+              <option value="In Process">In Process</option>
+              <option value="On Hold">On Hold</option>
+              <option value="Resolved">Resolved</option>
+              <option value="Shipped" selected>Shipped</option>
+            </select>
+            @endif
+          </div>
+          <div>
+            <p class="title-head">Comment</p><textarea name="" id="" cols="30" rows="2">{{$aaa->comments}}</textarea>
+          </div>
+        </div>
+        <div></div>
+        <div class="grid-contain-edit-order">
+          <div></div>
+          <div class="for-button-save">
+            <button onclick="success()" value="Save">Save</button>
+          </div>
+          <div></div>
+
+        </div>
+    </form>
+    @endforeach
+
+  </div>
+</div>
+
+
+<div class="back-to-basic"><a class="back-button" href="#"><img id="back-button" src="/img/keyboard-left-arrow-button.svg" alt=""></a>
+  <a class="home-button" href="#"><img id="home-button" src="/img/home.svg" alt=""></a></div>
+</div>
+
+@section('content')
+
+@endsection
+
+@section('script')
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{{ asset('js/app.js') }}" defer></script>
+<script>
+  function success() {
+    alert("Saved Success !!!");
+  }
+</script>
+<script src="{{ asset('js/app.js') }}" defer></script>
+<script src="js/indexscpt.js"></script>
+@endsection
+

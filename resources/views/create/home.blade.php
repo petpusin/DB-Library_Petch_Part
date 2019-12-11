@@ -3,7 +3,9 @@
 @section('title')
 Categories | Digital Shop
 @endsection
-
+@section('job')
+{{Auth::user()->employee->jobTitle}}
+@endsection
     <!-- CONTENT -->
 @section('content')
     <div class="container">

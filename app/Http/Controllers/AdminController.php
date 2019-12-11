@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Admin;
 use Illuminate\Http\Request;
 use App\employees;
 
@@ -72,6 +73,9 @@ class AdminController extends Controller
             $employees->reportsTo = $request->input('reportsTo');
             $employees->jobTitle = $request->input('jobTitle');
             $employees->save();
+            $admin = new Admin;
+            $admin->em_id = $request->input('employeeNumber');
+            
         }else{
             // $ii = 1;
             // return redirect('/admin/dashboard/')->with('error',$ii);

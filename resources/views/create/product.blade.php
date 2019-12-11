@@ -4,6 +4,10 @@
 Shopping | Product
 @endsection
 
+@section('css')
+<link rel="stylesheet" href="/css/shopdetail.css">
+@endsection
+
 @section('content')
 
 

@@ -25,7 +25,7 @@
             {{session('error')}}
         </div>
         @endif
-
+        {{Cart::content()}}
         @if (Cart::count() > 0)
 
         <h2>{{ Cart::count() }} item(s) in Shopping Cart</h2>
@@ -157,8 +157,35 @@
                                 <table>
                                     <tr>
                                     <tr>
-                                        <td>CustomerNumber</td>
-                                        <td>498</td>
+                                        
+                                        <td>
+                                            <form action="{{url('/admin/checkout')}}" style="display:block" method="POST" id="payment-form">
+                                            {{ csrf_field() }}
+                                                 <div class="form-group">
+                                                 <label for="customername">Customer Name</label>
+                                                    <input type="text" class="form-control" id="customername" name="customername" value="{{ old('customerName') }}" required>
+                                                    
+                                                </div>
+                                                <div class="form-group">
+                                                <label for="orderdate">order date</label>
+                                                <input type="date" name="orderdate" id="orderdate" value="{{ old('orderDate') }}" required pattern="\d{4}-\d{2}-\d{2}">
+                                                </div>
+                                                <div class="form-group">
+                                                <label for="requiredDate">requiredDate</label>
+                                                <input type="date" name="requiredDate" id="requiredDate" value="{{ old('orderdate') }}" required pattern="\d{4}-\d{2}-\d{2}">
+                                                </div>
+                                                <div class="form-group">
+                                                 <label for="comments">Comment</label>
+                                                    <input type="text" class="form-control" id="comments" name="comments" value="{{ old('comments') }}" required>
+                                                    
+                                                </div>
+                                                
+                                                <button type="submit" id="complete-order" class="button-primary full-width">Check</button>
+                                                
+
+
+                                            </form>
+                                        </td>
                                         <td>
 
                                         </td>
@@ -282,8 +309,7 @@
                 alert('enter only number value')
             } else {
                 $.ajax({
-                    url: '{{url('
-                    admin / cart / update ')}}',
+                    url: '{{url('admin/cart/update')}}',
                     data: 'rowID=' + rowID + '&ID=' + ID + '&newQty=' + newQty,
                     type: 'get',
                     success: function(response) {

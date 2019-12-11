@@ -25,6 +25,15 @@ class CustomerController extends Controller
         return view('create.register_old_customer');
     }
 
+    public function create2chek(Request $request)
+    {
+        $customer = Customer::find($request);
+        if($customer = true){
+            return redirect('/admin/cart')->with('customer',$customer->customerNumber);
+        }else{
+            return view('create.register_old_customer')->with('error','Unfound Old Customer');
+        }
+    }
    
 
 
@@ -60,8 +69,19 @@ class CustomerController extends Controller
         $customer->country = $request->input('country');
         $customer->salesRepEmployeeNumber = Auth::user()->em_id;
         $customer->creditLimit = $request->input('creditLimit');
-        $customer->save();
-        return redirect('/admin/cart')->with('success','register customer compleated')
-        ->with('customer',$customer);
+        if(Customer::find($customer->customerNumber ) && Customer::where('customerName','=',$customer->customerName)){
+            $customer->save();
+            return redirect('/admin/cart')->with([
+                'success' => 'register customer compleated',
+            'customer' => $cusnum->max('customerNumber'),
+            ]);
+        }else{
+            return redirect('/admin/cart')->with([
+                'error' => ' customer have history',]);
+        }
+        
+        
+        
+        
     }
 }

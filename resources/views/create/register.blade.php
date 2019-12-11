@@ -39,7 +39,7 @@ Shopping | Product
 
                 </div>
                 <div class="form-group">
-                    <label for="customerName">Name</label>
+                    <label for="customerName">Customer Name</label>
                     <input type="text" class="form-control" id="customerName" name="customerName" value="{{ old('customerName') }}" required>
                 </div>
                 <div class="form-group">

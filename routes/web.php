@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','CatalogController@index')->name('homecate');
 
-
 Route::resource('catalog', 'CatalogController');
 
 
@@ -57,7 +56,7 @@ Route::prefix('admin')->group(function () {
     //cart
     Route::get('/cart', 'CartController@index')->name('admin.cart-index');
     Route::get('/cart/add/{id}', 'CartController@additem')->name('admin.cart-add');
-   
+    Route::post('/checkout','CheckoutController@createcheckout')->name('admin.checkout');
     Route::get('/cart/update/','CartController@update');
 
 
@@ -65,7 +64,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/customer/register','CustomerController@create')->name('admin.customer.create');
     Route::get('/customer/registerold','CustomerController@create2')->name('admin.customer.create2');
     Route::post('/customer/success','CustomerController@store')->name('admin.customer.store');
-    Route::get('/checkout','CheckoutController@index')->name('checkout.index');
+    
 });
 
 

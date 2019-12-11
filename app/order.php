@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Customer;
+use Symfony\Component\HttpFoundation\Request;
 
 class Order extends Model
 {
@@ -21,4 +23,6 @@ class Order extends Model
     {
         return $this->belongsTo('App\customer','customerNumber');
     }
+
+    
 }

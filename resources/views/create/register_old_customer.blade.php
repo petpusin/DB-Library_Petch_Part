@@ -29,7 +29,7 @@ Shopping | Product
     <h1 class="checkout-heading stylish-heading">Register Old Customer</h1>
     <div class="checkout-section">
         <div>
-            <form action="{{route('admin.customer.store')}}" style="display:block" method="POST" id="payment-form">
+            <form action="{{route('admin.customer.create2chek')}}" style="display:block" method="get" id="payment-form">
                 {{ csrf_field() }}
                 
 

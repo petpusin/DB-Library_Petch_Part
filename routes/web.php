@@ -53,10 +53,15 @@ Route::prefix('admin')->group(function () {
     Route::get('/stock', 'StockController@index')->name('admin.stock');
     Route::get('/stock/create', 'StockController@create')->name('admin.stock.create');
     Route::post('/stock', 'StockController@store')->name('admin.stock.store');
+    Route::get('/stock/edit/{productCode}', 'StockController@edit');
+    Route::put('/stock/edit/update/{productCode}', 'StockController@update')->name('admin.stock.update');
+    Route::get('/stock/delete/{productCode}','StockController@delete')->name('admin.stock.delete');
     //cart
     Route::get('/cart', 'CartController@index')->name('admin.cart-index');
     Route::get('/cart/add/{id}', 'CartController@additem')->name('admin.cart-add');
-    Route::post('/checkout','CheckoutController@createcheckout')->name('admin.checkout');
+    Route::put('/checkout','CheckoutController@createcheckout')->name('admin.checkout');
+    Route::get('/billaddress','CheckoutController@bill')->name('admin.checkout.bill');
+    Route::put('/bill/{orderm}','CheckoutController@addmulti');
     Route::get('/cart/update/','CartController@update');
 
 
@@ -64,6 +69,26 @@ Route::prefix('admin')->group(function () {
     Route::get('/customer/register','CustomerController@create')->name('admin.customer.create');
     Route::get('/customer/registerold','CustomerController@create2')->name('admin.customer.create2');
     Route::post('/customer/success','CustomerController@store')->name('admin.customer.store');
+
+    //multiple
+    Route::get('/history', 'MultipleCustomers@history')->name('order_addr');
+    Route::get('/multiple', 'MultipleCustomers@multi')->name('customer.multeple');
+    Route::get('/multiple/edit/{no}', 'MultipleCustomers@multiEdit');
+    Route::get('/multiple/delete/confirm/{id}', 'MultipleCustomers@confirm_Delete');
+    Route::get('/multiple/delete/{no}', 'MultipleCustomers@multiDelete');
+    Route::get('/multiple/create/', 'MultipleCustomers@multiCreate');
+    Route::get('/multiple/notFound/', 'MultipleCustomers@notFound');
+    Route::put('/multiple/edit_/{no}', 'MultipleCustomers@multiEdit');
+    Route::put('/multiple/create/update', 'MultipleCustomers@multiCreate_');
+
+    //coupon
+    Route::get('/coupon','CouponsController@create')->name('coupon.create');
+    Route::post('/coupon/success','CouponsController@store2')->name('admin.coupon.store2');
+
+    //payment
+    Route::get('/payment/confirm','PaymentController@confirm')->name('checkout');
+    Route::put('/payment/complete','PaymentController@complete' );
+    Route::get('/payment/finish','PaymentController@finish')->name('payment');
     
 });
 

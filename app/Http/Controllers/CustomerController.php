@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Customer;
+use App\multi_addrs;
 use Illuminate\Support\Facades\Auth;
 class CustomerController extends Controller
 {
@@ -69,14 +70,24 @@ class CustomerController extends Controller
         $customer->country = $request->input('country');
         $customer->salesRepEmployeeNumber = Auth::user()->em_id;
         $customer->creditLimit = $request->input('creditLimit');
+        $customer->point = 0;
+        $multi_address = new multi_addrs;
+        $multi_address->addressLine1 = $request->input('addressLine1');
+        $multi_address->addressLine2 = $request->input('addressLine2');
+        $multi_address->city = $request->input('city');
+        $multi_address->state = $request->input('state');
+        $multi_address->country = $request->input('country');
+        $multi_address->customerNumber = $cusnum->max('customerNumber')+ 1;
+
         if(!(Customer::find($customer->customerNumber ) && Customer::where('customerName','=',$customer->customerName))){
             $customer->save();
-            return redirect('/admin/cart')->with([
+            $multi_address->save();
+            return redirect('/')->with([
                 'success' => 'register customer compleated',
             'customer' => $cusnum->max('customerNumber'),
             ]);
         }else{
-            return redirect('/admin/cart')->with([
+            return redirect('/')->with([
                 'error' => ' customer have history',]);
         }
         

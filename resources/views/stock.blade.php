@@ -40,10 +40,12 @@ Shopping | Stock
 
         <div class="for-emp-respon">
             <div class="for-emp-respon-grid" id="respon-menu">
-                <a href="#"><img src="https://image.flaticon.com/icons/svg/1319/1319495.svg" alt="">Employee Resource
+            <a href="#"><img src="/img/employee.svg" alt="">Employee Resource
                     Management</a>
-                <a href="#"><img src="https://www.flaticon.com/premium-icon/icons/svg/1009/1009874.svg" alt="">Stock</a>
-                <a href="#"><img src="https://image.flaticon.com/icons/svg/1252/1252355.svg" alt="">Order</a>
+                <a href="#"><img src="/img/factory-stock-house.svg" alt="">Stock</a>
+                <a href="#"><img src="/img/order.svg" alt="">Order</a>
+                <a href="#"><img src="/img/clipboard.svg" alt="">Register</a>
+                <a href="#"><img src="/img/customers.svg" alt="">Customer</a>
             </div>
 
         </div>
@@ -90,22 +92,21 @@ Shopping | Stock
         <div class="grid-contain-dbs-stock">
             <div>{{$data->productCode}}</div>
             <div>{{$data->productName}}</div>
-            <div>{{$data->productName}}</div>
+            <div>{{$data->productLine}}</div>
             <div>{{$data->productScale}}</div>
             <div>{{$data->productVendor}}</div>
             <div>{{$data->productDescription}}</div>
             <div>{{$data->quantityInStock}}</div>
             <div>{{$data->buyPrice}}</div>
             <div>{{$data->MSRP}}</div>
-            <div><a href="#">Edit</a><br><br><a id="delete-button" href="#">Delete</a></div>
+            <div><a href="/admin/stock/edit/{{$data->productCode}}">Edit</a><br><br><a id="delete-button" href="{{route('admin.stock.delete',$data->productCode)}}">Delete</a></div>
         </div>
         @endforeach
 
         <!-- END DATABASE -->
 
-        <div class="back-to-basic"><a class="back-button" href="/"><img id="back-button"
-                    src="/img/keyboard-left-arrow-button.svg" alt=""></a>
-            <a class="home-button" href="javascript:history.back()"><img id="home-button" src="/img/home.svg" alt=""></a></div>
+        <div><a class="back-button" href="javascript:history.back()"><img id="back-button" src="/img/keyboard-left-arrow-button.svg" alt=""></a>
+            <a class="home-button" href="/"><img id="home-button" src="/img/home.svg" alt=""></a></div>
     </div>
        
 @endsection

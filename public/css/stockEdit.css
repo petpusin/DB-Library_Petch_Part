@@ -1,0 +1,105 @@
+.title-edit {
+    font-weight: bold;
+    color: rgb(23, 119, 175);
+}
+
+.edit-detail p {
+    font-size: 0.9em;
+    margin: 0;
+    margin-top: 0.5em;
+    margin-bottom: 0.4em;
+    color: rgb(115, 143, 160);
+}
+
+.edit-detail input {
+    font-size: 0.8em;
+    width: 40%
+}
+
+.edit-detail select {
+    font-size: 0.8em;
+}
+
+.quanti input {
+    width: 10%;
+}
+
+.header-edit-zone {
+    background-color: rgb(0, 118, 197);
+    color: #FFF;
+    text-align: center;
+    padding: 0.7em;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.edit-stock-zone {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 1em;
+}
+
+.grid-contain-stocked {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.144);
+    padding: 1em;
+}
+
+.btn-zone {
+    padding: 0.8em;
+    text-align: center;
+}
+
+.btn-zone button {
+    border: none;
+    background-color: rgb(12, 130, 209);
+    color: #FFF;
+}
+
+.btn-zone button:hover {
+    background-color: rgb(7, 106, 172);
+    color: rgb(255, 251, 0);
+}
+
+/* HOME AND BACK */
+
+#back-button {
+    margin-top: 3em;
+}
+
+#home-button {
+    margin-top: 3em;
+}
+
+#home-button, #back-button {
+    margin-right: 1em;
+    width: 20px;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .2s ease-in-out;
+    transition: .2s ease-in-out;
+}
+
+#home-button:hover, #back-button:hover {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+@media only screen and (max-width:660px) {
+    .edit-detail input {
+        width: 50%;
+    }
+    .quanti input {
+        width: 20%;
+    }
+    #home-button, #back-button {
+        width: 15px;
+    }
+    .home-button, .back-button {
+        display: flex;
+        justify-content: center;
+    }
+    #home-button {
+        margin-top: 1em;
+    }
+}

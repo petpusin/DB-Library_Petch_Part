@@ -21,6 +21,7 @@ class StockController extends Controller
     }
 
     function index(){
+
         $products = Products::all();
         return view('stock')->with('product',$products);
     }
@@ -28,7 +29,10 @@ class StockController extends Controller
     public function create()
     {
         $productlines = ProductLine::all();
-        return view('dashboard.createproduct')->with('productlines',$productlines );
+        $scale = Products::select('productScale')->distinct()->get();
+        $ven = Products::select('productVendor')->distinct()->get();
+        return view('dashboard.createproduct')->with(['productlines'=>$productlines ,'scales'=>$scale,
+        'vens'=>$ven]);
     }
     // <!-- 'productCode','productName','productScale','productVendor','productLine','productDescription','quantityInStock','buyPrice','MSRP' -->
 
@@ -40,7 +44,6 @@ class StockController extends Controller
             'productscale' => 'required',
             'productvender' => 'required',
             'productline' => 'required',
-            'productdes' => 'required',
             'productqty' => 'required',
             'productprice' => 'required',
             'productmsrp' => 'required'
@@ -58,4 +61,38 @@ class StockController extends Controller
         $products->save();
         return redirect('/admin/stock')->with('success','Add Product compleated');
     }
+
+    public function edit($productCode)
+    {
+        $or = Products::where('productCode',$productCode)->get();
+        $line = ProductLine::all();
+        $scale = Products::select('productScale')->distinct()->get();
+        $ven = Products::select('productVendor')->distinct()->get();
+
+        return view('create.stockedit')->with([ 
+            'ors'=>$or,
+            'lines' => $line,
+            'scales'=>$scale,
+            'vens'=>$ven]);
+    }
+    public function update(Request $request,$productCode)
+    {
+        Products::where('productCode',$productCode)
+        ->update([
+        'productName' => $request->input('productName'),
+        'productLine' => $request->input('productline'),
+        'productScale' => $request->input('productscale'),
+        'productVendor' => $request->input('productvendor'),
+        'quantityInStock' => $request->input('qty'),
+        'buyPrice' => $request->input('price'),
+        'MSRP' => $request->input('msrp')]);
+        return redirect('/admin/stock');
+    }
+    public function delete($productCode) 
+    {
+        $product = Products::findOrFail($productCode);
+        $product->delete();
+        return redirect('/admin/stock');
+    }
+    
 }

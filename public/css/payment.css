@@ -1,0 +1,161 @@
+.payment-zone {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 1em;
+}
+
+.grid-contain-payment {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 1em;
+}
+
+.header-payment {
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 0.6em;
+    color: #FFF;
+    background-color: rgb(51, 148, 226);
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.sidea {
+    color: rgb(0, 144, 201);
+    text-align: left;
+    font-size: 1;
+    padding: 0.4em;
+    text-transform: uppercase;
+}
+
+.sizeb {
+    padding: 1em;
+}
+
+.txt {
+    padding: 0.2em;
+}
+
+.sideb input {
+    width: 50%;
+    margin: 0.2em;
+    font-size: 0.7em;
+    text-align: center;
+    padding: 0.2em;
+    border: none;
+    border: 1px solid rgb(197, 191, 191);
+    border-radius: 10px;
+}
+
+.grid-contain-addr {
+    padding-left: 1.5em;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.title-addr {
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.dbs-addr {
+    font-size: 0.9em;
+    width: 100%;
+}
+
+.underline {
+    width: 100%;
+    text-decoration: underline;
+}
+
+.radio input {
+    margin: 0;
+    width: 10%;
+}
+
+.push-right {
+    padding: 1em;
+    text-align: right;
+}
+
+.push-right input {
+    font-size: 1em;
+    text-align: center;
+    padding: 0.2em;
+    border: none;
+    border: 1px solid rgb(197, 191, 191);
+    border-radius: 10px;
+}
+
+.btn-zone {
+    text-align: center;
+    padding: 1em;
+}
+
+.btn-zone button {
+    text-transform: uppercase;
+    border: none;
+    background-color: rgb(12, 130, 209);
+    color: #FFF;
+}
+
+.btn-zone button:hover {
+    text-transform: uppercase;
+    border: none;
+    background-color: rgb(12, 130, 209);
+    color: rgb(255, 230, 0);
+}
+
+.multiaddr {
+    text-transform: uppercase;
+    color: rgb(0, 144, 201);
+    margin: 1em;
+}
+
+/* HOME AND BACK */
+
+#back-button {
+    margin-top: 3em;
+}
+
+#home-button {
+    margin-top: 3em;
+}
+
+#home-button, #back-button {
+    margin-right: 1em;
+    width: 20px;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .2s ease-in-out;
+    transition: .2s ease-in-out;
+}
+
+#home-button:hover, #back-button:hover {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+@media only screen and (max-width:660px) {
+    .sideb input {
+        width: 80%;
+    }
+    .txt {
+        font-size: 0.8em;
+    }
+    .title-addr {
+        font-size: 0.6em;
+    }
+    .dbs-addr {
+        font-size: 0.6em;
+    }
+    #home-button, #back-button {
+        width: 15px;
+    }
+    .home-button, .back-button {
+        display: flex;
+        justify-content: center;
+    }
+    #home-button {
+        margin-top: 1em;
+    }
+}

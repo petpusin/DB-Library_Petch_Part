@@ -1,10 +1,23 @@
-@extends('layouts.app')
-<link href="{{ asset('css/signin.css')}}" rel="stylesheet">
-
-<!-- FROM GOOGLE FONT -->
-<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+@extends('create.master')
+@section('css')
+<link rel="stylesheet" href="/css/shopdetail.css">
+@endsection
 @section('content')
-@if($employee->reportsTo == Auth::user()->em_id || Auth::user()->em_id == 1002 || $employee->employeeNumber == Auth::user()->em_id)
+<?php $aaa = 0 ?>
+@foreach($all as $temp)
+@if($temp->employeeNumber == Auth::user()->em_id && $temp->jobTitle == "VP Sales")
+<?php $aaa = 1 ?>
+@elseif($temp->employeeNumber == Auth::user()->em_id && $temp->jobTitle == "President")
+<?php $aaa = 2 ?>
+@elseif($temp->employeeNumber == Auth::user()->em_id && $temp->jobTitle == "Sales Manager (APAC)")
+<?php $aaa = 3 ?>
+@elseif($temp->employeeNumber == Auth::user()->em_id && $temp->jobTitle == "Sales Manager (EMEA)")
+<?php $aaa = 3 ?>
+@elseif($temp->employeeNumber == Auth::user()->em_id && $temp->jobTitle == "Sales Manager (NA)")
+<?php $aaa = 3 ?>
+@endif
+@endforeach
+@if($employee->reportsTo == Auth::user()->em_id || $aaa == 2 || $employee->employeeNumber == Auth::user()->em_id)
 <div class="container">
     <div class="row">
         <div class="card-header font-weight-light" style="background-color:rgba(0,0,0, 0.8); border-radius:5px;margin-top:10px; margin-bottom:20px">
@@ -58,7 +71,7 @@
                                 <center class="font-weight-light">Office Code</center>
                             </td>
                             <td><center>
-                                @if($employee->employeeNumber == Auth::user()->em_id && Auth::user()->em_id != 1002)
+                                @if($employee->employeeNumber == Auth::user()->em_id &&  $aaa != 2)
                                     <select name="officeCode" id="officeCode">
                                         <option value={{$employee->officeCode}}>{{$employee->officeCode}}</option>
                                     </select>
@@ -148,7 +161,7 @@
                                     <select name="jobTitle" id="jobTitle">
                                         <option value={{$employee->jobTitle}}>{{$employee->jobTitle}}</option>
                                     </select>
-                                    @elseif(Auth::user()->em_id == 1002)
+                                    @elseif($aaa == 2)
                                     @if($employee->jobTitle == "VP Sales")
                                     <select name="jobTitle" id="jobTitle">
                                         <option value="VP Sales" selected>VP Sales</option>
@@ -204,23 +217,32 @@
                                         <option value="Sales Rep" selected>Sales Rep</option>
                                     </select>
                                     @endif
-                                    @elseif($employee->jobTitle == "Sales Manager (APAC)")
+                                    @elseif($aaa == 1 && $employee->jobTitle != "President" && $employee->jobTitle != "VP Sales")
+                                    @if($employee->jobTitle == "Sales Manager (APAC)")
                                     <select name="jobTitle" id="jobTitle">
                                         <option value="Sales Manager (APAC)" selected>Sales Manager (APAC)</option>
                                         <option value="Sale Manager (EMEA)">Sale Manager (EMEA)</option>
                                         <option value="Sales Manager (NA)">Sales Manager (NA)</option>
+                                        <option value="Sales Rep">Sales Rep</option>
                                     </select>
                                     @elseif($employee->jobTitle == "Sale Manager (EMEA)")
                                     <select name="jobTitle" id="jobTitle">
                                         <option value="Sales Manager (APAC)">Sales Manager (APAC)</option>
                                         <option value="Sale Manager (EMEA)" selected>Sale Manager (EMEA)</option>
                                         <option value="Sales Manager (NA)">Sales Manager (NA)</option>
+                                        <option value="Sales Rep">Sales Rep</option>
                                     </select>
                                     @elseif($employee->jobTitle == "Sales Manager (NA)")
                                     <select name="jobTitle" id="jobTitle">
                                         <option value="Sales Manager (APAC)">Sales Manager (APAC)</option>
                                         <option value="Sale Manager (EMEA)">Sale Manager (EMEA)</option>
                                         <option value="Sales Manager (NA)" selected>Sales Manager (NA)</option>
+                                        <option value="Sales Rep">Sales Rep</option>
+                                    </select>
+                                    @endif
+                                    @elseif($aaa == 3  && $employee->jobTitle != "Sales Manager (APAC)" && $employee->jobTitle != "Sales Manager (EMEA)" && $employee->jobTitle != "Sales Manager (NA)" && $employee->jobTitle != "President" && $employee->jobTitle != "VP Sales")
+                                    <select name="jobTitle" id="jobTitle">
+                                        <option value="Sales Rep" selected>Sales Rep</option>
                                     </select>
                                     @else
                                     <select name="jobTitle" id="jobTitle">

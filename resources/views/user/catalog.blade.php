@@ -6,6 +6,7 @@ Categories | Digital Shop
 
 @section('css')
 <link rel="stylesheet" href="/css/shopping.css">
+<link rel="stylesheet" href="/css/shopdetail.css">
 @endsection
 @section('content')
 
@@ -32,7 +33,7 @@ Categories | Digital Shop
         <select name="" id="" value-group="scale">
           <option value="">Scales</option>
           @foreach($productscales as $data)
-          <option value=".{{$data->removespacescale()}}" class="option" >{{$data->productScale}}</option>
+          <option value=".{{$data->removespacescale()}}" class="option">{{$data->productScale}}</option>
           @endforeach
         </select></div>
       <div class="filter-item2">
@@ -49,8 +50,8 @@ Categories | Digital Shop
   <div class="product-grid" id="productData">
     @forelse($products as $row)
     <div class="p-item">
-      <div class="p-item-flex {{ $row->removespace() }} {{ $row->removespacescale()}}" id="">
-        <div class="product-img"><a href="#"><img id="shop-list-img" src="/img/{{ $row->productLine}}.svg" alt=""></a>
+      <div class="p-item-flex {{$row->removespacescale()}} {{$row->removespace()}} " id="">
+        <div class="product-img"><a href="/catalog/{{$row['productLine']}}/{{$row['productCode']}}"><img id="shop-list-img" src="/img/{{ $row->productLine}}.svg" alt=""></a>
         </div>
 
         <div>
@@ -64,7 +65,7 @@ Categories | Digital Shop
           <div class="grid-details">
             <div id="more-info"><a href="/catalog/{{$row['productLine']}}/{{$row['productCode']}}">More Details</a></div>
             @if(Auth::guard('admin')->check())
-            <div><a href="#"><a href="#"><img id="edit-button" src="/img/edit-gray-blue.svg" alt=""></a></a></div>
+            <div><a href="#"><a href="/admin/stock/edit/{{$data->productCode}}"><img id="edit-button" src="/img/edit-gray-blue.svg" alt=""></a></a></div>
             @endif
           </div>
         </div>
@@ -78,14 +79,18 @@ Categories | Digital Shop
     @endforelse
   </div>
   <br>
-  
+  <div><a class="back-button" href="javascript:history.back()"><img id="back-button" src="/img/keyboard-left-arrow-button.svg" alt=""></a>
+            <a class="home-button" href="/"><img id="home-button" src="/img/home.svg" alt=""></a></div>
+    </div>
+</div>
+
   @endsection
   @section('script')
-  <script src="/js/indexscpt.js"></script>
-  
+
+
   <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
-<!-- or -->
-<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+  <!-- or -->
+  <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
   <script>
     var $grid = $('.p-item').isotope({
       itemSelector: '.p-item-flex'
@@ -99,12 +104,14 @@ Categories | Digital Shop
       // get group key
       var filterGroup = $select.attr('value-group');
       // set filter for group
-     
+
       filters[filterGroup] = event.target.value;
       // combine filters
       var filterValue = concatValues(filters);
       // set filter for Isotope
-      $grid.isotope({filter: filterValue});
+      $grid.isotope({
+        filter: filterValue
+      });
       console.log(filters);
     });
 

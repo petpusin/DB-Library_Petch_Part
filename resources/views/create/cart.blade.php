@@ -1,11 +1,13 @@
 @extends('create.master')
 
 @section('title', 'Shopping Cart')
-
+@section('css')
+<link rel="stylesheet" href="/css/shopBastket.css">
+@endsection
 
 
 @section('content')
-<div class="cart-section container">
+<div class="container">
     <div class="CartMsg">
         @if (session()->has('success'))
         <div class="alert alert-success">
@@ -25,262 +27,161 @@
             {{session('error')}}
         </div>
         @endif
-        {{Cart::content()}}
+       
+        {{ session()->get('coupon')['discount'] }}
         @if (Cart::count() > 0)
 
-        <h2>{{ Cart::count() }} item(s) in Shopping Cart</h2>
+        <div class="for-emp-contain">
+            <a href="#" id="responClicked"><img src="https://image.flaticon.com/icons/svg/60/60510.svg" alt=""></a>
+        </div>
 
-        <div class="row">
+        <div class="for-emp-respon">
+            <div class="for-emp-respon-grid" id="respon-menu">
+                <a href="#"><img src="https://image.flaticon.com/icons/svg/1319/1319495.svg" alt="">Employee Resource
+                    Management</a>
+                <a href="#"><img src="https://www.flaticon.com/premium-icon/icons/svg/1009/1009874.svg" alt="">Stock</a>
+                <a href="#"><img src="https://image.flaticon.com/icons/svg/1252/1252355.svg" alt="">Order</a>
+            </div>
 
-            <div class="cart">
-                <div class="col-sm-12">
-                    <h2>Shopping Basket
-                        <a href="{{route('admin.customer.create')}}" class="btn check_out btn-block">Register</a>
-                        <a href="{{route('admin.customer.create2')}}" class="btn check_out btn-block">Register_for_OldCustomer</a>
-                    </h2>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <table id="myTR">
-                                <tr style="background-color: black;color: white;">
-                                    <th height="60">
-                                        <center>
-                                            <font size="3px">ProductCode</font>
-                                        </center>
-                                    </th>
-                                    <th width="20%">
-                                        <center>
-                                            <font width="10%" size="3px">ProductName</font>
-                                        </center>
-                                    </th>
-                                    <th width="20%">
-                                        <center>
-                                            <font width="10%" size="3px">Stock</font>
-                                        </center>
-                                    </th>
-                                    <th width="20%">
-                                        <center>
-                                            <font width="10%" size="3px">Scale</font>
-                                        </center>
-                                    </th>
-                                    <th width="10%">
-                                        <center>
-                                            <font width="10%" size="3px">QTY</font>
-                                        </center>
-                                    </th>
-                                    <th width="20%">
-                                        <center>
-                                            <font width="10%" size="3px">Uint Price</font>
-                                        </center>
-                                    </th>
-                                    <th width="20%">
-                                        <center>
-                                            <font size="3px">Total :INR</font>
-                                        </center>
-                                    </th>
-                                    <th width="10%">
-                                        <center>
-                                            <font size="3px">Update</font>
-                                        </center>
-                                    </th>
-                                    <th width="10%">
-                                        <center>
-                                            <font size="3px">Delete</font>
-                                        </center>
-                                    </th>
-
-                                </tr>
-
-                                @if($data!="0")
-
-                                @foreach ($data as $item)
-                                <tr>
-                                    <td>
-                                        <center>{{ $item->id }}</center>
-                                    </td>
-                                    <td>
-                                        <center>{{ $item->name }}</center>
-                                    </td>
-                                    <td>
-                                        <center>{{$item->options->stock}}</center>
-                                    </td>
-                                    <td>
-                                        <center>{{$item->options->size}}</center>
-                                    </td>
-                                    <td>
-                                        <center>
-                                            <input type="hidden" value="{{$item->id}}" id="id{{$item->id}}">
-                                            <input type="hidden" value="{{$item->rowId}}" id="rowID{{$item->id}}">
-                                            <input type="number" min="1" max="10" value="{{$item->qty}}" class="qty-fill" id="upCart{{$item->id}}" MIN="1" MAX="30">
-
-                                        </center>
-                                    </td>
-                                    <td>
-                                        <center>${{$item->price}}</center>
-                                    </td>
-                                    <td>
-                                        <center>{{$item->price * $item->qty}}</center>
-                                    </td>
-                                    <td>
-                                        <center>
-                                            <a href=""><img src="/img/pencil.svg" alt="" width="30px" height="30px"></a></center>
-                                    </td>
-                                    <td>
-                                        <center>
-                                            <a href="{{url('admin/cart/remove')}}/{{$item->rowId}}"><img src="/img/delete.svg" alt="" width="30px" height="30px"></a></center>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </table>
-                        </div>
+        </div>
 
 
-                        @endif
-                        <div class="col-xs-12 col-sm-12 col-md-6">
-                            <br>
-                        </div>
+        <div class="contain-basket-box">
 
-                        <div class="col-sm-4" id="cartTotal">
-                            <div class="cart-total">
-                                <br>
-                                @if(!session()->has('coupon'))
+            <div class="header-basket">Shopping Bastket</div>
+            <div>
+                <div class="inline-box underline">{{Cart::count()}}</div>
+                <div class="inline-box push-left">item(s) in Shipping Cart</div>
+            </div>
+            <div class="grid-contain-display-bastket title-basket">
+                <div>Code</div>
+                <div>Name</div>
+                <div>Stock</div>
+                <div>Scale</div>
+                <div>QTY</div>
+                <div>Unit Price</div>
+                <div>Total:INR</div>
+                <div></div>
+            </div>
 
-                                <a href="#" class="have-code">Have a Code?</a>
-                                <div class="have-code-container">
-                                    <form action="{{ route('coupon.store') }}" method="POST">
-                                        {{ csrf_field() }}
-                                        <input type="text" name="coupon_code" id="coupon_code">
-                                        <button type="submit" class="button button-plain">Apply</button>
-                                    </form>
-                                </div> <!-- end have-code-container -->
-                                @endif
-                                <table>
-                                    <tr>
-                                    <tr>
-                                        
-                                        <td>
-                                            <form action="{{url('/admin/checkout')}}" style="display:block" method="POST" id="payment-form">
-                                            {{ csrf_field() }}
-                                                 <div class="form-group">
-                                                 <label for="customername">Customer Name</label>
-                                                    <input type="text" class="form-control" id="customername" name="customername" value="{{ old('customerName') }}" required>
-                                                    
-                                                </div>
-                                                <div class="form-group">
-                                                <label for="orderdate">order date</label>
-                                                <input type="date" name="orderdate" id="orderdate" value="{{ old('orderDate') }}" required pattern="\d{4}-\d{2}-\d{2}">
-                                                </div>
-                                                <div class="form-group">
-                                                <label for="requiredDate">requiredDate</label>
-                                                <input type="date" name="requiredDate" id="requiredDate" value="{{ old('orderdate') }}" required pattern="\d{4}-\d{2}-\d{2}">
-                                                </div>
-                                                <div class="form-group">
-                                                 <label for="comments">Comment</label>
-                                                    <input type="text" class="form-control" id="comments" name="comments" value="{{ old('comments') }}" required>
-                                                    
-                                                </div>
-                                                
-                                                <button type="submit" id="complete-order" class="button-primary full-width">Check</button>
-                                                
+            <!-- YOU CAN FORLOOP HERE -->
+            @if($data!="0")
+            @foreach ($data as $item)
+            <div class="grid-contain-display-bastket detail-bas">
+                <div>{{ $item->id }}</div>
+                <div>{{ $item->name }}</div>
+                <div>{{$item->options->stock}}</div>
+                <div>{{$item->options->size}}</div>
+                <div>
+                    <input type="hidden" value="{{$item->id}}" id="id{{$item->id}}">
+                    <input type="hidden" value="{{$item->rowId}}" id="rowID{{$item->id}}">
+                    <input type="number" min="1" max="10" value="{{$item->qty}}" class="qty-fill" id="upCart{{$item->id}}" MIN="1" MAX="30">
+                </div>
+                <div>${{$item->price}}</div>
+                <div>{{$item->price * $item->qty}}</div>
+                <div><a href="#"><img src="/img/confirm.svg" alt=""></a> 
+                    <a href="{{url('admin/cart/remove')}}/{{$item->rowId}}"><img
+                            src="/img/rubbish-bin-delete-button.svg" alt=""></a></div>
+            </div>
+            @endforeach
+            @endif
+            <!-- END FOR -->
 
-
-                                            </form>
-                                        </td>
-                                        <td>
-
-                                        </td>
-                                    </tr>
-                                    <td>
-                                        <tr style="background-color: black;color: white;">
-
-                                            <td>Total Amount</td>
-                                        </tr>
-                                        <tr style="background-color: white;color: black;">
-                                            <td>Sub Total</td>
-                                            <td>$ {{Cart::subtotal()}}</td>
-                                        </tr>
-                                        <tr style="background-color: white;color: black;">
-                                            @if (session()->has('coupon'))
-                                            <td>Discount</td>
-                                            <td>$ @if(session()->has('coupon'))
-                                                -${{ session()->get('coupon')['discount'] }} <br>
-                                                <hr>
-
-
-                                                @endif</td>
-                                            Discount code({{ session()->get('coupon')['name'] }}) :
-
-                                            @if (session()->get('coupon')['free'])
+            
+            <div class="grid-contain-total-zone">
+            
+                <div class="skip-regis">
+                        
+                    <div class="skip-regis-topic">
+                        @if(!session()->has('coupon'))
+                        <p>Have a Code ? <img src="img/keyboard.svg" alt=""></p>
+                        <div><form action="{{ route('coupon.store') }}" method="POST">
+                                {{ csrf_field() }}
+                                <input type="text" name="coupon_code" id="coupon_code">
+                                <button type="submit" class="button button-plain">Apply</button>
+                            </form></div>
+                        @else
+                        <p>Discount</p>
+                        <div>({{ session()->get('coupon')['name'] }}) :
+                        @if (session()->get('coupon')['free'])
                                             {{ session()->get('coupon')['type'] }}
                                             @endif
                                             <form action="{{ route('coupon.destroy') }}" method="POST" style="display:inline">
                                                 {{ csrf_field() }}
                                                 {{ method_field('delete') }}
                                                 <button type="submit" style="font-size:10px">Remove</button>
-                                            </form>
-                                        </tr>
+                                            </form></div>
+                                            @endif
+                                            
+                    </div>
+                    <form action="/admin/checkout" style="display:block" method="POST" id="payment-form">
+                    {{ method_field('put') }}    
+                    {{ csrf_field() }}
+                    <div class="info">
+                        <p>Customer Name</p><input type="text" class="form-control" id="customername" name="customername" value="{{ old('customerName') }}" required>
+                    </div>
+                    <div class="info">
+                        <p>Order Date</p><input type="date" name="orderdate" id="orderdate" value="{{ old('orderDate') }}" required pattern="\d{4}-\d{2}-\d{2}">
+                    </div>
+                    <div class="info">
+                        <p>Required Date</p><input type="date" name="requiredDate" id="requiredDate" value="{{ old('orderdate') }}" required pattern="\d{4}-\d{2}-\d{2}">
+                    </div>
+                    <div class="info">
+                        <p>Comment</p><input type="text" class="form-control" id="comments" name="comments" value="{{ old('comments') }}">
+                    </div>
+                    <input type="hidden"  step="0.01" name="discount" value="{{ session()->get('coupon')['discount'] }} " >
+                    <div class="chk-out"><button>Checkout</button></div>
+                    </form> 
 
-                                        @endif
-                                        @if (session()->has('coupon'))
-                                        <tr style="background-color: white;color: black;">
-                                            <td>New Subtotal</td>
-                                            <td>${{ $newSubtotal }}</td>
-                                            <hr>
-                                        </tr>
-                                        @endif
+                </div>
 
-                                        <tr style="background-color: white;color: black;">
-                                            <td>Tax (%)</td>
-                                            <td>${{ $newTax }}</td>
-                                            <hr>
-                                        </tr>
+                <div class="grid-title-and-dbs">
+                    <div class="total">Total Amount</div>
+                    <div class="grid-ans-dbs total-2nd">
+                        <div class="a-side-total">
+                            <div>Sub Total</div>
+                            @if (session()->has('coupon'))
+                            <div>Discount</div>
+                            <div>New Subtotal</div>
+                            @endif
+                            
+                            <div>Tax (%)</div>
+                            <div class="highlight">TGrand Total</div>
 
+                        </div>
+                        <div>
 
-                                        <tr style="background-color: white;color: black;">
-                                            <td>Grand Total</td>
-                                            <td>${{ $newTotal }}</td>
-                                        </tr>
-                                    </td>
-                                    </tr>
-                                </table>
-
-
-                            </div>
+                            <div>${{Cart::subtotal()}}</div>
+                            @if (session()->has('coupon'))
+                            <div>$ @if(session()->has('coupon'))
+                                    -${{ session()->get('coupon')['discount'] }} 
+                                    <!-- <input type="hidden"  step="0.01" name="discount" value="{{ session()->get('coupon')['discount'] }} " > -->
+                                </div>@endif
+                            
+                            
+                                                @endif
+                            <div></div>
+                            @if (session()->has('coupon'))
+                            <div>${{ $newSubtotal }}</div>
+                            @endif
+                            <div>${{ $newTax }}</div>
+                            
+                            <div class="highlight">${{ $newTotal }}</div>
+                            
                         </div>
                     </div>
+                    
                 </div>
-            </div> <!-- end cart-table-row -->
-
-
-        </div> <!-- end cart-table -->
-
-
-        <button>Apply</button>
-        <div class="cart-totals">
-            <div class="cart-totals-left">
-                <br>
-                Shipping is free because we’re awesome like that. Also because that’s additional stuff I don’t feel like figuring out :).
+                <div></div>
             </div>
-
-            <div class="cart-totals-right">
-                <div>
-                </div>
-            </div>
-        </div> <!-- end cart-totals -->
-
-        <div class="cart-buttons">
-            <a href="/" class="button">Continue Shopping</a>
-            <!-- <a href="" class="button-primary">Proceed to Checkout</a> -->
+            @else
+            <div class="con-zone"><a href="/">Continue Shopping</a></div>
+            @endif
         </div>
 
-        @else
 
-        <h3>No items in Cart!</h3>
-        <div class="spacer"></div>
-        <a href="/" class="button">Continue Shopping</a>
-        <div class="spacer"></div>
-
-        @endif
+        <div><a class="back-button" href="javascript:history.back()"><img id="back-button" src="/img/keyboard-left-arrow-button.svg" alt=""></a>
+            <a class="home-button" href="/"><img id="home-button" src="/img/home.svg" alt=""></a></div>
 
 
 

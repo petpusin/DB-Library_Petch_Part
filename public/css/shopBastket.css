@@ -1,0 +1,252 @@
+/* BASTKET */
+
+.contain-basket-box {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 1em;
+}
+
+.header-basket {
+    font-size: 1.1em;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #FFF;
+    background-color: rgb(0, 132, 255);
+    padding: 0.4em;
+    text-align: center;
+}
+
+.push-left {
+    margin-left: -25px;
+}
+
+.inline-box {
+    color: rgb(0, 113, 128);
+    display: inline-block;
+    padding: 1em;
+}
+
+.underline {
+    text-decoration: underline;
+    color: rgb(0, 165, 187);
+}
+
+.grid-contain-display-bastket {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr) 2fr;
+    justify-content: center;
+    text-align: center;
+    padding: 1em;
+    font-size: 0.8em;
+}
+
+.title-basket {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: rgb(0, 88, 139);
+}
+
+.detail-bas {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.158);
+    color: rgb(81, 136, 170);
+}
+
+.detail-bas input {
+    width: 30%;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.detail-bas img {
+    width: 15px;
+    margin: 0 1em 0 1em;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+
+.detail-bas img:hover {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+}
+
+.grid-contain-total-zone {
+    display: grid;
+    grid-template-columns: 3fr 3fr 3fr;
+    justify-content: center;
+    text-align: left;
+    padding: 1em;
+    font-size: 0.9em;
+}
+
+.con-zone {
+    padding: 1em;
+    text-align: center;
+    font-size: 0.7em;
+}
+
+.grid-title-and-dbs {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.chk-out {
+    margin: 1em;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.chk-out button {
+    text-transform: uppercase;
+    border: none;
+    background-color: rgb(12, 130, 209);
+    color: #FFF;
+}
+
+.chk-out button:hover {
+    background-color: rgb(31, 136, 206);
+    color: rgb(255, 251, 0);
+}
+
+.total {
+    display: inline-block;
+    font-weight: bold;
+}
+
+.total-2nd {
+    margin-top: -1em;
+}
+
+.grid-ans-dbs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.highlight {
+    background-color: rgb(187, 195, 204);
+    color: #000;
+}
+
+/* SKIP REGIS */
+
+.skip-regis-topic img {
+    width: 20px;
+}
+
+.skip-regis {
+    display: block;
+}
+
+.skip-regis-topic p {
+    display: inline-block;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: rgb(255, 217, 0);
+    padding: 0.4em;
+    box-shadow: 0 4px 8px 0 rgba(0, 162, 255, 0.2), 0 6px 20px 0 rgba(0, 92, 196, 0.19);
+    transform: rotate(-6deg)
+}
+
+.skip-regis-topic input {
+    margin-left: 0.4em;
+    display: inline-block;
+    text-align: center;
+    width: 30%;
+    font-size: 1em;
+    background-color: rgb(212, 225, 238);
+    color: rgb(0, 68, 131);
+    border: none;
+    border-radius: 10px;
+}
+
+.skip-regis-topic button {
+    text-transform: uppercase;
+    border: none;
+    background-color: red;
+    color: #FFF;
+    border-radius: 10px;
+    font-size: 0.95em;
+}
+
+.info {
+    padding: 0.4em;
+}
+
+.info p {
+    font-size: 0.8em;
+    margin: 0;
+    color: rgb(4, 117, 161);
+}
+
+.info input {
+    width: 40%;
+    font-size: 0.7em;
+    
+}
+
+/* HOME AND BACK */
+
+#back-button {
+    margin-top: 3em;
+}
+
+#home-button {
+    margin-top: 3em;
+}
+
+#home-button, #back-button {
+    margin-right: 1em;
+    width: 20px;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .2s ease-in-out;
+    transition: .2s ease-in-out;
+}
+
+#home-button:hover, #back-button:hover {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+@media only screen and (max-width:660px) {
+    .grid-contain-display-bastket {
+        font-size: 0.6em;
+    }
+    .grid-contain-total-zone {
+        font-size: 0.9em;
+    }
+    .detail-bas input {
+        width: 70%;
+    }
+    .total-2nd {
+        font-size: 0.7em;
+    }
+    .skip-regis-topic input {
+        font-size: 0.8em;
+        width: 60%;
+    }
+    .skip-regis-topic button {
+        margin-left: 2em;
+        font-size: 0.75em;
+    }
+    .skip-regis-topic p {
+        font-size: 0.4em;
+    }
+    .info input {
+        width: 60%;
+        font-size: 0.6em;
+    }
+    #home-button, #back-button {
+        width: 15px;
+    }
+    .home-button, .back-button {
+        display: flex;
+        justify-content: center;
+    }
+    #home-button {
+        margin-top: 1em;
+    }
+}

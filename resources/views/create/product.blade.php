@@ -43,5 +43,5 @@ Shopping | Product
 @endsection
 
 @section('script')
-  <script src="/js/indexscpt.js"></script>
+  
 @endsection

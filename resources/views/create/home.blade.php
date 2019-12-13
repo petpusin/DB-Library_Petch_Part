@@ -16,10 +16,12 @@ Categories | Digital Shop
 
         <div class="for-emp-respon">
             <div class="for-emp-respon-grid" id="respon-menu">
-                <a href="#"><img src="https://image.flaticon.com/icons/svg/1319/1319495.svg" alt="">Employee Resource
+            <a href="#"><img src="/img/employee.svg" alt="">Employee Resource
                     Management</a>
-                <a href="#"><img src="https://www.flaticon.com/premium-icon/icons/svg/1009/1009874.svg" alt="">Stock</a>
-                <a href="#"><img src="https://image.flaticon.com/icons/svg/1252/1252355.svg" alt="">Order</a>
+                <a href="#"><img src="/img/factory-stock-house.svg" alt="">Stock</a>
+                <a href="#"><img src="/img/order.svg" alt="">Order</a>
+                <a href="#"><img src="/img/clipboard.svg" alt="">Register</a>
+                <a href="#"><img src="/img/customers.svg" alt="">Customer</a>
             </div>
 
         </div>
@@ -54,5 +56,5 @@ Categories | Digital Shop
 @endsection
 @section('script')
 
-    <script src="/js/indexscpt.js"></script>
+    
 @endsection

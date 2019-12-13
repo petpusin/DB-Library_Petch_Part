@@ -16,7 +16,9 @@ body {
     border-top: 4px solid rgb(0, 90, 192);
     ;
 }
-
+.job{
+    margin:0;
+}
 .main-nav .main-nav-tool {
     padding: 20px;
 }
@@ -105,7 +107,6 @@ body {
 
 /* CONTAINER */
 
-.container {}
 
 /* COVER */
 

@@ -17,10 +17,12 @@ Stock | insert
 
     <div class="for-emp-respon">
         <div class="for-emp-respon-grid" id="respon-menu">
-            <a href="#"><img src="https://image.flaticon.com/icons/svg/1319/1319495.svg" alt="">Employee Resource
-                Management</a>
-            <a href="#"><img src="https://www.flaticon.com/premium-icon/icons/svg/1009/1009874.svg" alt="">Stock</a>
-            <a href="#"><img src="https://image.flaticon.com/icons/svg/1252/1252355.svg" alt="">Order</a>
+        <a href="#"><img src="/img/employee.svg" alt="">Employee Resource
+                    Management</a>
+                <a href="#"><img src="/img/factory-stock-house.svg" alt="">Stock</a>
+                <a href="#"><img src="/img/order.svg" alt="">Order</a>
+                <a href="#"><img src="/img/clipboard.svg" alt="">Register</a>
+                <a href="#"><img src="/img/customers.svg" alt="">Customer</a>
         </div>
 
     </div>
@@ -51,10 +53,21 @@ Stock | insert
                             </select>
                         </div>
                         <div class="form-add-product">
-                            <p>Scale</p><input type="text" class="form-control" name="productscale" id="productscale" placeholder="">
+                            <p>Scale</p><select name="productscale" id="productscale">
+                                <option value="0" disabled selected>product Scale</option>
+                                @foreach($scales as $s)
+                                <option value="{{$s->productScale}}">{{$s->productScale}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-add-product">
-                            <p>Vendor</p><input type="text" class="form-control" name="productvender" id="productvender" placeholder="">
+                            <p>Vendor</p>
+                            <select name="productvender" id="productvender">
+                                <option value="0" disabled selected>product Vendors</option>
+                                @foreach($vens as $v)
+                                <option value="{{$v->productVendor}}">{{$v->productVendor}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </form>
                 </div>
@@ -70,17 +83,17 @@ Stock | insert
             <div class="grid-contain-3">
                 <div class="quanti-main">Quantity</div>
                 <div class="quanti-details">
-                    <p>Instock</p><input type="number" class="form-control" name="productqty" id="productqty" placeholder="">
-                    <p>Price</p><input type="number" class="form-control" name="productprice" id="productprice" placeholder="">
-                    <p>MSRP</p><input type="number" class="form-control" name="productmsrp" id="productmsrp" placeholder="Title">
+                    <p>Instock</p><input type="text" class="form-control" name="productqty" id="productqty" placeholder="">
+                    <p>Price</p><input type="text" class="form-control" name="productprice" id="productprice" placeholder="">
+                    <p>MSRP</p><input type="text" class="form-control" name="productmsrp" id="productmsrp" placeholder="Title">
                 </div>
             </div>
 
             <div class="submmit-btn"><button>Submit</button></div>
     </div>
     </form>
-    <div class="back-to-basic"><a class="back-button" href="#"><img id="back-button" src="/img/keyboard-left-arrow-button.svg" alt=""></a>
-        <a class="home-button" href="#"><img id="home-button" src="/img/home.svg" alt=""></a></div>
+    <div><a class="back-button" href="javascript:history.back()"><img id="back-button" src="/img/keyboard-left-arrow-button.svg" alt=""></a>
+            <a class="home-button" href="/"><img id="home-button" src="/img/home.svg" alt=""></a></div>
 
 </div>
 @endsection

@@ -148,8 +148,8 @@ Shopping | Order/Edit
 </div>
 
 
-<div class="back-to-basic"><a class="back-button" href="#"><img id="back-button" src="/img/keyboard-left-arrow-button.svg" alt=""></a>
-  <a class="home-button" href="#"><img id="home-button" src="/img/home.svg" alt=""></a></div>
+<div><a class="back-button" href="javascript:history.back()"><img id="back-button" src="/img/keyboard-left-arrow-button.svg" alt=""></a>
+            <a class="home-button" href="/"><img id="home-button" src="/img/home.svg" alt=""></a></div>
 </div>
 
 @section('content')

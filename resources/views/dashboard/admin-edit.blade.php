@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 <?php $aaa = 0 ?>
-@foreach($all as $temp)
+@foreach($employee as $temp)
 @if($temp->employeeNumber == Auth::user()->em_id && $temp->jobTitle == "VP Sales")
 <?php $aaa = 1 ?>
 @elseif($temp->employeeNumber == Auth::user()->em_id && $temp->jobTitle == "President")
